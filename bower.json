@@ -1,0 +1,11 @@
+{
+  "name": "abdonrd.com",
+  "private": true,
+  "dependencies": {
+    "polymer": "Polymer/polymer#^1.2.0"
+  },
+  "devDependencies": {
+    "web-component-tester": "*"
+  },
+  "ignore": []
+}
