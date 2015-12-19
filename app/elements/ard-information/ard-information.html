@@ -1,0 +1,29 @@
+<link rel="import" href="../../bower_components/polymer/polymer.html">
+<link rel="import" href="../../bower_components/iron-flex-layout/iron-flex-layout.html">
+<link rel="import" href="../ard-profile/ard-profile.html">
+
+<dom-module id="ard-information">
+  <template>
+    <style>
+      :host {
+        @apply(--layout-vertical);
+
+        margin: 0 8px;
+      }
+    </style>
+
+    <ard-profile profile="[[information.profile]]"></ard-profile>
+  </template>
+
+  <script>
+    Polymer({
+      is: 'ard-information',
+
+      properties: {
+        information: {
+          type: Object
+        }
+      }
+    });
+  </script>
+</dom-module>
