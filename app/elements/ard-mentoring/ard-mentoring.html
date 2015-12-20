@@ -1,0 +1,51 @@
+<link rel="import" href="../../bower_components/polymer/polymer.html">
+<link rel="import" href="../../bower_components/iron-icon/iron-icon.html">
+<link rel="import" href="../../bower_components/iron-icons/iron-icons.html">
+<link rel="import" href="../../bower_components/iron-icons/communication-icons.html">
+<link rel="import" href="../../bower_components/paper-card/paper-card.html">
+<link rel="import" href="../ard-item/ard-item.html">
+<link rel="import" href="../ard-item/ard-item-body.html">
+
+<dom-module id="ard-mentoring">
+  <template>
+    <style>
+      paper-card {
+        width: 100%;
+      }
+
+      iron-icon {
+        --iron-icon-height: 12px;
+        --iron-icon-width: 12px;
+      }
+    </style>
+
+    <paper-card heading="Mentoring">
+      <template is="dom-repeat" items="[[mentoring]]" as="mentoring">
+        <ard-item>
+          <ard-item-body>
+            <div>[[mentoring.eventName]]</div>
+            <div>[[mentoring.organization]]</div>
+            <div>
+              <iron-icon icon="today"></iron-icon> [[mentoring.date]] |
+              <span title="[[mentoring.location.long]]">
+                <iron-icon icon="communication:location-on"></iron-icon> [[mentoring.location.short]]
+              </span>
+            </div>
+          </ard-item-body>
+        </ard-item>
+      </template>
+    </paper-card>
+  </template>
+
+  <script>
+    Polymer({
+      is: 'ard-mentoring',
+
+      properties: {
+        mentoring: {
+          type: Object
+        }
+      }
+    });
+  </script>
+</dom-module>

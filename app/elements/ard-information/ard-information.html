@@ -1,6 +1,7 @@
 <link rel="import" href="../../bower_components/polymer/polymer.html">
 <link rel="import" href="../../bower_components/iron-flex-layout/iron-flex-layout.html">
 <link rel="import" href="../ard-experience/ard-experience.html">
+<link rel="import" href="../ard-mentoring/ard-mentoring.html">
 <link rel="import" href="../ard-profile/ard-profile.html">
 
 <dom-module id="ard-information">
@@ -17,13 +18,15 @@
       }
 
       ard-profile,
-      ard-experience {
+      ard-experience,
+      ard-mentoring {
         margin-bottom: 30px;
       }
     </style>
 
     <ard-profile profile="[[information.profile]]"></ard-profile>
     <ard-experience experience="[[information.experience.jobs]]"></ard-experience>
+    <ard-mentoring mentoring="[[information.experience.mentoring]]"></ard-mentoring>
   </template>
 
   <script>
