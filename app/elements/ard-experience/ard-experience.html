@@ -1,0 +1,63 @@
+<link rel="import" href="../../bower_components/polymer/polymer.html">
+<link rel="import" href="../../bower_components/iron-icon/iron-icon.html">
+<link rel="import" href="../../bower_components/iron-icons/iron-icons.html">
+<link rel="import" href="../../bower_components/iron-icons/communication-icons.html">
+<link rel="import" href="../../bower_components/paper-card/paper-card.html">
+<link rel="import" href="../ard-item/ard-item.html">
+<link rel="import" href="../ard-item/ard-item-body.html">
+
+<dom-module id="ard-experience">
+  <template>
+    <style>
+      paper-card {
+        width: 100%;
+      }
+
+      iron-icon {
+        --iron-icon-height: 12px;
+        --iron-icon-width: 12px;
+      }
+    </style>
+
+    <paper-card heading="Experience">
+      <template is="dom-repeat" items="[[experience]]" as="experience">
+        <ard-item>
+          <ard-item-body>
+            <div>[[experience.title]]</div>
+            <div>[[experience.company]]</div>
+            <div>
+              <iron-icon icon="today"></iron-icon> [[_computePeriod(experience.period)]] |
+              <span title="[[experience.location.long]]">
+                <iron-icon icon="communication:location-on"></iron-icon> [[experience.location.short]]
+              </span>
+            </div>
+          </ard-item-body>
+        </ard-item>
+      </template>
+    </paper-card>
+  </template>
+
+  <script>
+    Polymer({
+      is: 'ard-experience',
+
+      properties: {
+        experience: {
+          type: Object
+        }
+      },
+
+      _computePeriod: function(period) {
+        var date = period.start.month + ' ' + period.start.year;
+
+        if (period.present) {
+          date += ' - Present';
+        } else {
+          date += ' - ' + period.finish.month + ' ' + period.finish.year;
+        }
+
+        return date;
+      }
+    });
+  </script>
+</dom-module>
