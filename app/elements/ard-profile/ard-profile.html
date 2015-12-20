@@ -9,14 +9,16 @@
     <style>
       :host {
         @apply(--layout-block);
+
+        --ard-profile-avatar-size: 128px;
       }
 
       paper-card {
-        margin-top: 50px;
+        margin-top: calc(var(--ard-profile-avatar-size) / 2);
         width: 100%;
 
         --paper-card-header-text: {
-          margin-top: 50px;
+          margin-top: calc(var(--ard-profile-avatar-size) / 2);
           text-align: center;
         }
       }
@@ -25,13 +27,13 @@
         border: 2px solid #fff;
         border-radius: 50%;
         position: absolute;
-        top: -50px;
+        top: calc(-var(--ard-profile-avatar-size) / 2);
         left: 0;
         right: 0;
         margin-left: auto;
         margin-right: auto;
-        width: 100px;
-        height: 100px;
+        width: var(--ard-profile-avatar-size);
+        height: var(--ard-profile-avatar-size);
       }
 
       .card-actions {
