@@ -26,7 +26,10 @@
             <div>[[experience.title]]</div>
             <div>[[experience.company]]</div>
             <div>
-              <iron-icon icon="today"></iron-icon> [[_computePeriod(experience.period)]] |
+              <span>
+                <iron-icon icon="today"></iron-icon> [[_computePeriod(experience.period)]]
+              </span>
+              <span>|</span>
               <span title="[[experience.location.long]]">
                 <iron-icon icon="communication:location-on"></iron-icon> [[experience.location.short]]
               </span>
@@ -48,15 +51,16 @@
       },
 
       _computePeriod: function(period) {
-        var date = period.start.month + ' ' + period.start.year;
+        var startPeriod = period.start.month + ' ' + period.start.year;
+        var finishPeriod = '';
 
         if (period.present) {
-          date += ' - Present';
+          finishPeriod = 'Present';
         } else {
-          date += ' - ' + period.finish.month + ' ' + period.finish.year;
+          finishPeriod = period.finish.month + ' ' + period.finish.year;
         }
 
-        return date;
+        return startPeriod + ' - ' + finishPeriod;
       }
     });
   </script>

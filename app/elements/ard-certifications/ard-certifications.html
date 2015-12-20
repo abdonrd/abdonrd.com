@@ -36,7 +36,9 @@
             <div>[[certification.name]]</div>
             <div>[[certification.authority]], License [[certification.licenseNumber]]</div>
             <div>
-              <iron-icon icon="today"></iron-icon> [[_computePeriod(certification.period)]]
+              <span>
+                <iron-icon icon="today"></iron-icon> [[_computePeriod(certification.period)]]
+              </span>
             </div>
           </ard-item-body>
           <a href="[[certification.url]]" title="'[[certification.name]]' certification" hidden$="[[!certification.url]]" tabindex="-1">
