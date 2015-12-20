@@ -58,15 +58,10 @@
       },
 
       _computePeriod: function(period) {
-        var date = period.start.month + ' ' + period.start.year;
+        var startPeriod = period.start.month + ' ' + period.start.year;
+        var finishPeriod = period.finish.month + ' ' + period.finish.year;
 
-        if (period.present) {
-          date += ' - Present';
-        } else {
-          date += ' - ' + period.finish.month + ' ' + period.finish.year;
-        }
-
-        return date;
+        return startPeriod + ' - ' + finishPeriod;
       }
     });
   </script>
