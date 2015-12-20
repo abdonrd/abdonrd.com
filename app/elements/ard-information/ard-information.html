@@ -3,6 +3,7 @@
 <link rel="import" href="../ard-experience/ard-experience.html">
 <link rel="import" href="../ard-mentoring/ard-mentoring.html">
 <link rel="import" href="../ard-profile/ard-profile.html">
+<link rel="import" href="../ard-talks/ard-talks.html">
 
 <dom-module id="ard-information">
   <template>
@@ -19,7 +20,8 @@
 
       ard-profile,
       ard-experience,
-      ard-mentoring {
+      ard-mentoring,
+      ard-talks {
         margin-bottom: 30px;
       }
     </style>
@@ -27,6 +29,7 @@
     <ard-profile profile="[[information.profile]]"></ard-profile>
     <ard-experience experience="[[information.experience.jobs]]"></ard-experience>
     <ard-mentoring mentoring="[[information.experience.mentoring]]"></ard-mentoring>
+    <ard-talks talks="[[information.experience.talks]]"></ard-talks>
   </template>
 
   <script>
