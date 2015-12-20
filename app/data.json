@@ -184,15 +184,6 @@
         }
       },
       {
-        "school": "Udacity",
-        "degree": "Courses",
-        "period": {
-          "startYear": "2015",
-          "finishYear": "2015",
-          "present": false
-        }
-      },
-      {
         "school": "CPR Daniel Castelao",
         "degree": "Senior technician in multiplatform application development",
         "period": {
