@@ -10,6 +10,7 @@
 <link rel="import" href="../../bower_components/platinum-sw/platinum-sw-register.html">
 -->
 <link rel="import" href="../ard-information/ard-information.html">
+<link rel="import" href="../ard-profile/ard-profile.html">
 
 <dom-module id="ard-app">
   <template>
@@ -18,12 +19,59 @@
         @apply(--layout-vertical);
         @apply(--layout-fullbleed);
       }
+
+      ard-profile {
+        margin: 50px 8px 8px;
+      }
+
+      ard-information {
+        margin: 0 8px 50px;
+      }
+
+      @media all and (min-width: 416px) {
+        ard-information {
+          margin: 0 auto 50px;
+          width: 400px;
+        }
+      }
+
+      @media all and (min-width: 566px) {
+        ard-profile {
+          margin: 50px auto 8px;
+          width: 550px;
+        }
+      }
+
+      @media all and (min-width: 624px) {
+        ard-information {
+          margin: 0 8px 50px;
+          width: auto;
+        }
+      }
+
+      @media all and (min-width: 744px) {
+        ard-information {
+          margin: 0 auto 50px;
+          width: 728px;
+        }
+      }
+
+      @media all and (min-width: 766px) {
+        ard-profile {
+          margin: 50px auto 30px;
+        }
+
+        ard-information {
+          width: 750px;
+        }
+      }
     </style>
 
     <iron-ajax url="../../data.json" auto last-response="{{data}}"></iron-ajax>
 
     <paper-header-panel mode="cover">
       <paper-toolbar class="tall"></paper-toolbar>
+      <ard-profile profile="[[data.profile]]"></ard-profile>
       <ard-information information="[[data]]"></ard-information>
     </paper-header-panel>
 

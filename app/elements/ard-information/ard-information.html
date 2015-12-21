@@ -4,7 +4,6 @@
 <link rel="import" href="../ard-education/ard-education.html">
 <link rel="import" href="../ard-experience/ard-experience.html">
 <link rel="import" href="../ard-mentoring/ard-mentoring.html">
-<link rel="import" href="../ard-profile/ard-profile.html">
 <link rel="import" href="../ard-talks/ard-talks.html">
 
 <dom-module id="ard-information">
@@ -12,25 +11,48 @@
     <style>
       :host {
         @apply(--layout-vertical);
-
-        margin: 0 8px;
       }
 
-      ard-profile {
-        margin-top: 50px;
+      :host > * + * {
+        margin-top: 8px;
       }
 
-      ard-profile,
-      ard-experience,
-      ard-mentoring,
-      ard-talks,
-      ard-education,
-      ard-certifications {
-        margin-bottom: 30px;
+      @media all and (min-width: 624px) {
+        :host {
+          @apply(--layout-horizontal);
+          @apply(--layout-wrap);
+        }
+
+        :host > * {
+          width: calc(50% - 4px);
+        }
+
+        :host > *:nth-child(2) {
+          margin-top: 0;
+        }
+
+        :host > *:nth-child(2n) {
+          margin-left: 8px;
+        }
+      }
+
+      @media all and (min-width: 744px) {
+        :host > * {
+          width: 360px;
+        }
+      }
+
+      @media all and (min-width: 766px) {
+        :host > *:nth-child(2n) {
+          margin-left: 30px;
+        }
+
+        :host > *:nth-child(n+3) {
+          margin-top: 30px;
+        }
       }
     </style>
 
-    <ard-profile profile="[[information.profile]]"></ard-profile>
     <ard-experience experience="[[information.experience.jobs]]"></ard-experience>
     <ard-mentoring mentoring="[[information.experience.mentoring]]"></ard-mentoring>
     <ard-talks talks="[[information.experience.talks]]"></ard-talks>
