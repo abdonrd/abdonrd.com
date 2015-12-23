@@ -1,0 +1,27 @@
+<link rel="import" href="../../bower_components/polymer/polymer.html">
+<link rel="import" href="../../bower_components/iron-flex-layout/iron-flex-layout.html">
+<link rel="import" href="../../bower_components/paper-styles/typography.html">
+
+<dom-module id="ard-item">
+  <template>
+    <style>
+      :host {
+        @apply(--layout-horizontal);
+        @apply(--layout-center);
+        @apply(--paper-font-subhead);
+
+        display: block;
+        min-height: 48px;
+        padding: 0px 16px;
+      }
+    </style>
+
+    <content></content>
+  </template>
+
+  <script>
+    Polymer({
+      is: 'ard-item'
+    });
+  </script>
+</dom-module>

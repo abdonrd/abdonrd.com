@@ -1,0 +1,251 @@
+{
+  "profile": {
+    "firstName": "Abdón",
+    "lastName": "Rodríguez Davila",
+    "nickname": "abdonrd",
+    "location": "Madrid, Madrid, Spain",
+    "summary": "I am a galician developer. Passionate about technology. Senior Frontend Developer at King of App. Google Developer Group organizer.",
+    "linkedinProfile": "https://www.linkedin.com/in/abdonrd",
+    "twitterProfile": "https://twitter.com/abdonrd",
+    "googlePlusProfile": "https://plus.google.com/+AbdonRodriguezDavila",
+    "githubProfile": "https://github.com/abdonrd"
+  },
+  "experience": {
+    "jobs": [
+      {
+        "company": "King of App",
+        "title": "Senior Frontend Developer",
+        "location": {
+          "short": "Madrid",
+          "long": "Madrid, Madrid, Spain"
+        },
+        "period": {
+          "start": {
+            "month": "July",
+            "year": "2015"
+          },
+          "finish": {},
+          "present": true
+        }
+      },
+      {
+        "company": "ameiga",
+        "title": "Co-founder and CEO",
+        "location": {
+          "short": "Vigo & New York",
+          "long": "Vigo, Galicia, Spain and New York, New York, United States of America"
+        },
+        "period": {
+          "start": {
+            "month": "August",
+            "year": "2013"
+          },
+          "finish": {
+            "month": "March",
+            "year": "2015"
+          },
+          "present": false
+        }
+      },
+      {
+        "company": "Filterly",
+        "title": "Frontend Developer",
+        "location": {
+          "short": "Vigo & San Francisco",
+          "long": "Vigo, Galicia, Spain and San Francisco, California, United States of America"
+        },
+        "period": {
+          "start": {
+            "month": "February",
+            "year": "2014"
+          },
+          "finish": {
+            "month": "October",
+            "year": "2014"
+          },
+          "present": false
+        }
+      },
+      {
+        "company": "NovaCaixaGalicia fundation",
+        "title": "Software Developer Internship",
+        "location": {
+          "short": "Vigo",
+          "long": "Vigo, Galicia, Spain"
+        },
+        "period": {
+          "start": {
+            "month": "April",
+            "year": "2013"
+          },
+          "finish": {
+            "month": "June",
+            "year": "2013"
+          },
+          "present": false
+        }
+      }
+    ],
+    "talks": [
+      {
+        "name": "Web Components and Polymer",
+        "eventName": "xSpain 2015",
+        "organization": "xSpain",
+        "date": "11/09/2015",
+        "location": {
+          "short": "Madrid",
+          "long": "Madrid, Madrid, Spain"
+        },
+        "slides": "#"
+      },
+      {
+        "name": "Web Components and Polymer",
+        "eventName": "Google Developer Café",
+        "organization": "GDG Coimbra",
+        "date": "14/05/2015",
+        "location": {
+          "short": "Coimbra",
+          "long": "Coimbra, Portugal"
+        },
+        "slides": ""
+      },
+      {
+        "name": "Google Cloud Platform with App Engine",
+        "eventName": "VI RITSI Congress",
+        "organization": "RITSI",
+        "date": "20/03/2015",
+        "location": {
+          "short": "Cádiz",
+          "long": "Cádiz, Andalusia, Spain"
+        },
+        "slides": ""
+      },
+      {
+        "name": "Google Cloud Platform with App Engine",
+        "eventName": "Tecnotardes EPCC Google Edition",
+        "organization": "GDG Cáceres",
+        "date": "12/03/2015",
+        "location": {
+          "short": "Cáceres",
+          "long": "Cáceres, Extremadura, Spain"
+        },
+        "slides": ""
+      }
+    ],
+    "mentoring": [
+      {
+        "eventName": "Google Developer Café",
+        "organization": "GDG Coimbra",
+        "date": "14/05/2015",
+        "location": {
+          "short": "Coimbra",
+          "long": "Coimbra, Portugal"
+        }
+      },
+      {
+        "eventName": "Google Developer Café",
+        "organization": "GDG Salamanca",
+        "date": "13/03/2015",
+        "location": {
+          "short": "Salamanca",
+          "long": "Salamanca, Castile and León, Spain"
+        }
+      },
+      {
+        "eventName": "Google Developer Café",
+        "organization": "GDG Cáceres",
+        "date": "12/03/2015",
+        "location": {
+          "short": "Cáceres",
+          "long": "Cáceres, Extremadura, Spain"
+        }
+      },
+      {
+        "eventName": "Google Developer Café",
+        "organization": "IE Business School",
+        "date": "11/03/2015",
+        "location": {
+          "short": "Madrid",
+          "long": "Madrid, Madrid, Spain"
+        }
+      }
+    ],
+    "skills": []
+  },
+  "education": {
+    "education": [
+      {
+        "school": "Platzi",
+        "degree": "Courses",
+        "period": {
+          "startYear": "2013",
+          "finishYear": "2015",
+          "present": true
+        }
+      },
+      {
+        "school": "CPR Daniel Castelao",
+        "degree": "Senior technician in multiplatform application development",
+        "period": {
+          "startYear": "2011",
+          "finishYear": "2013",
+          "present": false
+        }
+      }
+    ],
+    "certifications": [
+      {
+        "name": "Google Fullstack Developer",
+        "authority": "Platzi",
+        "licenseNumber": "ee7c9a9f-c6b2-4fec-96e8-1027271787d7",
+        "url": "https://platzi.com/usuarios/abdonrd",
+        "period": {
+          "start": {
+            "month": "September",
+            "year": "2015"
+          },
+          "finish": {
+            "month": "September",
+            "year": "2016"
+          },
+          "expire": true
+        }
+      },
+      {
+        "name": "Frontend Professional",
+        "authority": "Platzi",
+        "licenseNumber": "4b2b8297-ca9b-42e5-8b01-496bac8d69db",
+        "url": "https://platzi.com/usuarios/abdonrd",
+        "period": {
+          "start": {
+            "month": "September",
+            "year": "2015"
+          },
+          "finish": {
+            "month": "September",
+            "year": "2016"
+          },
+          "expire": true
+        }
+      },
+      {
+        "name": "Backend Professional",
+        "authority": "Platzi",
+        "licenseNumber": "bcd78d64-4a55-4807-a6e1-89e68b638e5f",
+        "url": "https://platzi.com/usuarios/abdonrd",
+        "period": {
+          "start": {
+            "month": "September",
+            "year": "2015"
+          },
+          "finish": {
+            "month": "September",
+            "year": "2016"
+          },
+          "expire": true
+        }
+      }
+    ],
+    "courses": []
+  }
+}

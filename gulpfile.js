@@ -300,7 +300,7 @@ gulp.task('default', ['clean'], function(cb) {
     cb);
 });
 
-// Build then deploy to GitHub pages gh-pages branch
+// Build then deploy to GitHub pages master branch
 gulp.task('build-deploy-gh-pages', function(cb) {
   runSequence(
     'default',
@@ -308,16 +308,12 @@ gulp.task('build-deploy-gh-pages', function(cb) {
     cb);
 });
 
-// Deploy to GitHub pages gh-pages branch
+// Deploy to GitHub pages master branch
 gulp.task('deploy-gh-pages', function() {
   return gulp.src(dist('**/*'))
-    // Check if running task from Travis CI, if so run using GH_TOKEN
-    // otherwise run using ghPages defaults.
-    .pipe($.if(process.env.TRAVIS === 'true', $.ghPages({
-      remoteUrl: 'https://$GH_TOKEN@github.com/polymerelements/polymer-starter-kit.git',
-      silent: true,
-      branch: 'gh-pages'
-    }), $.ghPages()));
+    .pipe($.ghPages({
+      branch: 'master'
+    }));
 });
 
 // Load tasks for web-component-tester

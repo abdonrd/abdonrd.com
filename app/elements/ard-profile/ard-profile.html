@@ -1,0 +1,92 @@
+<link rel="import" href="../../bower_components/polymer/polymer.html">
+<link rel="import" href="../../bower_components/iron-image/iron-image.html">
+<link rel="import" href="../../bower_components/paper-card/paper-card.html">
+<link rel="import" href="../../bower_components/paper-icon-button/paper-icon-button.html">
+<link rel="import" href="ard-profile-icons.html">
+
+<dom-module id="ard-profile">
+  <template>
+    <style>
+      :host {
+        @apply(--layout-block);
+
+        --ard-profile-avatar-size: 128px;
+      }
+
+      paper-card {
+        margin-top: calc(var(--ard-profile-avatar-size) / 2);
+        width: 100%;
+
+        --paper-card-header-text: {
+          margin-top: calc(var(--ard-profile-avatar-size) / 2);
+          text-align: center;
+        }
+      }
+
+      #avatar {
+        border: 2px solid #fff;
+        border-radius: 50%;
+        position: absolute;
+        top: calc(-var(--ard-profile-avatar-size) / 2);
+        left: 0;
+        right: 0;
+        margin-left: auto;
+        margin-right: auto;
+        width: var(--ard-profile-avatar-size);
+        height: var(--ard-profile-avatar-size);
+      }
+
+      .card-actions {
+        text-align: center;
+      }
+
+      a {
+        color: inherit;
+        display: inline-block;
+        text-decoration: inherit;
+
+        /* NOTE: Both values are needed, since some phones require the value to be `transparent`. */
+        -webkit-tap-highlight-color: rgba(0,0,0,0);
+        -webkit-tap-highlight-color: transparent;
+      }
+
+      paper-icon-button {
+        width: 50px;
+        height: 50px;
+      }
+    </style>
+
+    <paper-card heading="[[profile.firstName]] [[profile.lastName]]">
+      <iron-image id="avatar" src="../../images/avatar.jpg" sizing="contain"></iron-image>
+      <div class="card-content">
+        <div>[[profile.summary]]</div>
+      </div>
+      <div class="card-actions">
+        <a href="[[profile.linkedinProfile]]" title="LinkedIn profile" tabindex="-1">
+          <paper-icon-button icon="ard-profile:linkedin" alt="LinkedIn profile"></paper-icon-button>
+        </a>
+        <a href="[[profile.twitterProfile]]" title="Twitter profile" tabindex="-1">
+          <paper-icon-button icon="ard-profile:twitter" alt="Twitter profile"></paper-icon-button>
+        </a>
+        <a href="[[profile.googlePlusProfile]]" title="Google+ profile" tabindex="-1">
+          <paper-icon-button icon="ard-profile:googlePlus" alt="Google+ profile"></paper-icon-button>
+        </a>
+        <a href="[[profile.githubProfile]]" title="GitHub profile" tabindex="-1">
+          <paper-icon-button icon="ard-profile:github" alt="GitHub profile"></paper-icon-button>
+        </a>
+      </div>
+    </paper-card>
+  </template>
+
+  <script>
+    Polymer({
+      is: 'ard-profile',
+
+      properties: {
+        profile: {
+          type: Object
+        }
+      }
+    });
+  </script>
+</dom-module>

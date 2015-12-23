@@ -1,0 +1,70 @@
+<link rel="import" href="../../bower_components/polymer/polymer.html">
+<link rel="import" href="../../bower_components/iron-icon/iron-icon.html">
+<link rel="import" href="../../bower_components/iron-icons/iron-icons.html">
+<link rel="import" href="../../bower_components/paper-card/paper-card.html">
+<link rel="import" href="../../bower_components/paper-icon-button/paper-icon-button.html">
+<link rel="import" href="../ard-item/ard-item.html">
+<link rel="import" href="../ard-item/ard-item-body.html">
+
+<dom-module id="ard-certifications">
+  <template>
+    <style>
+      paper-card {
+        width: 100%;
+      }
+
+      iron-icon {
+        --iron-icon-height: 12px;
+        --iron-icon-width: 12px;
+      }
+
+      a {
+        color: inherit;
+        display: inline-block;
+        text-decoration: inherit;
+
+        /* NOTE: Both values are needed, since some phones require the `transparent` value. */
+        -webkit-tap-highlight-color: rgba(0,0,0,0);
+        -webkit-tap-highlight-color: transparent;
+      }
+    </style>
+
+    <paper-card heading="Certifications">
+      <template is="dom-repeat" items="[[certifications]]" as="certification">
+        <ard-item>
+          <ard-item-body>
+            <div>[[certification.name]]</div>
+            <div>[[certification.authority]], License [[certification.licenseNumber]]</div>
+            <div>
+              <span>
+                <iron-icon icon="today"></iron-icon> [[_computePeriod(certification.period)]]
+              </span>
+            </div>
+          </ard-item-body>
+          <a href="[[certification.url]]" title="'[[certification.name]]' certification" hidden$="[[!certification.url]]" tabindex="-1">
+            <paper-icon-button icon="description" alt="[[certification.name]]' certification"></paper-icon-button>
+          </a>
+        </ard-item>
+      </template>
+    </paper-card>
+  </template>
+
+  <script>
+    Polymer({
+      is: 'ard-certifications',
+
+      properties: {
+        certifications: {
+          type: Object
+        }
+      },
+
+      _computePeriod: function(period) {
+        var startPeriod = period.start.month + ' ' + period.start.year;
+        var finishPeriod = period.finish.month + ' ' + period.finish.year;
+
+        return startPeriod + ' - ' + finishPeriod;
+      }
+    });
+  </script>
+</dom-module>
