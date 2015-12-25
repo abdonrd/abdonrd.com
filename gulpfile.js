@@ -240,6 +240,7 @@ gulp.task('clean', function() {
 gulp.task('serve', ['lint', 'styles', 'elements', 'images'], function() {
   browserSync({
     port: 5000,
+    browser: 'Google Chrome Canary',
     notify: false,
     logPrefix: 'PSK',
     snippetOptions: {
@@ -271,6 +272,7 @@ gulp.task('serve', ['lint', 'styles', 'elements', 'images'], function() {
 gulp.task('serve:dist', ['default'], function() {
   browserSync({
     port: 5001,
+    browser: 'Google Chrome Canary',
     notify: false,
     logPrefix: 'PSK',
     snippetOptions: {
