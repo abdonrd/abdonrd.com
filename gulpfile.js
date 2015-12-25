@@ -130,7 +130,7 @@ gulp.task('lint', ['ensureFiles'], function() {
     }))
 
   // JSCS has not yet a extract option
-  .pipe($.if('*.html', $.htmlExtract()))
+  .pipe($.if('*.html', $.htmlExtract({strip: true})))
   .pipe($.jshint())
   .pipe($.jscs())
   .pipe($.jscsStylish.combineWithHintResults())
@@ -150,7 +150,8 @@ gulp.task('copy', function() {
     '!app/test',
     '!app/elements',
     '!app/bower_components',
-    '!app/cache-config.json'
+    '!app/cache-config.json',
+    '!**/.DS_Store'
   ], {
     dot: true
   }).pipe(gulp.dest(dist()));
@@ -239,6 +240,7 @@ gulp.task('clean', function() {
 gulp.task('serve', ['lint', 'styles', 'elements', 'images'], function() {
   browserSync({
     port: 5000,
+    browser: 'Google Chrome Canary',
     notify: false,
     logPrefix: 'PSK',
     snippetOptions: {
@@ -270,6 +272,7 @@ gulp.task('serve', ['lint', 'styles', 'elements', 'images'], function() {
 gulp.task('serve:dist', ['default'], function() {
   browserSync({
     port: 5001,
+    browser: 'Google Chrome Canary',
     notify: false,
     logPrefix: 'PSK',
     snippetOptions: {
@@ -291,12 +294,11 @@ gulp.task('serve:dist', ['default'], function() {
 
 // Build production files, the default task
 gulp.task('default', ['clean'], function(cb) {
-  // Uncomment 'cache-config' if you are going to use service workers.
   runSequence(
     ['copy', 'styles'],
     'elements',
     ['lint', 'images', 'fonts', 'html'],
-    'vulcanize', // 'cache-config',
+    'vulcanize', 'cache-config',
     cb);
 });
 
