@@ -72,14 +72,16 @@
       <ard-information information="[[data]]"></ard-information>
     </paper-header-panel>
 
-    <paper-toast id="caching-complete"
+    <paper-toast id="cachingComplete"
                  duration="6000"
                  text="Caching complete! This app will work offline.">
     </paper-toast>
 
-    <platinum-sw-register auto-register
+    <platinum-sw-register id="swRegister"
+                          auto-register
                           clients-claim
                           skip-waiting
+                          base-uri="../../bower_components/platinum-sw/bootstrap"
                           on-service-worker-installed="displayInstalledToast">
       <platinum-sw-cache default-cache-strategy="fastest"
                          cache-config-file="../../cache-config.json">
@@ -93,8 +95,8 @@
 
       displayInstalledToast: function() {
         // Check to make sure caching is actually enabled—it won't be in the dev environment.
-        if (!Polymer.dom(document).querySelector('platinum-sw-cache').disabled) {
-          Polymer.dom(document).querySelector('#caching-complete').show();
+        if (!this.$.swRegister.disabled) {
+          this.$.cachingComplete.show();
         }
       }
     });
