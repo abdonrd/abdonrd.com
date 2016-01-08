@@ -96,7 +96,7 @@
           "short": "Madrid",
           "long": "Madrid, Madrid, Spain"
         },
-        "slides": "#"
+        "slides": "https://docs.google.com/presentation/d/1JhDz7r5bI-y1Tp2D9szAmqu2-0kWeQJZisyZBDe5WU8/edit"
       },
       {
         "name": "Web Components and Polymer",
@@ -118,7 +118,7 @@
           "short": "Cádiz",
           "long": "Cádiz, Andalusia, Spain"
         },
-        "slides": ""
+        "slides": "https://docs.google.com/presentation/d/1NwHNESUrxKYG89xMSp_tbJcOe8dkM9h1bT-b_tkJAic/edit"
       },
       {
         "name": "Google Cloud Platform with App Engine",
@@ -129,7 +129,7 @@
           "short": "Cáceres",
           "long": "Cáceres, Extremadura, Spain"
         },
-        "slides": ""
+        "slides": "https://docs.google.com/presentation/d/1xZCLV9rIQbN9y0nCnqxbOsBiY08r4cA_HR_inVUunJ0/edit"
       }
     ],
     "mentoring": [
