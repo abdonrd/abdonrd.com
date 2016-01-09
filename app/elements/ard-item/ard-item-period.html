@@ -1,0 +1,53 @@
+<link rel="import" href="../../bower_components/polymer/polymer.html">
+<link rel="import" href="../../bower_components/iron-icon/iron-icon.html">
+<link rel="import" href="../../bower_components/iron-icons/iron-icons.html">
+
+<dom-module id="ard-item-period">
+  <template>
+    <style>
+      iron-icon {
+        --iron-icon-height: 12px;
+        --iron-icon-width: 12px;
+      }
+    </style>
+
+    <iron-icon icon="today"></iron-icon> <span>[[_computePeriod(period)]]</span>
+  </template>
+
+  <script>
+    Polymer({
+      is: 'ard-item-period',
+
+      properties: {
+        period: {
+          type: Object
+        },
+
+        locales: {
+          type: String,
+          value: 'en-US'
+        },
+
+        options: {
+          type: Object,
+          value: {
+            year: 'numeric'
+          }
+        }
+      },
+
+      _computePeriod: function(period) {
+        var periodFormatted = {
+          start: new Date(period.start).toLocaleString(this.locales, this.options),
+          finish: new Date(period.finish).toLocaleString(this.locales, this.options)
+        };
+
+        if (period.present) {
+          periodFormatted.finish = 'Present';
+        }
+
+        return periodFormatted.start + ' - ' + periodFormatted.finish;
+      }
+    });
+  </script>
+</dom-module>
