@@ -1,20 +1,14 @@
 <link rel="import" href="../../bower_components/polymer/polymer.html">
-<link rel="import" href="../../bower_components/iron-icon/iron-icon.html">
-<link rel="import" href="../../bower_components/iron-icons/iron-icons.html">
 <link rel="import" href="../../bower_components/paper-card/paper-card.html">
 <link rel="import" href="../ard-item/ard-item.html">
 <link rel="import" href="../ard-item/ard-item-body.html">
+<link rel="import" href="../ard-item/ard-item-period.html">
 
 <dom-module id="ard-education">
   <template>
     <style>
       paper-card {
         width: 100%;
-      }
-
-      iron-icon {
-        --iron-icon-height: 12px;
-        --iron-icon-width: 12px;
       }
     </style>
 
@@ -25,9 +19,7 @@
             <div>[[education.school]]</div>
             <div>[[education.degree]]</div>
             <div>
-              <span>
-                <iron-icon icon="today"></iron-icon> [[_computePeriod(education.period)]]
-              </span>
+              <ard-item-period period="[[education.period]]"></ard-item-period>
             </div>
           </ard-item-body>
         </ard-item>
@@ -43,14 +35,6 @@
         education: {
           type: Object
         }
-      },
-
-      _computePeriod: function(period) {
-        var date = period.startYear;
-
-        date += (period.present) ? ' - Present' : ' - ' + period.finishYear;
-
-        return date;
       }
     });
   </script>

@@ -1,23 +1,17 @@
 <link rel="import" href="../../bower_components/polymer/polymer.html">
-<link rel="import" href="../../bower_components/iron-icon/iron-icon.html">
-<link rel="import" href="../../bower_components/iron-icons/communication-icons.html">
 <link rel="import" href="../../bower_components/iron-icons/image-icons.html">
-<link rel="import" href="../../bower_components/iron-icons/iron-icons.html">
 <link rel="import" href="../../bower_components/paper-card/paper-card.html">
 <link rel="import" href="../../bower_components/paper-icon-button/paper-icon-button.html">
 <link rel="import" href="../ard-item/ard-item.html">
 <link rel="import" href="../ard-item/ard-item-body.html">
+<link rel="import" href="../ard-item/ard-item-date.html">
+<link rel="import" href="../ard-item/ard-item-location.html">
 
 <dom-module id="ard-talks">
   <template>
     <style>
       paper-card {
         width: 100%;
-      }
-
-      iron-icon {
-        --iron-icon-height: 12px;
-        --iron-icon-width: 12px;
       }
 
       a {
@@ -38,13 +32,9 @@
             <div>[[talk.name]]</div>
             <div>[[talk.eventName]] by [[talk.organization]]</div>
             <div>
-              <span>
-                <iron-icon icon="today"></iron-icon> [[talk.date]]
-              </span>
+              <ard-item-date date="[[talk.date]]"></ard-item-date>
               <span>|</span>
-              <span title="[[talk.location.long]]">
-                <iron-icon icon="communication:location-on"></iron-icon> [[talk.location.short]]
-              </span>
+              <ard-item-location location="[[talk.location]]"></ard-item-location>
             </div>
           </ard-item-body>
           <a href="[[talk.slides]]" title="'[[talk.name]]' slides" hidden$="[[!talk.slides]]" tabindex="-1">
