@@ -46,11 +46,18 @@
       },
 
       _computePeriod: function(period) {
-        var date = period.startYear;
+        var locales = 'en-US';
+        var options = {year: 'numeric'};
+        var periodFormatted = {
+          start: new Date(period.start).toLocaleString(locales, options),
+          finish: new Date(period.finish).toLocaleString(locales, options)
+        };
 
-        date += (period.present) ? ' - Present' : ' - ' + period.finishYear;
+        if (period.present) {
+          periodFormatted.finish = 'Present';
+        }
 
-        return date;
+        return periodFormatted.start + ' - ' + periodFormatted.finish;
       }
     });
   </script>

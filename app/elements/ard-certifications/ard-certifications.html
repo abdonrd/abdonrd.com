@@ -60,10 +60,14 @@
       },
 
       _computePeriod: function(period) {
-        var startPeriod = period.start.month + ' ' + period.start.year;
-        var finishPeriod = period.finish.month + ' ' + period.finish.year;
+        var locales = 'en-US';
+        var options = {year: 'numeric', month: 'short'};
+        var periodFormatted = {
+          start: new Date(period.start).toLocaleString(locales, options),
+          finish: new Date(period.finish).toLocaleString(locales, options)
+        };
 
-        return startPeriod + ' - ' + finishPeriod;
+        return periodFormatted.start + ' - ' + periodFormatted.finish;
       }
     });
   </script>

@@ -51,16 +51,18 @@
       },
 
       _computePeriod: function(period) {
-        var startPeriod = period.start.month + ' ' + period.start.year;
-        var finishPeriod = '';
+        var locales = 'en-US';
+        var options = {year: 'numeric', month: 'short'};
+        var periodFormatted = {
+          start: new Date(period.start).toLocaleString(locales, options),
+          finish: new Date(period.finish).toLocaleString(locales, options)
+        };
 
         if (period.present) {
-          finishPeriod = 'Present';
-        } else {
-          finishPeriod = period.finish.month + ' ' + period.finish.year;
+          periodFormatted.finish = 'Present';
         }
 
-        return startPeriod + ' - ' + finishPeriod;
+        return periodFormatted.start + ' - ' + periodFormatted.finish;
       }
     });
   </script>

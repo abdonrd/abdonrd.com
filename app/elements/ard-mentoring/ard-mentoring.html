@@ -27,7 +27,7 @@
             <div>[[mentoring.organization]]</div>
             <div>
               <span>
-                <iron-icon icon="today"></iron-icon> [[mentoring.date]]
+                <iron-icon icon="today"></iron-icon> [[_computeDate(mentoring.date)]]
               </span>
               <span>|</span>
               <span title="[[mentoring.location.long]]">
@@ -48,6 +48,16 @@
         mentoring: {
           type: Object
         }
+      },
+
+      _computeDate: function(date) {
+        var dateFormatted = new Date(date).toLocaleString('en-US', {
+          year: 'numeric',
+          month: 'short',
+          day: 'numeric'
+        });
+
+        return dateFormatted;
       }
     });
   </script>
