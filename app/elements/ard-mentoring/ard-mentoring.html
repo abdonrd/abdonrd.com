@@ -1,21 +1,15 @@
 <link rel="import" href="../../bower_components/polymer/polymer.html">
-<link rel="import" href="../../bower_components/iron-icon/iron-icon.html">
-<link rel="import" href="../../bower_components/iron-icons/iron-icons.html">
-<link rel="import" href="../../bower_components/iron-icons/communication-icons.html">
 <link rel="import" href="../../bower_components/paper-card/paper-card.html">
 <link rel="import" href="../ard-item/ard-item.html">
 <link rel="import" href="../ard-item/ard-item-body.html">
+<link rel="import" href="../ard-item/ard-item-date.html">
+<link rel="import" href="../ard-item/ard-item-location.html">
 
 <dom-module id="ard-mentoring">
   <template>
     <style>
       paper-card {
         width: 100%;
-      }
-
-      iron-icon {
-        --iron-icon-height: 12px;
-        --iron-icon-width: 12px;
       }
     </style>
 
@@ -26,13 +20,9 @@
             <div>[[mentoring.eventName]]</div>
             <div>[[mentoring.organization]]</div>
             <div>
-              <span>
-                <iron-icon icon="today"></iron-icon> [[_computeDate(mentoring.date)]]
-              </span>
+              <ard-item-date date="{{mentoring.date}}"></ard-item-date>
               <span>|</span>
-              <span title="[[mentoring.location.long]]">
-                <iron-icon icon="communication:location-on"></iron-icon> [[mentoring.location.short]]
-              </span>
+              <ard-item-location location="{{mentoring.location}}"></ard-item-location>
             </div>
           </ard-item-body>
         </ard-item>
@@ -48,16 +38,6 @@
         mentoring: {
           type: Object
         }
-      },
-
-      _computeDate: function(date) {
-        var dateFormatted = new Date(date).toLocaleString('en-US', {
-          year: 'numeric',
-          month: 'short',
-          day: 'numeric'
-        });
-
-        return dateFormatted;
       }
     });
   </script>
