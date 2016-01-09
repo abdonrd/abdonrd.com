@@ -1,21 +1,15 @@
 <link rel="import" href="../../bower_components/polymer/polymer.html">
-<link rel="import" href="../../bower_components/iron-icon/iron-icon.html">
-<link rel="import" href="../../bower_components/iron-icons/iron-icons.html">
 <link rel="import" href="../../bower_components/paper-card/paper-card.html">
 <link rel="import" href="../ard-item/ard-item.html">
 <link rel="import" href="../ard-item/ard-item-body.html">
 <link rel="import" href="../ard-item/ard-item-location.html">
+<link rel="import" href="../ard-item/ard-item-period.html">
 
 <dom-module id="ard-experience">
   <template>
     <style>
       paper-card {
         width: 100%;
-      }
-
-      iron-icon {
-        --iron-icon-height: 12px;
-        --iron-icon-width: 12px;
       }
     </style>
 
@@ -26,9 +20,7 @@
             <div>[[experience.title]]</div>
             <div>[[experience.company]]</div>
             <div>
-              <span>
-                <iron-icon icon="today"></iron-icon> [[_computePeriod(experience.period)]]
-              </span>
+              <ard-item-period period="[[experience.period]]" options="[[periodOptions]]"></ard-item-period>
               <span>|</span>
               <ard-item-location location="[[experience.location]]"></ard-item-location>
             </div>
@@ -45,22 +37,15 @@
       properties: {
         experience: {
           type: Object
+        },
+
+        periodOptions: {
+          type: Object,
+          value: {
+            year: 'numeric',
+            month: 'short'
+          }
         }
-      },
-
-      _computePeriod: function(period) {
-        var locales = 'en-US';
-        var options = {year: 'numeric', month: 'short'};
-        var periodFormatted = {
-          start: new Date(period.start).toLocaleString(locales, options),
-          finish: new Date(period.finish).toLocaleString(locales, options)
-        };
-
-        if (period.present) {
-          periodFormatted.finish = 'Present';
-        }
-
-        return periodFormatted.start + ' - ' + periodFormatted.finish;
       }
     });
   </script>
