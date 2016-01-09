@@ -21,17 +21,25 @@
       properties: {
         date: {
           type: String
+        },
+
+        locales: {
+          type: String,
+          value: 'en-US'
+        },
+
+        options: {
+          type: Object,
+          value: {
+            year: 'numeric',
+            month: 'short',
+            day: 'numeric'
+          }
         }
       },
 
       _computeDate: function(date) {
-        var dateFormatted = new Date(date).toLocaleString('en-US', {
-          year: 'numeric',
-          month: 'short',
-          day: 'numeric'
-        });
-
-        return dateFormatted;
+        return new Date(date).toLocaleString(this.locales, this.options);
       }
     });
   </script>
