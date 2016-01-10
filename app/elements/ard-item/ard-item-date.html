@@ -1,6 +1,7 @@
 <link rel="import" href="../../bower_components/polymer/polymer.html">
 <link rel="import" href="../../bower_components/iron-icon/iron-icon.html">
 <link rel="import" href="../../bower_components/iron-icons/iron-icons.html">
+<link rel="import" href="../../bower_components/moment-element/moment-element.html">
 
 <dom-module id="ard-item-date">
   <template>
@@ -11,7 +12,8 @@
       }
     </style>
 
-    <iron-icon icon="today"></iron-icon> <span>[[_computeDate(date)]]</span>
+    <iron-icon icon="today"></iron-icon>
+    <moment-element datetime="[[date]]" format="ll"></moment-element>
   </template>
 
   <script>
@@ -21,25 +23,7 @@
       properties: {
         date: {
           type: String
-        },
-
-        locales: {
-          type: String,
-          value: 'en-US'
-        },
-
-        options: {
-          type: Object,
-          value: {
-            year: 'numeric',
-            month: 'short',
-            day: 'numeric'
-          }
         }
-      },
-
-      _computeDate: function(date) {
-        return new Date(date).toLocaleString(this.locales, this.options);
       }
     });
   </script>

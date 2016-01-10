@@ -30,10 +30,10 @@
             <div>[[certification.name]]</div>
             <div>[[certification.authority]], License [[certification.licenseNumber]]</div>
             <div>
-              <ard-item-period period="[[certification.period]]" options="[[periodOptions]]"></ard-item-period>
+              <ard-item-period period="[[certification.period]]"></ard-item-period>
             </div>
           </ard-item-body>
-          <a href="[[certification.url]]" title="'[[certification.name]]' certification" hidden$="[[!certification.url]]" tabindex="-1">
+          <a href="[[certification.url]]" title="'[[certification.name]]' certification" hidden$="[[!certification.url]]" tabindex="-1" target="_blank">
             <paper-icon-button icon="description" alt="[[certification.name]]' certification"></paper-icon-button>
           </a>
         </ard-item>
@@ -48,14 +48,6 @@
       properties: {
         certifications: {
           type: Object
-        },
-
-        periodOptions: {
-          type: Object,
-          value: {
-            year: 'numeric',
-            month: 'short'
-          }
         }
       }
     });
