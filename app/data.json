@@ -67,6 +67,17 @@
     ],
     "talks": [
       {
+        "name": "Learn Web Components with Polymer",
+        "eventName": "Polymer Polytechnic Madrid",
+        "organization": "GDG Madrid",
+        "date": "2016-01-16",
+        "location": {
+          "short": "Madrid",
+          "long": "Madrid, Madrid, Spain"
+        },
+        "slides": "https://docs.google.com/presentation/d/1YY38_dcsx2RMP4J66gB5-tSoLy476QOJLkIWAYLSEzs/edit"
+      },
+      {
         "name": "Web Components and Polymer",
         "eventName": "xSpain 2015",
         "organization": "xSpain",
