@@ -6,6 +6,7 @@
 <link rel="import" href="../../bower_components/paper-toolbar/paper-toolbar.html">
 <link rel="import" href="../../bower_components/platinum-sw/platinum-sw-cache.html">
 <link rel="import" href="../../bower_components/platinum-sw/platinum-sw-register.html">
+<link rel="import" href="../../bower_components/firebase-element/firebase-document.html">
 <link rel="import" href="../ard-information/ard-information.html">
 <link rel="import" href="../ard-profile/ard-profile.html">
 
@@ -64,7 +65,9 @@
       }
     </style>
 
-    <iron-ajax url="../../data.json" auto last-response="{{data}}"></iron-ajax>
+    <firebase-document
+      location="https://abdonrd.firebaseio.com"
+      data="{{data}}"></firebase-document>
 
     <paper-header-panel mode="cover">
       <paper-toolbar class="tall"></paper-toolbar>

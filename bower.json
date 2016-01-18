@@ -16,7 +16,8 @@
     "paper-styles": "PolymerElements/paper-styles#^1.0.0",
     "paper-toast": "PolymerElements/paper-toast#^1.0.0",
     "paper-toolbar": "PolymerElements/paper-toolbar#^1.0.0",
-    "platinum-sw": "PolymerElements/platinum-sw#^1.0.0"
+    "platinum-sw": "PolymerElements/platinum-sw#^1.0.0",
+    "firebase-element": "GoogleWebComponents/firebase-element#~1.0.9"
   },
   "devDependencies": {
     "web-component-tester": "*"
