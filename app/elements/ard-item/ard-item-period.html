@@ -13,9 +13,9 @@
     </style>
 
     <iron-icon icon="today"></iron-icon>
-    <moment-element datetime="[[period.start]]" format="[[format]]"></moment-element>
+    <moment-element datetime="[[period.start]]" input-format="[[format.input]]" output-format="[[format.output]]"></moment-element>
     <span>-</span>
-    <moment-element hidden$="[[!period.finish]]" datetime="[[period.finish]]" format="[[format]]"></moment-element>
+    <moment-element hidden$="[[!period.finish]]" datetime="[[period.finish]]" input-format="[[format.input]]" output-format="[[format.output]]"></moment-element>
     <span hidden$="[[!period.present]]">Present</span>
   </template>
 
@@ -29,8 +29,11 @@
         },
 
         format: {
-          type: String,
-          value: 'MMM YYYY'
+          type: Object,
+          value: {
+            input: 'YYYY-MM',
+            output: 'MMM YYYY'
+          }
         }
       }
     });

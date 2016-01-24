@@ -30,10 +30,11 @@
         top: calc(-var(--ard-profile-avatar-size) / 2);
         left: 0;
         right: 0;
-        margin-left: auto;
-        margin-right: auto;
+        margin: 0 auto;
         width: var(--ard-profile-avatar-size);
         height: var(--ard-profile-avatar-size);
+        --iron-image-width: 100%;
+        --iron-image-height: 100%;
       }
 
       .card-actions {
@@ -57,21 +58,21 @@
     </style>
 
     <paper-card heading="[[profile.firstName]] [[profile.lastName]]">
-      <iron-image id="avatar" src="../../images/avatar.jpg" sizing="contain"></iron-image>
+      <iron-image id="avatar" src="../../images/avatar.jpg" alt$="[[profile.firstName]] [[profile.lastName]] avatar"></iron-image>
       <div class="card-content">
         <div>[[profile.summary]]</div>
       </div>
       <div class="card-actions">
-        <a href="[[profile.linkedinProfile]]" title="LinkedIn profile" tabindex="-1" target="_blank">
+        <a href$="[[profile.linkedinProfile]]" title="LinkedIn profile" tabindex="-1" target="_blank">
           <paper-icon-button icon="ard-profile:linkedin" alt="LinkedIn profile"></paper-icon-button>
         </a>
-        <a href="[[profile.twitterProfile]]" title="Twitter profile" tabindex="-1" target="_blank">
+        <a href$="[[profile.twitterProfile]]" title="Twitter profile" tabindex="-1" target="_blank">
           <paper-icon-button icon="ard-profile:twitter" alt="Twitter profile"></paper-icon-button>
         </a>
-        <a href="[[profile.googlePlusProfile]]" title="Google+ profile" tabindex="-1" target="_blank">
+        <a href$="[[profile.googlePlusProfile]]" title="Google+ profile" tabindex="-1" target="_blank">
           <paper-icon-button icon="ard-profile:googlePlus" alt="Google+ profile"></paper-icon-button>
         </a>
-        <a href="[[profile.githubProfile]]" title="GitHub profile" tabindex="-1" target="_blank">
+        <a href$="[[profile.githubProfile]]" title="GitHub profile" tabindex="-1" target="_blank">
           <paper-icon-button icon="ard-profile:github" alt="GitHub profile"></paper-icon-button>
         </a>
       </div>
