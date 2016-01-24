@@ -30,8 +30,7 @@
         top: calc(-var(--ard-profile-avatar-size) / 2);
         left: 0;
         right: 0;
-        margin-left: auto;
-        margin-right: auto;
+        margin: 0 auto;
         width: var(--ard-profile-avatar-size);
         height: var(--ard-profile-avatar-size);
       }
@@ -57,7 +56,7 @@
     </style>
 
     <paper-card heading="[[profile.firstName]] [[profile.lastName]]">
-      <iron-image id="avatar" src="../../images/avatar.jpg" sizing="contain"></iron-image>
+      <iron-image id="avatar" src="../../images/avatar.jpg" sizing="contain" alt$="[[profile.firstName]] [[profile.lastName]] avatar"></iron-image>
       <div class="card-content">
         <div>[[profile.summary]]</div>
       </div>
