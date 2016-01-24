@@ -15,7 +15,6 @@ before_deploy:
   - cp app.yaml dist/app.yaml
   - LAST_TAG=`git describe --abbrev=0`
   - DEPLOY_VERSION=${LAST_TAG//.}
-  - echo $DEPLOY_VERSION
 deploy:
   provider: gae
   skip_cleanup: true
