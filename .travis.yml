@@ -8,3 +8,17 @@ before_script:
   - sleep 3
   - npm i -g bower gulp
   - bower i
+before_deploy:
+  - openssl aes-256-cbc -K $encrypted_42359f73c124_key -iv $encrypted_42359f73c124_iv
+    -in service-account.json.enc -out service-account.json -d
+  - gulp
+  - cp app.yaml dist/app.yaml
+  - LAST_TAG=`git describe --abbrev=0`
+  - DEPLOY_VERSION=${LAST_TAG//.}
+  - echo $DEPLOY_VERSION
+deploy:
+  provider: gae
+  skip_cleanup: true
+  project: abdonrd-com
+  config: dist/app.yaml
+  version: $DEPLOY_VERSION
