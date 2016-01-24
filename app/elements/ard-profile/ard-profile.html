@@ -33,6 +33,8 @@
         margin: 0 auto;
         width: var(--ard-profile-avatar-size);
         height: var(--ard-profile-avatar-size);
+        --iron-image-width: 100%;
+        --iron-image-height: 100%;
       }
 
       .card-actions {
@@ -56,7 +58,7 @@
     </style>
 
     <paper-card heading="[[profile.firstName]] [[profile.lastName]]">
-      <iron-image id="avatar" src="../../images/avatar.jpg" sizing="contain" alt$="[[profile.firstName]] [[profile.lastName]] avatar"></iron-image>
+      <iron-image id="avatar" src="../../images/avatar.jpg" alt$="[[profile.firstName]] [[profile.lastName]] avatar"></iron-image>
       <div class="card-content">
         <div>[[profile.summary]]</div>
       </div>
