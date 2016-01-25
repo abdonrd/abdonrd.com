@@ -21,9 +21,9 @@ handlers:
   static_dir: images
   secure: always
 
-- url: /(.*)\.(html|js|json|css)$
+- url: /(.*)\.(html|js|json|css)
   static_files: \1.\2
-  upload: (.*)\.(html|js|json|css)$
+  upload: (.*)\.(html|js|json|css)
   secure: always
 
 - url: /
