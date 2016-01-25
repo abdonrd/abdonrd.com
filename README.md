@@ -1,1 +1,5 @@
-# abdonrd.com [![Build Status](https://travis-ci.org/abdonrd/abdonrd.com.svg?branch=master)](https://travis-ci.org/abdonrd/abdonrd.com)
+# [abdonrd.com](http://abdonrd.com) [![Build Status](https://travis-ci.org/abdonrd/abdonrd.com.svg?branch=master)](https://travis-ci.org/abdonrd/abdonrd.com)
+
+My little personal website built with Polymer and Firebase.
+
+Deployed in Google App Engine with Travis CI.
