@@ -1,10 +1,13 @@
 <link rel="import" href="../../bower_components/polymer/polymer.html">
 <link rel="import" href="../../bower_components/iron-flex-layout/iron-flex-layout.html">
-<link rel="import" href="../ard-certifications/ard-certifications.html">
-<link rel="import" href="../ard-education/ard-education.html">
-<link rel="import" href="../ard-experience/ard-experience.html">
-<link rel="import" href="../ard-mentoring/ard-mentoring.html">
-<link rel="import" href="../ard-talks/ard-talks.html">
+<link rel="import" href="../../bower_components/iron-icons/image-icons.html">
+<link rel="import" href="../../bower_components/paper-card/paper-card.html">
+<link rel="import" href="../../bower_components/paper-icon-button/paper-icon-button.html">
+<link rel="import" href="../ard-item/ard-item.html">
+<link rel="import" href="../ard-item/ard-item-body.html">
+<link rel="import" href="../ard-item/ard-item-date.html">
+<link rel="import" href="../ard-item/ard-item-location.html">
+<link rel="import" href="../ard-item/ard-item-period.html">
 
 <dom-module id="ard-information">
   <template>
@@ -15,6 +18,15 @@
 
       :host > * + * {
         margin-top: 8px;
+      }
+
+      a {
+        color: inherit;
+        text-decoration: none;
+
+        /* NOTE: Both values are needed, since some phones require the `transparent` value. */
+        -webkit-tap-highlight-color: rgba(0,0,0,0);
+        -webkit-tap-highlight-color: transparent;
       }
 
       @media all and (min-width: 624px) {
@@ -53,11 +65,87 @@
       }
     </style>
 
-    <ard-experience experience="[[information.experience.jobs]]"></ard-experience>
-    <ard-mentoring mentoring="[[information.experience.mentoring]]"></ard-mentoring>
-    <ard-talks talks="[[information.experience.talks]]"></ard-talks>
-    <ard-education education="[[information.education.education]]"></ard-education>
-    <ard-certifications certifications="[[information.education.certifications]]"></ard-certifications>
+    <paper-card heading="Experience">
+      <template is="dom-repeat" items="[[information.experience.jobs]]" as="experience">
+        <ard-item>
+          <ard-item-body>
+            <div>[[experience.title]]</div>
+            <div>[[experience.company]]</div>
+            <div>
+              <ard-item-period period="[[experience.period]]"></ard-item-period>
+              <span>|</span>
+              <ard-item-location location="[[experience.location]]"></ard-item-location>
+            </div>
+          </ard-item-body>
+        </ard-item>
+      </template>
+    </paper-card>
+
+    <paper-card heading="Mentoring">
+      <template is="dom-repeat" items="[[information.experience.mentoring]]" as="mentoring">
+        <ard-item>
+          <ard-item-body>
+            <div>[[mentoring.eventName]]</div>
+            <div>[[mentoring.organization]]</div>
+            <div>
+              <ard-item-date date="[[mentoring.date]]"></ard-item-date>
+              <span>|</span>
+              <ard-item-location location="[[mentoring.location]]"></ard-item-location>
+            </div>
+          </ard-item-body>
+        </ard-item>
+      </template>
+    </paper-card>
+
+    <paper-card heading="Talks">
+      <template is="dom-repeat" items="[[information.experience.talks]]" as="talk">
+        <ard-item>
+          <ard-item-body>
+            <div>[[talk.name]]</div>
+            <div>[[talk.eventName]] by [[talk.organization]]</div>
+            <div>
+              <ard-item-date date="[[talk.date]]"></ard-item-date>
+              <span>|</span>
+              <ard-item-location location="[[talk.location]]"></ard-item-location>
+            </div>
+          </ard-item-body>
+          <a href="[[talk.slides]]" title="'[[talk.name]]' slides" hidden$="[[!talk.slides]]" tabindex="-1" target="_blank">
+            <paper-icon-button icon="image:slideshow" alt="'[[talk.name]]' slides"></paper-icon-button>
+          </a>
+        </ard-item>
+      </template>
+    </paper-card>
+
+    <paper-card heading="Education">
+      <template is="dom-repeat" items="[[information.education.education]]" as="education">
+        <ard-item>
+          <ard-item-body>
+            <div>[[education.school]]</div>
+            <div>[[education.degree]]</div>
+            <div>
+              <ard-item-period period="[[education.period]]" format="[[educationFormatPeriod]]"></ard-item-period>
+            </div>
+          </ard-item-body>
+        </ard-item>
+      </template>
+    </paper-card>
+
+    <paper-card heading="Certifications">
+      <template is="dom-repeat" items="[[information.education.certifications]]" as="certification">
+        <ard-item>
+          <ard-item-body>
+            <div>[[certification.name]]</div>
+            <div>[[certification.authority]], License [[certification.licenseNumber]]</div>
+            <div>
+              <ard-item-period period="[[certification.period]]"></ard-item-period>
+            </div>
+          </ard-item-body>
+          <a href="[[certification.url]]" title="'[[certification.name]]' certification" hidden$="[[!certification.url]]" tabindex="-1" target="_blank">
+            <paper-icon-button icon="description" alt="[[certification.name]]' certification"></paper-icon-button>
+          </a>
+        </ard-item>
+      </template>
+    </paper-card>
   </template>
 
   <script>
@@ -67,6 +155,14 @@
       properties: {
         information: {
           type: Object
+        },
+
+        educationFormatPeriod: {
+          type: Object,
+          value: {
+            input: 'YYYY',
+            output: 'YYYY'
+          }
         }
       }
     });
