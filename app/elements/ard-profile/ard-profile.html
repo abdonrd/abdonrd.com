@@ -8,31 +8,35 @@
   <template>
     <style>
       :host {
-        @apply(--layout-block);
+        display: block;
 
         --ard-profile-avatar-size: 128px;
       }
 
       paper-card {
-        margin-top: calc(var(--ard-profile-avatar-size) / 2);
         width: 100%;
+        margin-top: calc(var(--ard-profile-avatar-size) / 2);
 
         --paper-card-header-text: {
           margin-top: calc(var(--ard-profile-avatar-size) / 2);
+
           text-align: center;
         }
       }
 
       #avatar {
-        border: 2px solid #fff;
-        border-radius: 50%;
         position: absolute;
         top: calc(-var(--ard-profile-avatar-size) / 2);
-        left: 0;
         right: 0;
-        margin: 0 auto;
+        left: 0;
+
         width: var(--ard-profile-avatar-size);
         height: var(--ard-profile-avatar-size);
+        margin: 0 auto;
+
+        border: 2px solid #fff;
+        border-radius: 50%;
+
         --iron-image-width: 100%;
         --iron-image-height: 100%;
       }
@@ -42,9 +46,11 @@
       }
 
       a {
-        color: inherit;
         display: inline-block;
+
         text-decoration: inherit;
+
+        color: inherit;
 
         /* NOTE: Both values are needed, since some phones require the value to be `transparent`. */
         -webkit-tap-highlight-color: rgba(0,0,0,0);
