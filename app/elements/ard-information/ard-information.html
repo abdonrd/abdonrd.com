@@ -123,7 +123,7 @@
             <div>[[education.school]]</div>
             <div>[[education.degree]]</div>
             <div>
-              <ard-item-period period="[[education.period]]" format="[[educationFormatPeriod]]"></ard-item-period>
+              <ard-item-period period="[[education.period]]" input-format="YYYY" output-format="YYYY"></ard-item-period>
             </div>
           </ard-item-body>
         </ard-item>
@@ -155,14 +155,6 @@
       properties: {
         information: {
           type: Object
-        },
-
-        educationFormatPeriod: {
-          type: Object,
-          value: {
-            input: 'YYYY',
-            output: 'YYYY'
-          }
         }
       }
     });
