@@ -1,5 +1,5 @@
 <link rel="import" href="../../bower_components/polymer/polymer.html">
-<link rel="import" href="../../bower_components/firebase-element/firebase-document.html">
+<link rel="import" href="../../bower_components/iron-ajax/iron-ajax.html">
 <link rel="import" href="../../bower_components/iron-flex-layout/iron-flex-layout.html">
 <link rel="import" href="../../bower_components/iron-icons/image-icons.html">
 <link rel="import" href="../../bower_components/paper-card/paper-card.html">
@@ -41,9 +41,7 @@
       }
     </style>
 
-    <firebase-document
-      location="https://abdonrd.firebaseio.com"
-      data="{{data}}"></firebase-document>
+    <iron-ajax url="../../data.json" auto last-response="{{data}}"></iron-ajax>
 
     <paper-header-panel mode="cover">
       <paper-toolbar class="tall"></paper-toolbar>
