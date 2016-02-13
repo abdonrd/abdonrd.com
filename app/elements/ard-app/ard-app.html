@@ -15,29 +15,117 @@
 <link rel="import" href="../ard-item/ard-item-date.html">
 <link rel="import" href="../ard-item/ard-item-location.html">
 <link rel="import" href="../ard-item/ard-item-period.html">
-
 <link rel="import" href="../ard-profile/ard-profile.html">
 
 <dom-module id="ard-app">
   <template>
     <style>
       :host {
-        @apply(--layout-vertical);
+        @apply(--layout-block);
         @apply(--layout-fullbleed);
       }
 
+      ard-profile {
+        margin-top: 50px;
+      }
+
       ard-profile,
-      paper-card {
-        width: 100%;
+      .information {
+        margin-right: 8px;
+        margin-left: 8px;
+      }
+
+      .information {
+        @apply(--layout-vertical);
+
+        margin-bottom: calc(8px * 2);
+      }
+
+      .information,
+      .information paper-card:nth-child(n+2) {
+        margin-top: 8px;
       }
 
       a {
-        color: inherit;
         text-decoration: none;
+
+        color: inherit;
 
         /* NOTE: Both values are needed, since some phones require the `transparent` value. */
         -webkit-tap-highlight-color: rgba(0,0,0,0);
         -webkit-tap-highlight-color: transparent;
+      }
+
+      @media all and (min-width: 416px) {
+        ard-profile,
+        .information {
+          margin-right: auto;
+          margin-left: auto;
+          width: 400px;
+        }
+      }
+
+      @media all and (min-width: 432px) {
+        .information {
+          margin-bottom: calc(16px * 2);
+        }
+
+        .information,
+        .information paper-card:nth-child(n+2) {
+          margin-top: 16px;
+        }
+      }
+
+      @media all and (min-width: 648px) {
+        .information {
+          @apply(--layout-horizontal);
+          @apply(--layout-wrap);
+          @apply(--layout-start);
+
+          width: calc(300px * 2 + 16px);
+        }
+
+        .information paper-card {
+          width: 300px;
+        }
+
+        .information paper-card:nth-child(n+2) {
+          margin-top: 0;
+        }
+
+        .information paper-card:nth-child(n+3) {
+          margin-top: 16px;
+        }
+
+        .information paper-card:nth-child(even) {
+          margin-left: 16px;
+        }
+      }
+
+      @media all and (min-width: 696px) {
+        .information {
+          margin-top: 32px;
+          margin-bottom: calc(32px * 2);
+          width: calc(300px * 2 + 32px);
+        }
+
+        .information paper-card:nth-child(n+3) {
+          margin-top: 32px;
+        }
+
+        .information paper-card:nth-child(even) {
+          margin-left: 32px;
+        }
+      }
+
+      @media all and (min-width: 896px) {
+        .information {
+          width: calc(400px * 2 + 32px);
+        }
+
+        .information paper-card {
+          width: 400px;
+        }
       }
     </style>
 
@@ -48,87 +136,89 @@
 
       <ard-profile profile="[[data.profile]]"></ard-profile>
 
-      <paper-card heading="Experience">
-        <template is="dom-repeat" items="[[data.experience.jobs]]" as="experience">
-          <ard-item>
-            <ard-item-body>
-              <div>[[experience.title]]</div>
-              <div>[[experience.company]]</div>
-              <div>
-                <ard-item-period period="[[experience.period]]"></ard-item-period>
-                <span>|</span>
-                <ard-item-location location="[[experience.location]]"></ard-item-location>
-              </div>
-            </ard-item-body>
-          </ard-item>
-        </template>
-      </paper-card>
+      <div class="information">
+        <paper-card heading="Experience">
+          <template is="dom-repeat" items="[[data.experience.jobs]]" as="experience">
+            <ard-item>
+              <ard-item-body>
+                <div>[[experience.title]]</div>
+                <div>[[experience.company]]</div>
+                <div>
+                  <ard-item-period period="[[experience.period]]"></ard-item-period>
+                  <span>|</span>
+                  <ard-item-location location="[[experience.location]]"></ard-item-location>
+                </div>
+              </ard-item-body>
+            </ard-item>
+          </template>
+        </paper-card>
 
-      <paper-card heading="Mentoring">
-        <template is="dom-repeat" items="[[data.experience.mentoring]]" as="mentoring">
-          <ard-item>
-            <ard-item-body>
-              <div>[[mentoring.eventName]]</div>
-              <div>[[mentoring.organization]]</div>
-              <div>
-                <ard-item-date date="[[mentoring.date]]"></ard-item-date>
-                <span>|</span>
-                <ard-item-location location="[[mentoring.location]]"></ard-item-location>
-              </div>
-            </ard-item-body>
-          </ard-item>
-        </template>
-      </paper-card>
+        <paper-card heading="Mentoring">
+          <template is="dom-repeat" items="[[data.experience.mentoring]]" as="mentoring">
+            <ard-item>
+              <ard-item-body>
+                <div>[[mentoring.eventName]]</div>
+                <div>[[mentoring.organization]]</div>
+                <div>
+                  <ard-item-date date="[[mentoring.date]]"></ard-item-date>
+                  <span>|</span>
+                  <ard-item-location location="[[mentoring.location]]"></ard-item-location>
+                </div>
+              </ard-item-body>
+            </ard-item>
+          </template>
+        </paper-card>
 
-      <paper-card heading="Talks">
-        <template is="dom-repeat" items="[[data.experience.talks]]" as="talk">
-          <ard-item>
-            <ard-item-body>
-              <div>[[talk.name]]</div>
-              <div>[[talk.eventName]] by [[talk.organization]]</div>
-              <div>
-                <ard-item-date date="[[talk.date]]"></ard-item-date>
-                <span>|</span>
-                <ard-item-location location="[[talk.location]]"></ard-item-location>
-              </div>
-            </ard-item-body>
-            <a href$="[[talk.slides]]" title$="'[[talk.name]]' slides" hidden$="[[!talk.slides]]" tabindex="-1" target="_blank">
-              <paper-icon-button icon="image:slideshow" alt="'[[talk.name]]' slides"></paper-icon-button>
-            </a>
-          </ard-item>
-        </template>
-      </paper-card>
+        <paper-card heading="Talks">
+          <template is="dom-repeat" items="[[data.experience.talks]]" as="talk">
+            <ard-item>
+              <ard-item-body>
+                <div>[[talk.name]]</div>
+                <div>[[talk.eventName]] by [[talk.organization]]</div>
+                <div>
+                  <ard-item-date date="[[talk.date]]"></ard-item-date>
+                  <span>|</span>
+                  <ard-item-location location="[[talk.location]]"></ard-item-location>
+                </div>
+              </ard-item-body>
+              <a href$="[[talk.slides]]" title$="'[[talk.name]]' slides" hidden$="[[!talk.slides]]" tabindex="-1" target="_blank">
+                <paper-icon-button icon="image:slideshow" alt="'[[talk.name]]' slides"></paper-icon-button>
+              </a>
+            </ard-item>
+          </template>
+        </paper-card>
 
-      <paper-card heading="Education">
-        <template is="dom-repeat" items="[[data.education.education]]" as="education">
-          <ard-item>
-            <ard-item-body>
-              <div>[[education.school]]</div>
-              <div>[[education.degree]]</div>
-              <div>
-                <ard-item-period period="[[education.period]]" input-format="YYYY" output-format="YYYY"></ard-item-period>
-              </div>
-            </ard-item-body>
-          </ard-item>
-        </template>
-      </paper-card>
+        <paper-card heading="Education">
+          <template is="dom-repeat" items="[[data.education.education]]" as="education">
+            <ard-item>
+              <ard-item-body>
+                <div>[[education.school]]</div>
+                <div>[[education.degree]]</div>
+                <div>
+                  <ard-item-period period="[[education.period]]" input-format="YYYY" output-format="YYYY"></ard-item-period>
+                </div>
+              </ard-item-body>
+            </ard-item>
+          </template>
+        </paper-card>
 
-      <paper-card heading="Certifications">
-        <template is="dom-repeat" items="[[data.education.certifications]]" as="certification">
-          <ard-item>
-            <ard-item-body>
-              <div>[[certification.name]]</div>
-              <div>[[certification.authority]], License [[certification.licenseNumber]]</div>
-              <div>
-                <ard-item-period period="[[certification.period]]"></ard-item-period>
-              </div>
-            </ard-item-body>
-            <a href$="[[certification.url]]" title$="'[[certification.name]]' certification" hidden$="[[!certification.url]]" tabindex="-1" target="_blank">
-              <paper-icon-button icon="description" alt="[[certification.name]]' certification"></paper-icon-button>
-            </a>
-          </ard-item>
-        </template>
-      </paper-card>
+        <paper-card heading="Certifications">
+          <template is="dom-repeat" items="[[data.education.certifications]]" as="certification">
+            <ard-item>
+              <ard-item-body>
+                <div>[[certification.name]]</div>
+                <div>[[certification.authority]], License [[certification.licenseNumber]]</div>
+                <div>
+                  <ard-item-period period="[[certification.period]]"></ard-item-period>
+                </div>
+              </ard-item-body>
+              <a href$="[[certification.url]]" title$="'[[certification.name]]' certification" hidden$="[[!certification.url]]" tabindex="-1" target="_blank">
+                <paper-icon-button icon="description" alt="[[certification.name]]' certification"></paper-icon-button>
+              </a>
+            </ard-item>
+          </template>
+        </paper-card>
+      </div>
     </paper-header-panel>
 
     <paper-toast id="cachingComplete"
