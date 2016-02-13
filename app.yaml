@@ -6,25 +6,20 @@ handlers:
 - url: /favicon\.ico
   static_files: favicon.ico
   upload: favicon\.ico
-  secure: always
 
 - url: /robots\.txt
   static_files: robots.txt
   upload: robots\.txt
-  secure: always
 
 - url: /bower_components
   static_dir: bower_components
-  secure: always
 
 - url: /images
   static_dir: images
-  secure: always
 
 - url: /(.*)\.(html|js|json|css)
   static_files: \1.\2
   upload: (.*)\.(html|js|json|css)
-  secure: always
 
 - url: /
   static_files: index.html
@@ -32,7 +27,6 @@ handlers:
   http_headers:
     Link: '</scripts/app.js>; rel=preload; as=script, </elements/elements.html>; rel=preload; as=document, </styles/main.css>; rel=preload; as=style'
     # Access-Control-Allow-Origin: "*"
-  secure: always
 
 skip_files:
 - ^(.*/)?app\.yaml

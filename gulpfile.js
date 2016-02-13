@@ -23,6 +23,7 @@ var glob = require('glob-all');
 var historyApiFallback = require('connect-history-api-fallback');
 var packageJson = require('./package.json');
 var crypto = require('crypto');
+var jsonminify = require('gulp-jsonminify');
 var ensureFiles = require('./tasks/ensure-files.js');
 
 // var ghPages = require('gulp-gh-pages');
@@ -141,6 +142,13 @@ gulp.task('lint', ['ensureFiles'], function() {
 // Optimize images
 gulp.task('images', function() {
   return imageOptimizeTask('app/images/**/*', dist('images'));
+});
+
+// Optimize data
+gulp.task('data', function() {
+  return gulp.src('app/data.json')
+    .pipe(jsonminify())
+    .pipe(gulp.dest(dist()));
 });
 
 // Copy all files at the root level (app)
@@ -297,7 +305,7 @@ gulp.task('default', ['clean'], function(cb) {
   runSequence(
     ['copy', 'styles'],
     'elements',
-    ['lint', 'images', 'fonts', 'html'],
+    ['lint', 'images', 'data', 'fonts', 'html'],
     'vulcanize', 'cache-config',
     cb);
 });
