@@ -67,6 +67,17 @@
     ],
     "talks": [
       {
+        "name": "Polymer, present and future",
+        "eventName": "s|ngular talks",
+        "organization": "GDG Madrid & s|ngular",
+        "date": "2016-02-25",
+        "location": {
+          "short": "Madrid",
+          "long": "Madrid, Madrid, Spain"
+        },
+        "slides": "https://docs.google.com/presentation/d/112y4MDTHUmxBWVYmCOezqmcucOIG_XmmURDi203d7dA/edit"
+      },
+      {
         "name": "Learn Web Components with Polymer",
         "eventName": "Polymer Polytechnic Madrid",
         "organization": "GDG Madrid",
