@@ -1,0 +1,82 @@
+<link rel="import" href="../../bower_components/polymer/polymer.html">
+<link rel="import" href="../../bower_components/iron-collapse/iron-collapse.html">
+<link rel="import" href="../../bower_components/iron-icons/hardware-icons.html">
+<link rel="import" href="../../bower_components/paper-icon-button/paper-icon-button.html">
+
+<dom-module id="ard-collapse-items">
+  <template>
+    <style>
+      :host {
+        display: block;
+      }
+
+      .collapse-actions {
+        text-align: right;
+      }
+    </style>
+
+    <div id="limitItems"></div>
+
+    <iron-collapse id="moreItems"></iron-collapse>
+
+    <div id="collapseActions" class="collapse-actions" hidden>
+      <paper-icon-button icon="hardware:keyboard-arrow-down" title="More" on-tap="_toggleMore"></paper-icon-button>
+    </div>
+  </template>
+
+  <script>
+    Polymer({
+      is: 'ard-collapse-items',
+
+      behaviors: [
+        Polymer.Templatizer
+      ],
+
+      properties: {
+        items: {
+          type: Object
+        },
+
+        limit: {
+          type: Number
+        }
+      },
+
+      observers: [
+        '_updateItems(items, limit)'
+      ],
+
+      _renderItems: function(startValue, finishValue, element) {
+        for (var i = startValue; i < finishValue; i++) {
+          var instance = this.stamp({
+            item: this.items[i]
+          });
+
+          Polymer.dom(element).appendChild(instance.root);
+        }
+      },
+
+      _updateItems: function(items, limit) {
+        var template = Polymer.dom(this).querySelector('template');
+
+        this.templatize(template);
+
+        if (items.length > limit) {
+          this._renderItems(0, limit, this.$.limitItems);
+          this._renderItems(limit, items.length, this.$.moreItems);
+        } else {
+          this._renderItems(0, items.length, this.$.limitItems);
+        }
+
+        this.$.collapseActions.hidden = items.length <= limit;
+      },
+
+      _toggleMore: function(event) {
+        var iconButton = Polymer.dom(event).localTarget;
+        iconButton.icon = this.$.moreItems.opened ? 'hardware:keyboard-arrow-down'
+                                                  : 'hardware:keyboard-arrow-up';
+        this.$.moreItems.toggle();
+      }
+    });
+  </script>
+</dom-module>
