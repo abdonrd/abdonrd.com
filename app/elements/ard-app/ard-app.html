@@ -10,11 +10,12 @@
 <link rel="import" href="../../bower_components/platinum-sw/platinum-sw-cache.html">
 <link rel="import" href="../../bower_components/platinum-sw/platinum-sw-offline-analytics.html">
 <link rel="import" href="../../bower_components/platinum-sw/platinum-sw-register.html">
-<link rel="import" href="../ard-item/ard-item.html">
+<link rel="import" href="../ard-collapse-items/ard-collapse-items.html">
 <link rel="import" href="../ard-item/ard-item-body.html">
 <link rel="import" href="../ard-item/ard-item-date.html">
 <link rel="import" href="../ard-item/ard-item-location.html">
 <link rel="import" href="../ard-item/ard-item-period.html">
+<link rel="import" href="../ard-item/ard-item.html">
 <link rel="import" href="../ard-profile/ard-profile.html">
 
 <dom-module id="ard-app">
@@ -138,85 +139,95 @@
 
       <div class="information">
         <paper-card heading="Experience">
-          <template is="dom-repeat" items="[[data.experience.jobs]]" as="experience">
-            <ard-item>
-              <ard-item-body>
-                <div>[[experience.title]]</div>
-                <div>[[experience.company]]</div>
-                <div>
-                  <ard-item-period period="[[experience.period]]"></ard-item-period>
-                  <span>|</span>
-                  <ard-item-location location="[[experience.location]]"></ard-item-location>
-                </div>
-              </ard-item-body>
-            </ard-item>
-          </template>
+          <ard-collapse-items items="[[data.experience.jobs]]" limit="2">
+            <template>
+              <ard-item>
+                <ard-item-body>
+                  <div>[[item.title]]</div>
+                  <div>[[item.company]]</div>
+                  <div>
+                    <ard-item-period period="[[item.period]]"></ard-item-period>
+                    <span>|</span>
+                    <ard-item-location location="[[item.location]]"></ard-item-location>
+                  </div>
+                </ard-item-body>
+              </ard-item>
+            </template>
+          </ard-collapse-items>
         </paper-card>
 
         <paper-card heading="Mentoring">
-          <template is="dom-repeat" items="[[data.experience.mentoring]]" as="mentoring">
-            <ard-item>
-              <ard-item-body>
-                <div>[[mentoring.eventName]]</div>
-                <div>[[mentoring.organization]]</div>
-                <div>
-                  <ard-item-date date="[[mentoring.date]]"></ard-item-date>
-                  <span>|</span>
-                  <ard-item-location location="[[mentoring.location]]"></ard-item-location>
-                </div>
-              </ard-item-body>
-            </ard-item>
-          </template>
+          <ard-collapse-items items="[[data.experience.mentoring]]" limit="2">
+            <template>
+              <ard-item>
+                <ard-item-body>
+                  <div>[[item.eventName]]</div>
+                  <div>[[item.organization]]</div>
+                  <div>
+                    <ard-item-date date="[[item.date]]"></ard-item-date>
+                    <span>|</span>
+                    <ard-item-location location="[[item.location]]"></ard-item-location>
+                  </div>
+                </ard-item-body>
+              </ard-item>
+            </template>
+          </ard-collapse-items>
         </paper-card>
 
         <paper-card heading="Talks">
-          <template is="dom-repeat" items="[[data.experience.talks]]" as="talk">
-            <ard-item>
-              <ard-item-body>
-                <div>[[talk.name]]</div>
-                <div>[[talk.eventName]] by [[talk.organization]]</div>
-                <div>
-                  <ard-item-date date="[[talk.date]]"></ard-item-date>
-                  <span>|</span>
-                  <ard-item-location location="[[talk.location]]"></ard-item-location>
-                </div>
-              </ard-item-body>
-              <a href$="[[talk.slides]]" title$="'[[talk.name]]' slides" hidden$="[[!talk.slides]]" tabindex="-1" target="_blank">
-                <paper-icon-button icon="image:slideshow" alt="'[[talk.name]]' slides"></paper-icon-button>
-              </a>
-            </ard-item>
-          </template>
-        </paper-card>
-
-        <paper-card heading="Education">
-          <template is="dom-repeat" items="[[data.education.education]]" as="education">
-            <ard-item>
-              <ard-item-body>
-                <div>[[education.school]]</div>
-                <div>[[education.degree]]</div>
-                <div>
-                  <ard-item-period period="[[education.period]]" input-format="YYYY" output-format="YYYY"></ard-item-period>
-                </div>
-              </ard-item-body>
-            </ard-item>
-          </template>
+          <ard-collapse-items items="[[data.experience.talks]]" limit="2">
+            <template>
+              <ard-item>
+                <ard-item-body>
+                  <div>[[item.name]]</div>
+                  <div>[[item.eventName]] by [[item.organization]]</div>
+                  <div>
+                    <ard-item-date date="[[item.date]]"></ard-item-date>
+                    <span>|</span>
+                    <ard-item-location location="[[item.location]]"></ard-item-location>
+                  </div>
+                </ard-item-body>
+                <a href$="[[item.slides]]" title$="'[[item.name]]' slides" hidden$="[[!item.slides]]" tabindex="-1" target="_blank">
+                  <paper-icon-button icon="image:slideshow" alt="'[[item.name]]' slides"></paper-icon-button>
+                </a>
+              </ard-item>
+            </template>
+          </ard-collapse-items>
         </paper-card>
 
         <paper-card heading="Certifications">
-          <template is="dom-repeat" items="[[data.education.certifications]]" as="certification">
-            <ard-item>
-              <ard-item-body>
-                <div>[[certification.name]]</div>
-                <div>[[certification.authority]], License [[certification.licenseNumber]]</div>
-                <div>
-                  <ard-item-period period="[[certification.period]]"></ard-item-period>
-                </div>
-              </ard-item-body>
-              <a href$="[[certification.url]]" title$="'[[certification.name]]' certification" hidden$="[[!certification.url]]" tabindex="-1" target="_blank">
-                <paper-icon-button icon="description" alt="[[certification.name]]' certification"></paper-icon-button>
-              </a>
-            </ard-item>
-          </template>
+          <ard-collapse-items items="[[data.education.certifications]]" limit="2">
+            <template>
+              <ard-item>
+                <ard-item-body>
+                  <div>[[item.name]]</div>
+                  <div>[[item.authority]], License [[item.licenseNumber]]</div>
+                  <div>
+                    <ard-item-period period="[[item.period]]"></ard-item-period>
+                  </div>
+                </ard-item-body>
+                <a href$="[[item.url]]" title$="'[[item.name]]' item" hidden$="[[!item.url]]" tabindex="-1" target="_blank">
+                  <paper-icon-button icon="description" alt="[[item.name]]' certification"></paper-icon-button>
+                </a>
+              </ard-item>
+            </template>
+          </ard-collapse-items>
+        </paper-card>
+
+        <paper-card heading="Education">
+          <ard-collapse-items items="[[data.education.education]]" limit="2">
+            <template>
+              <ard-item>
+                <ard-item-body>
+                  <div>[[item.school]]</div>
+                  <div>[[item.degree]]</div>
+                  <div>
+                    <ard-item-period period="[[item.period]]" input-format="YYYY" output-format="YYYY"></ard-item-period>
+                  </div>
+                </ard-item-body>
+              </ard-item>
+            </template>
+          </ard-collapse-items>
         </paper-card>
       </div>
     </paper-header-panel>
