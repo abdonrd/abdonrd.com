@@ -38,5 +38,6 @@
   ],
   "background_color": "#13866f",
   "display": "standalone",
-  "theme_color": "#13866f"
+  "theme_color": "#13866f",
+  "start_url": "/?homescreen=1"
 }
