@@ -139,7 +139,7 @@
 
       <div class="information">
         <paper-card heading="Experience">
-          <ard-collapse-items items="[[data.experience.jobs]]" limit="2">
+          <ard-collapse-items items="[[data.experience.jobs]]" limit="{{collapseLimit}}">
             <template>
               <ard-item>
                 <ard-item-body>
@@ -157,7 +157,7 @@
         </paper-card>
 
         <paper-card heading="Mentoring">
-          <ard-collapse-items items="[[data.experience.mentoring]]" limit="2">
+          <ard-collapse-items items="[[data.experience.mentoring]]" limit="{{collapseLimit}}">
             <template>
               <ard-item>
                 <ard-item-body>
@@ -175,7 +175,7 @@
         </paper-card>
 
         <paper-card heading="Talks">
-          <ard-collapse-items items="[[data.experience.talks]]" limit="2">
+          <ard-collapse-items items="[[data.experience.talks]]" limit="{{collapseLimit}}">
             <template>
               <ard-item>
                 <ard-item-body>
@@ -196,7 +196,7 @@
         </paper-card>
 
         <paper-card heading="Certifications">
-          <ard-collapse-items items="[[data.education.certifications]]" limit="2">
+          <ard-collapse-items items="[[data.education.certifications]]" limit="{{collapseLimit}}">
             <template>
               <ard-item>
                 <ard-item-body>
@@ -215,7 +215,7 @@
         </paper-card>
 
         <paper-card heading="Education">
-          <ard-collapse-items items="[[data.education.education]]" limit="2">
+          <ard-collapse-items items="[[data.education.education]]" limit="{{collapseLimit}}">
             <template>
               <ard-item>
                 <ard-item-body>
@@ -253,6 +253,13 @@
   <script>
     Polymer({
       is: 'ard-app',
+
+      properties: {
+        collapseLimit: {
+          type: Number,
+          value: 2
+        }
+      },
 
       displayInstalledToast: function() {
         // Check to make sure caching is actually enabled—it won't be in the dev environment.

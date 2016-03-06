@@ -1,7 +1,7 @@
 <link rel="import" href="../../bower_components/polymer/polymer.html">
 <link rel="import" href="../../bower_components/iron-collapse/iron-collapse.html">
-<link rel="import" href="../../bower_components/iron-icons/hardware-icons.html">
 <link rel="import" href="../../bower_components/paper-icon-button/paper-icon-button.html">
+<link rel="import" href="ard-collapse-items-icons.html">
 
 <dom-module id="ard-collapse-items">
   <template>
@@ -15,12 +15,12 @@
       }
     </style>
 
-    <div id="limitItems"></div>
+    <div id="shownItems"></div>
 
     <iron-collapse id="moreItems"></iron-collapse>
 
     <div id="collapseActions" class="collapse-actions" hidden>
-      <paper-icon-button icon="hardware:keyboard-arrow-down" title="More" on-tap="_toggleMore"></paper-icon-button>
+      <paper-icon-button icon="ard-collapse-items-icons:expand-more" title="More" on-tap="_toggleMore"></paper-icon-button>
     </div>
   </template>
 
@@ -34,7 +34,7 @@
 
       properties: {
         items: {
-          type: Object
+          type: Array
         },
 
         limit: {
@@ -62,10 +62,10 @@
         this.templatize(template);
 
         if (items.length > limit) {
-          this._renderItems(0, limit, this.$.limitItems);
+          this._renderItems(0, limit, this.$.shownItems);
           this._renderItems(limit, items.length, this.$.moreItems);
         } else {
-          this._renderItems(0, items.length, this.$.limitItems);
+          this._renderItems(0, items.length, this.$.shownItems);
         }
 
         this.$.collapseActions.hidden = items.length <= limit;
@@ -73,8 +73,8 @@
 
       _toggleMore: function(event) {
         var iconButton = Polymer.dom(event).localTarget;
-        iconButton.icon = this.$.moreItems.opened ? 'hardware:keyboard-arrow-down'
-                                                  : 'hardware:keyboard-arrow-up';
+        iconButton.icon = this.$.moreItems.opened ? 'ard-collapse-items-icons:expand-more'
+                                                  : 'ard-collapse-items-icons:expand-less';
         this.$.moreItems.toggle();
       }
     });
