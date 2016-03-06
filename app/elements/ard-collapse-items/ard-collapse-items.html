@@ -15,7 +15,7 @@
       }
     </style>
 
-    <div id="limitItems"></div>
+    <div id="shownItems"></div>
 
     <iron-collapse id="moreItems"></iron-collapse>
 
@@ -62,10 +62,10 @@
         this.templatize(template);
 
         if (items.length > limit) {
-          this._renderItems(0, limit, this.$.limitItems);
+          this._renderItems(0, limit, this.$.shownItems);
           this._renderItems(limit, items.length, this.$.moreItems);
         } else {
-          this._renderItems(0, items.length, this.$.limitItems);
+          this._renderItems(0, items.length, this.$.shownItems);
         }
 
         this.$.collapseActions.hidden = items.length <= limit;
