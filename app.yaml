@@ -28,5 +28,9 @@ handlers:
     Link: '</scripts/app.js>; rel=preload; as=script, </elements/elements.html>; rel=preload; as=document, </styles/main.css>; rel=preload; as=style'
     # Access-Control-Allow-Origin: "*"
 
+- url: /.*
+  static_files: 404.html
+  upload: 404\.html
+
 skip_files:
 - ^(.*/)?app\.yaml
