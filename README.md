@@ -3,3 +3,9 @@
 My little personal website built with Polymer.
 
 Deployed in Google App Engine with Travis CI.
+
+## License
+
+The MIT License (MIT)
+
+Copyright (c) 2016 Abdón Rodríguez Davila
