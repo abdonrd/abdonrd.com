@@ -6,6 +6,6 @@ Deployed in Google App Engine with Travis CI.
 
 ## License
 
-The MIT License (MIT)
+Copyright (c) 2016 Abdón Rodríguez Davila (@abdonrd). All rights reserved.
 
-Copyright (c) 2016 Abdón Rodríguez Davila
+This code may only be used under the MIT style license found at [LICENSE.md](LICENSE.md)
