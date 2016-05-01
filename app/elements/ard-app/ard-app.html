@@ -7,6 +7,10 @@ This code may only be used under the MIT style license found at LICENSE.md
 <link rel="import" href="../../bower_components/polymer/polymer.html">
 <link rel="import" href="../../bower_components/iron-ajax/iron-ajax.html">
 <link rel="import" href="../../bower_components/iron-flex-layout/iron-flex-layout.html">
+<link rel="import" href="../../bower_components/neon-animation/animations/cascaded-animation.html">
+<link rel="import" href="../../bower_components/neon-animation/animations/fade-in-animation.html">
+<link rel="import" href="../../bower_components/neon-animation/animations/transform-animation.html">
+<link rel="import" href="../../bower_components/neon-animation/neon-animation-runner-behavior.html">
 <link rel="import" href="../../bower_components/paper-card/paper-card.html">
 <link rel="import" href="../../bower_components/paper-header-panel/paper-header-panel.html">
 <link rel="import" href="../../bower_components/paper-icon-button/paper-icon-button.html">
@@ -141,10 +145,10 @@ This code may only be used under the MIT style license found at LICENSE.md
     <paper-header-panel mode="cover">
       <paper-toolbar class="tall"></paper-toolbar>
 
-      <ard-profile profile="[[data.profile]]"></ard-profile>
+      <ard-profile profile="[[data.profile]]" class="cascaded"></ard-profile>
 
       <div class="information">
-        <paper-card heading="Experience">
+        <paper-card heading="Experience" class="cascaded">
           <ard-collapse-items items="[[data.experience.jobs]]" limit="{{collapseLimit}}">
             <template>
               <ard-item>
@@ -162,7 +166,7 @@ This code may only be used under the MIT style license found at LICENSE.md
           </ard-collapse-items>
         </paper-card>
 
-        <paper-card heading="Mentoring">
+        <paper-card heading="Mentoring" class="cascaded">
           <ard-collapse-items items="[[data.experience.mentoring]]" limit="{{collapseLimit}}">
             <template>
               <ard-item>
@@ -180,7 +184,7 @@ This code may only be used under the MIT style license found at LICENSE.md
           </ard-collapse-items>
         </paper-card>
 
-        <paper-card heading="Talks">
+        <paper-card heading="Talks" class="cascaded">
           <ard-collapse-items items="[[data.experience.talks]]" limit="{{collapseLimit}}">
             <template>
               <ard-item>
@@ -201,7 +205,7 @@ This code may only be used under the MIT style license found at LICENSE.md
           </ard-collapse-items>
         </paper-card>
 
-        <paper-card heading="Certifications">
+        <paper-card heading="Certifications" class="cascaded">
           <ard-collapse-items items="[[data.education.certifications]]" limit="{{collapseLimit}}">
             <template>
               <ard-item>
@@ -220,7 +224,7 @@ This code may only be used under the MIT style license found at LICENSE.md
           </ard-collapse-items>
         </paper-card>
 
-        <paper-card heading="Education">
+        <paper-card heading="Education" class="cascaded">
           <ard-collapse-items items="[[data.education.education]]" limit="{{collapseLimit}}">
             <template>
               <ard-item>
@@ -260,11 +264,42 @@ This code may only be used under the MIT style license found at LICENSE.md
     Polymer({
       is: 'ard-app',
 
+      behaviors: [
+        Polymer.NeonAnimationRunnerBehavior
+      ],
+
       properties: {
         collapseLimit: {
           type: Number,
           value: 2
+        },
+
+        animationConfig: {
+          value: function() {
+            return [{
+              name: 'fade-in-animation',
+              node: this,
+              timing: {
+                delay: 400,
+                duration: 500
+              }
+            }, {
+              name: 'cascaded-animation',
+              animation: 'transform-animation',
+              transformFrom: 'translateY(100%)',
+              transformTo: 'none',
+              timing: {
+                delay: 300
+              }
+            }];
+          }
         }
+      },
+
+      attached: function() {
+        var nodes = Polymer.dom(this.root).querySelectorAll('.cascaded');
+        this.animationConfig[1].nodes = Array.prototype.slice.call(nodes);
+        this.playAnimation();
       },
 
       displayInstalledToast: function() {
