@@ -67,6 +67,17 @@
     ],
     "talks": [
       {
+        "name": "With Polymer, using the platform to build a better web",
+        "eventName": "ExFest 2016",
+        "organization": "GDG Cáceres",
+        "date": "2016-06-04",
+        "location": {
+          "short": "Cáceres",
+          "long": "Cáceres, Extremadura, Spain"
+        },
+        "slides": ""
+      },
+      {
         "name": "Polymer, present and future",
         "eventName": "s|ngular talks",
         "organization": "GDG Madrid & s|ngular",
