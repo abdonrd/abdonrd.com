@@ -2,7 +2,7 @@ language: node_js
 sudo: required
 dist: trusty
 node_js:
-  - '5.1'
+  - '6'
 cache:
   directories:
     - node_modules
@@ -10,21 +10,20 @@ before_script:
   - 'export DISPLAY=:99.0'
   - sh -e /etc/init.d/xvfb start
   - sleep 3
-  - npm install -g bower gulp
+  - npm install -g polymer-cli bower
   - bower install
   - gulp lint
 before_deploy:
   - openssl aes-256-cbc -K $encrypted_42359f73c124_key -iv $encrypted_42359f73c124_iv
     -in service-account.json.enc -out service-account.json -d
-  - gulp
-  - cp app.yaml dist/app.yaml
+  - polymer build
   - LAST_TAG=`git describe --abbrev=0` || LAST_TAG="develop"; echo $LAST_TAG
   - DEPLOY_VERSION=${LAST_TAG//.}
 deploy:
   - provider: gae
     skip_cleanup: true
     project: abdonrd-com
-    config: dist/app.yaml
+    config: build/bundled/app.yaml
     version: develop
     no_promote: true
     on:
@@ -32,12 +31,7 @@ deploy:
   - provider: gae
     skip_cleanup: true
     project: abdonrd-com
-    config: dist/app.yaml
+    config: build/bundled/app.yaml
     version: $DEPLOY_VERSION
     on:
       branch: master
-
-# Temporal environment variable to fix Google Cloud SDK issue
-# https://code.google.com/p/google-cloud-sdk/issues/detail?id=784#c6
-env:
-  - CLOUDSDK_APP_USE_GSUTIL=1

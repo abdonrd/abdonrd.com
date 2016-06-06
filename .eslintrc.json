@@ -1,0 +1,24 @@
+{
+  "extends": "eslint:recommended",
+  "rules": {
+    "brace-style": "error",
+    "comma-spacing": ["error", {"before": false, "after": true}],
+    "keyword-spacing": "error",
+    "no-console": "warn",
+    "no-multi-spaces": "error",
+    "quotes": ["error", "single", "avoid-escape"],
+    "space-before-blocks": "error",
+    "space-before-function-paren": ["error", "never"]
+  },
+  "env": {
+    "browser": true
+  },
+  "plugins": [
+    "html"
+  ],
+  "globals": {
+    "Polymer": false,
+    "module": false,
+    "require": false
+  }
+}

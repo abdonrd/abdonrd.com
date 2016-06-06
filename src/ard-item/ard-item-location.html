@@ -1,0 +1,34 @@
+<!--
+@license
+Copyright (c) 2016 Abdón Rodríguez Davila (@abdonrd). All rights reserved.
+This code may only be used under the MIT style license found at https://abdonrd.com/LICENSE.txt
+-->
+
+<link rel="import" href="../../bower_components/polymer/polymer.html">
+<link rel="import" href="../../bower_components/iron-icon/iron-icon.html">
+<link rel="import" href="ard-item-icons.html">
+
+<dom-module id="ard-item-location">
+  <template>
+    <style>
+      iron-icon {
+        --iron-icon-height: 12px;
+        --iron-icon-width: 12px;
+      }
+    </style>
+
+    <iron-icon icon="ard-item-icons:location-on"></iron-icon> <span title$="[[location.long]]">[[location.short]]</span>
+  </template>
+
+  <script>
+    Polymer({
+      is: 'ard-item-location',
+
+      properties: {
+        location: {
+          type: Object
+        }
+      }
+    });
+  </script>
+</dom-module>
