@@ -3,34 +3,45 @@ api_version: 1
 threadsafe: yes
 
 handlers:
-- url: /favicon\.ico
-  static_files: favicon.ico
-  upload: favicon\.ico
-
-- url: /robots\.txt
-  static_files: robots.txt
-  upload: robots\.txt
-
 - url: /bower_components
   static_dir: bower_components
+  secure: always
+
+- url: /data
+  static_dir: data
+  secure: always
 
 - url: /images
   static_dir: images
+  secure: always
 
-- url: /(.*)\.(html|js|json|css)
-  static_files: \1.\2
-  upload: (.*)\.(html|js|json|css)
+- url: /scripts
+  static_dir: scripts
+  secure: always
 
-- url: /
-  static_files: index.html
-  upload: index\.html
-  http_headers:
-    Link: '</scripts/app.js>; rel=preload; as=script, </elements/elements.html>; rel=preload; as=document, </styles/main.css>; rel=preload; as=style'
-    # Access-Control-Allow-Origin: "*"
+- url: /src
+  static_dir: src
+  secure: always
+
+- url: /service-worker.js
+  static_files: service-worker.js
+  upload: service-worker.js
+  secure: always
+
+- url: /manifest.json
+  static_files: manifest.json
+  upload: manifest.json
+  secure: always
+
+- url: /LICENSE.txt
+  static_files: LICENSE.txt
+  upload: LICENSE.txt
+  secure: always
 
 - url: /.*
-  static_files: 404.html
-  upload: 404\.html
+  static_files: index.html
+  upload: index.html
+  secure: always
 
 skip_files:
 - ^(.*/)?app\.yaml

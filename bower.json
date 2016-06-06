@@ -18,9 +18,5 @@
     "paper-toolbar": "PolymerElements/paper-toolbar#^1.1.0",
     "platinum-sw": "PolymerElements/platinum-sw#^1.2.0",
     "polymer": "Polymer/polymer#^1.2.0"
-  },
-  "devDependencies": {
-    "web-component-tester": "^4.0.0"
-  },
-  "ignore": []
+  }
 }
