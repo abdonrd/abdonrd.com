@@ -15,6 +15,10 @@ handlers:
   static_dir: images
   secure: always
 
+- url: /scripts
+  static_dir: scripts
+  secure: always
+
 - url: /src
   static_dir: src
   secure: always
