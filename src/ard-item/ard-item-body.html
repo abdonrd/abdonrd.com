@@ -7,7 +7,6 @@ This code may only be used under the MIT style license found at https://abdonrd.
 <link rel="import" href="../../bower_components/polymer/polymer.html">
 <link rel="import" href="../../bower_components/iron-flex-layout/iron-flex-layout.html">
 <link rel="import" href="../../bower_components/paper-styles/default-theme.html">
-<link rel="import" href="../../bower_components/paper-styles/typography.html">
 
 <dom-module id="ard-item-body">
   <template>
@@ -28,9 +27,14 @@ This code may only be used under the MIT style license found at https://abdonrd.
       }
 
       :host > ::content > div + div {
-        @apply(--paper-font-body1);
-
         color: var(--secondary-text-color);
+
+        font-family: 'Roboto', 'Noto', sans-serif;
+        font-size: 14px;
+        font-weight: 400;
+        line-height: 20px;
+
+        -webkit-font-smoothing: antialiased;
       }
     </style>
 
