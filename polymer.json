@@ -1,4 +1,4 @@
 {
   "entrypoint": "index.html",
-  "shell": "src/ard-app/ard-app.html"
+  "shell": "src/ard-app.html"
 }
