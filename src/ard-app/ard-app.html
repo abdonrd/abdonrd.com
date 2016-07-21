@@ -12,9 +12,7 @@ This code may only be used under the MIT style license found at https://abdonrd.
 <link rel="import" href="../../bower_components/neon-animation/animations/transform-animation.html">
 <link rel="import" href="../../bower_components/neon-animation/neon-animation-runner-behavior.html">
 <link rel="import" href="../../bower_components/paper-card/paper-card.html">
-<link rel="import" href="../../bower_components/paper-header-panel/paper-header-panel.html">
 <link rel="import" href="../../bower_components/paper-icon-button/paper-icon-button.html">
-<link rel="import" href="../../bower_components/paper-toolbar/paper-toolbar.html">
 <link rel="import" href="../ard-collapse-items/ard-collapse-items.html">
 <link rel="import" href="../ard-item/ard-item-body.html">
 <link rel="import" href="../ard-item/ard-item-date.html">
@@ -44,6 +42,16 @@ This code may only be used under the MIT style license found at https://abdonrd.
       :host {
         @apply(--layout-block);
         @apply(--layout-fullbleed);
+      }
+
+      .toolbar {
+        position: fixed;
+        top: 0;
+
+        width: 100%;
+        height: 168px;
+
+        background-color: var(--primary-color);
       }
 
       ard-profile {
@@ -156,105 +164,103 @@ This code may only be used under the MIT style license found at https://abdonrd.
 
     <iron-ajax url="../../data/data.json" auto last-response="{{data}}"></iron-ajax>
 
-    <paper-header-panel mode="cover">
-      <paper-toolbar class="tall"></paper-toolbar>
+    <div class="toolbar"></div>
 
-      <ard-profile profile="[[data.profile]]" class="cascaded"></ard-profile>
+    <ard-profile profile="[[data.profile]]" class="cascaded"></ard-profile>
 
-      <div class="information">
-        <paper-card heading="Experience" class="cascaded">
-          <ard-collapse-items items="[[data.experience.jobs]]" limit="{{collapseLimit}}">
-            <template>
-              <ard-item>
-                <ard-item-body>
-                  <div>[[item.title]]</div>
-                  <div>[[item.company]]</div>
-                  <div>
-                    <ard-item-period period="[[item.period]]"></ard-item-period>
-                    <span>|</span>
-                    <ard-item-location location="[[item.location]]"></ard-item-location>
-                  </div>
-                </ard-item-body>
-              </ard-item>
-            </template>
-          </ard-collapse-items>
-        </paper-card>
+    <div class="information">
+      <paper-card heading="Experience" class="cascaded">
+        <ard-collapse-items items="[[data.experience.jobs]]" limit="{{collapseLimit}}">
+          <template>
+            <ard-item>
+              <ard-item-body>
+                <div>[[item.title]]</div>
+                <div>[[item.company]]</div>
+                <div>
+                  <ard-item-period period="[[item.period]]"></ard-item-period>
+                  <span>|</span>
+                  <ard-item-location location="[[item.location]]"></ard-item-location>
+                </div>
+              </ard-item-body>
+            </ard-item>
+          </template>
+        </ard-collapse-items>
+      </paper-card>
 
-        <paper-card heading="Mentoring" class="cascaded">
-          <ard-collapse-items items="[[data.experience.mentoring]]" limit="{{collapseLimit}}">
-            <template>
-              <ard-item>
-                <ard-item-body>
-                  <div>[[item.eventName]]</div>
-                  <div>[[item.organization]]</div>
-                  <div>
-                    <ard-item-date date="[[item.date]]"></ard-item-date>
-                    <span>|</span>
-                    <ard-item-location location="[[item.location]]"></ard-item-location>
-                  </div>
-                </ard-item-body>
-              </ard-item>
-            </template>
-          </ard-collapse-items>
-        </paper-card>
+      <paper-card heading="Mentoring" class="cascaded">
+        <ard-collapse-items items="[[data.experience.mentoring]]" limit="{{collapseLimit}}">
+          <template>
+            <ard-item>
+              <ard-item-body>
+                <div>[[item.eventName]]</div>
+                <div>[[item.organization]]</div>
+                <div>
+                  <ard-item-date date="[[item.date]]"></ard-item-date>
+                  <span>|</span>
+                  <ard-item-location location="[[item.location]]"></ard-item-location>
+                </div>
+              </ard-item-body>
+            </ard-item>
+          </template>
+        </ard-collapse-items>
+      </paper-card>
 
-        <paper-card heading="Talks" class="cascaded">
-          <ard-collapse-items items="[[data.experience.talks]]" limit="{{collapseLimit}}">
-            <template>
-              <ard-item>
-                <ard-item-body>
-                  <div>[[item.name]]</div>
-                  <div>[[item.eventName]] by [[item.organization]]</div>
-                  <div>
-                    <ard-item-date date="[[item.date]]"></ard-item-date>
-                    <span>|</span>
-                    <ard-item-location location="[[item.location]]"></ard-item-location>
-                  </div>
-                </ard-item-body>
-                <a href$="[[item.slides]]" title$="'[[item.name]]' slides" hidden$="[[!item.slides]]" tabindex="-1" target="_blank">
-                  <paper-icon-button icon="ard-app-icons:slideshow" alt="'[[item.name]]' slides"></paper-icon-button>
-                </a>
-              </ard-item>
-            </template>
-          </ard-collapse-items>
-        </paper-card>
+      <paper-card heading="Talks" class="cascaded">
+        <ard-collapse-items items="[[data.experience.talks]]" limit="{{collapseLimit}}">
+          <template>
+            <ard-item>
+              <ard-item-body>
+                <div>[[item.name]]</div>
+                <div>[[item.eventName]] by [[item.organization]]</div>
+                <div>
+                  <ard-item-date date="[[item.date]]"></ard-item-date>
+                  <span>|</span>
+                  <ard-item-location location="[[item.location]]"></ard-item-location>
+                </div>
+              </ard-item-body>
+              <a href$="[[item.slides]]" title$="'[[item.name]]' slides" hidden$="[[!item.slides]]" tabindex="-1" target="_blank">
+                <paper-icon-button icon="ard-app-icons:slideshow" alt="'[[item.name]]' slides"></paper-icon-button>
+              </a>
+            </ard-item>
+          </template>
+        </ard-collapse-items>
+      </paper-card>
 
-        <paper-card heading="Certifications" class="cascaded">
-          <ard-collapse-items items="[[data.education.certifications]]" limit="{{collapseLimit}}">
-            <template>
-              <ard-item>
-                <ard-item-body>
-                  <div>[[item.name]]</div>
-                  <div>[[item.authority]], License [[item.licenseNumber]]</div>
-                  <div>
-                    <ard-item-period period="[[item.period]]"></ard-item-period>
-                  </div>
-                </ard-item-body>
-                <a href$="[[item.url]]" title$="'[[item.name]]' item" hidden$="[[!item.url]]" tabindex="-1" target="_blank">
-                  <paper-icon-button icon="ard-app-icons:description" alt="[[item.name]]' certification"></paper-icon-button>
-                </a>
-              </ard-item>
-            </template>
-          </ard-collapse-items>
-        </paper-card>
+      <paper-card heading="Certifications" class="cascaded">
+        <ard-collapse-items items="[[data.education.certifications]]" limit="{{collapseLimit}}">
+          <template>
+            <ard-item>
+              <ard-item-body>
+                <div>[[item.name]]</div>
+                <div>[[item.authority]], License [[item.licenseNumber]]</div>
+                <div>
+                  <ard-item-period period="[[item.period]]"></ard-item-period>
+                </div>
+              </ard-item-body>
+              <a href$="[[item.url]]" title$="'[[item.name]]' item" hidden$="[[!item.url]]" tabindex="-1" target="_blank">
+                <paper-icon-button icon="ard-app-icons:description" alt="[[item.name]]' certification"></paper-icon-button>
+              </a>
+            </ard-item>
+          </template>
+        </ard-collapse-items>
+      </paper-card>
 
-        <paper-card heading="Education" class="cascaded">
-          <ard-collapse-items items="[[data.education.education]]" limit="{{collapseLimit}}">
-            <template>
-              <ard-item>
-                <ard-item-body>
-                  <div>[[item.school]]</div>
-                  <div>[[item.degree]]</div>
-                  <div>
-                    <ard-item-period period="[[item.period]]" input-format="YYYY" output-format="YYYY"></ard-item-period>
-                  </div>
-                </ard-item-body>
-              </ard-item>
-            </template>
-          </ard-collapse-items>
-        </paper-card>
-      </div>
-    </paper-header-panel>
+      <paper-card heading="Education" class="cascaded">
+        <ard-collapse-items items="[[data.education.education]]" limit="{{collapseLimit}}">
+          <template>
+            <ard-item>
+              <ard-item-body>
+                <div>[[item.school]]</div>
+                <div>[[item.degree]]</div>
+                <div>
+                  <ard-item-period period="[[item.period]]" input-format="YYYY" output-format="YYYY"></ard-item-period>
+                </div>
+              </ard-item-body>
+            </ard-item>
+          </template>
+        </ard-collapse-items>
+      </paper-card>
+    </div>
   </template>
 
   <script>
