@@ -20,7 +20,7 @@ This code may only be used under the MIT style license found at https://abdonrd.
 <link rel="import" href="ard-item/ard-item-date.html">
 <link rel="import" href="ard-item/ard-item-location.html">
 <link rel="import" href="ard-item/ard-item-period.html">
-<link rel="import" href="ard-profile/ard-profile.html">
+<link rel="import" href="ard-profile.html">
 
 <dom-module id="app-shell">
   <template>
@@ -162,7 +162,7 @@ This code may only be used under the MIT style license found at https://abdonrd.
       }
     </style>
 
-    <iron-ajax url="../../data/data.json" auto last-response="{{data}}"></iron-ajax>
+    <iron-ajax url="../data/data.json" auto last-response="{{data}}"></iron-ajax>
 
     <div class="toolbar"></div>
 
