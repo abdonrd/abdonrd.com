@@ -13,16 +13,16 @@ This code may only be used under the MIT style license found at https://abdonrd.
 <link rel="import" href="../bower_components/neon-animation/neon-animation-runner-behavior.html">
 <link rel="import" href="../bower_components/paper-card/paper-card.html">
 <link rel="import" href="../bower_components/paper-icon-button/paper-icon-button.html">
+<link rel="import" href="app-icons.html">
 <link rel="import" href="ard-collapse-items/ard-collapse-items.html">
+<link rel="import" href="ard-item/ard-item.html">
 <link rel="import" href="ard-item/ard-item-body.html">
 <link rel="import" href="ard-item/ard-item-date.html">
 <link rel="import" href="ard-item/ard-item-location.html">
 <link rel="import" href="ard-item/ard-item-period.html">
-<link rel="import" href="ard-item/ard-item.html">
-<link rel="import" href="ard-profile/ard-profile.html">
-<link rel="import" href="ard-app-icons.html">
+<link rel="import" href="ard-profile.html">
 
-<dom-module id="ard-app">
+<dom-module id="app-shell">
   <template>
     <style>
       :root {
@@ -162,7 +162,7 @@ This code may only be used under the MIT style license found at https://abdonrd.
       }
     </style>
 
-    <iron-ajax url="../../data/data.json" auto last-response="{{data}}"></iron-ajax>
+    <iron-ajax url="../data/data.json" auto last-response="{{data}}"></iron-ajax>
 
     <div class="toolbar"></div>
 
@@ -265,7 +265,7 @@ This code may only be used under the MIT style license found at https://abdonrd.
 
   <script>
     Polymer({
-      is: 'ard-app',
+      is: 'app-shell',
 
       behaviors: [
         Polymer.NeonAnimationRunnerBehavior

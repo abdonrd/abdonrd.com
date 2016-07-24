@@ -8,7 +8,7 @@ This code may only be used under the MIT style license found at https://abdonrd.
 <link rel="import" href="../../bower_components/iron-image/iron-image.html">
 <link rel="import" href="../../bower_components/paper-card/paper-card.html">
 <link rel="import" href="../../bower_components/paper-icon-button/paper-icon-button.html">
-<link rel="import" href="ard-profile-icons.html">
+<link rel="import" href="app-icons.html">
 
 <dom-module id="ard-profile">
   <template>
@@ -70,22 +70,22 @@ This code may only be used under the MIT style license found at https://abdonrd.
     </style>
 
     <paper-card heading="[[profile.firstName]] [[profile.lastName]]">
-      <iron-image id="avatar" src="../../images/avatar.jpg" alt$="[[profile.firstName]] [[profile.lastName]] avatar"></iron-image>
+      <iron-image id="avatar" src="../images/avatar.jpg" alt$="[[profile.firstName]] [[profile.lastName]] avatar"></iron-image>
       <div class="card-content">
         <div>[[profile.summary]]</div>
       </div>
       <div class="card-actions">
         <a href$="[[profile.linkedinProfile]]" title="LinkedIn profile" tabindex="-1" target="_blank">
-          <paper-icon-button icon="ard-profile:linkedin" alt="LinkedIn profile"></paper-icon-button>
+          <paper-icon-button icon="linkedin" alt="LinkedIn profile"></paper-icon-button>
         </a>
         <a href$="[[profile.twitterProfile]]" title="Twitter profile" tabindex="-1" target="_blank">
-          <paper-icon-button icon="ard-profile:twitter" alt="Twitter profile"></paper-icon-button>
+          <paper-icon-button icon="twitter" alt="Twitter profile"></paper-icon-button>
         </a>
         <a href$="[[profile.googlePlusProfile]]" title="Google+ profile" tabindex="-1" target="_blank">
-          <paper-icon-button icon="ard-profile:googlePlus" alt="Google+ profile"></paper-icon-button>
+          <paper-icon-button icon="googlePlus" alt="Google+ profile"></paper-icon-button>
         </a>
         <a href$="[[profile.githubProfile]]" title="GitHub profile" tabindex="-1" target="_blank">
-          <paper-icon-button icon="ard-profile:github" alt="GitHub profile"></paper-icon-button>
+          <paper-icon-button icon="github" alt="GitHub profile"></paper-icon-button>
         </a>
       </div>
     </paper-card>
