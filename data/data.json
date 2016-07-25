@@ -3,8 +3,8 @@
     "firstName": "Abdón",
     "lastName": "Rodríguez Davila",
     "nickname": "abdonrd",
-    "location": "Madrid, Madrid, Spain",
-    "summary": "I am a galician developer. Passionate about technology. Frontend Developer at King of App. Google Developer Group organizer.",
+    "location": "Vigo, Galicia, Spain",
+    "summary": "Galician. Passionate about technology. Google Developer Group organizer.",
     "linkedinProfile": "https://www.linkedin.com/in/abdonrd",
     "twitterProfile": "https://twitter.com/abdonrd",
     "googlePlusProfile": "https://plus.google.com/+AbdonRodriguezDavila",
@@ -21,8 +21,8 @@
         },
         "period": {
           "start": "2015-07",
-          "finish": "",
-          "present": true
+          "finish": "2016-06",
+          "present": false
         }
       },
       {
