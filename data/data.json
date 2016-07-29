@@ -4,7 +4,7 @@
     "lastName": "Rodríguez Davila",
     "nickname": "abdonrd",
     "location": "Vigo, Galicia, Spain",
-    "summary": "Galician. Passionate about technology. Google Developer Group organizer.",
+    "summary": "Galician. Passionate about technology. Frontend Developer at IBM Research. Google Developer Group organizer.",
     "linkedinProfile": "https://www.linkedin.com/in/abdonrd",
     "twitterProfile": "https://twitter.com/abdonrd",
     "googlePlusProfile": "https://plus.google.com/+AbdonRodriguezDavila",
@@ -12,6 +12,19 @@
   },
   "experience": {
     "jobs": [
+      {
+        "company": "IBM Research",
+        "title": "Frontend Developer",
+        "location": {
+          "short": "Vigo",
+          "long": "Vigo, Galicia, Spain"
+        },
+        "period": {
+          "start": "2016-07",
+          "finish": "",
+          "present": true
+        }
+      },
       {
         "company": "King of App",
         "title": "Senior Frontend Developer",
