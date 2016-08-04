@@ -6,6 +6,10 @@
     "bower.json",
     "data/**/*",
     "images/**/*",
+    "scripts/**/*",
     "src/**/*"
+  ],
+  "includeDependencies": [
+    "bower_components/webcomponentsjs/webcomponents-lite.min.js"
   ]
 }
