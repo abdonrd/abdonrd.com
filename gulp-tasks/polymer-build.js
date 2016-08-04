@@ -6,6 +6,8 @@
 
 'use strict';
 
-// Load custom tasks from the `gulp-tasks` directory
-require('./gulp-tasks/lint.js');
-require('./gulp-tasks/polymer-build.js');
+require('./service-worker.js');
+
+const gulp = require('gulp');
+
+gulp.task('polymer-build', ['service-worker']);

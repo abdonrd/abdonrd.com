@@ -11,7 +11,8 @@
     "space-before-function-paren": ["error", "never"]
   },
   "env": {
-    "browser": true
+    "browser": true,
+    "es6": true
   },
   "plugins": [
     "html"
