@@ -11,6 +11,7 @@ const eslint = require('gulp-eslint');
 const gulp = require('gulp');
 const gulpif = require('gulp-if');
 const imagemin = require('gulp-imagemin');
+const jsonmin = require('gulp-jsonmin');
 const mergeStream = require('merge-stream');
 const polymer = require('polymer-build');
 
@@ -46,6 +47,7 @@ gulp.task('build', ['clean'], (cb) => {
       progressive: true,
       interlaced: true
     })))
+    .pipe(gulpif('**/*.json', jsonmin()))
     .pipe(project.rejoinHtml());
 
   // process dependencies
