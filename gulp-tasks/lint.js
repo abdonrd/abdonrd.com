@@ -12,11 +12,13 @@ const eslint = require('gulp-eslint');
 // Lint JavaScript
 gulp.task('lint', () => {
   let filesToLint = [
-    'gulpfile.js',
     'gulp-tasks/**/*.js',
-    'index.html',
+    'scripts/**/*.js',
+    '!scripts/google-analytics.js',
     'src/**/*.{js,html}',
-    'test/**/*.{js,html}'
+    'test/**/*.{js,html}',
+    'gulpfile.js',
+    'index.html'
   ];
 
   return gulp.src(filesToLint)
