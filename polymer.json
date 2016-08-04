@@ -4,6 +4,8 @@
   "sourceGlobs": [
     "app.yaml",
     "bower.json",
+    "LICENSE.txt",
+    "manifest.json",
     "data/**/*",
     "images/**/*",
     "scripts/**/*",
