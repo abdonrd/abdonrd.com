@@ -20,13 +20,14 @@ const project = new polymer.PolymerProject(polymerJSON);
 const buildPath = 'build';
 
 gulp.task('lint', () => {
-  let filesToLint = [
+  const filesToLint = [
     'scripts/**/*.js',
     '!scripts/google-analytics.js',
     'src/**/*.{js,html}',
     'test/**/*.{js,html}',
     'gulpfile.js',
-    'index.html'
+    'index.html',
+    'service-worker.js'
   ];
 
   return gulp.src(filesToLint)
