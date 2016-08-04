@@ -17,6 +17,7 @@ const polymer = require('polymer-build');
 
 const polymerJSON = require('./polymer.json');
 const project = new polymer.PolymerProject(polymerJSON);
+const buildPath = 'build';
 
 gulp.task('lint', () => {
   let filesToLint = [
@@ -35,7 +36,7 @@ gulp.task('lint', () => {
 });
 
 gulp.task('clean', () => {
-  return del('build');
+  return del(buildPath);
 });
 
 gulp.task('build', ['clean'], (cb) => {
@@ -64,11 +65,11 @@ gulp.task('build', ['clean'], (cb) => {
   polymer.forkStream(mergedFiles)
     .pipe(project.bundler)
     // write to the bundled folder
-    .pipe(gulp.dest('build/bundled'));
+    .pipe(gulp.dest(buildPath + '/bundled'));
 
   polymer.forkStream(mergedFiles)
     // write to the unbundled folder
-    .pipe(gulp.dest('build/unbundled'));
+    .pipe(gulp.dest(buildPath + '/unbundled'));
 
   cb();
 });
@@ -81,7 +82,7 @@ gulp.task('service-worker', ['build'], () => {
   // Once the unbundled build stream is complete, create a service worker for the build
   polymer.addServiceWorker({
     project: project,
-    buildRoot: 'build/unbundled',
+    buildRoot: buildPath + '/unbundled',
     swConfig: swConfig,
     serviceWorkerPath: 'service-worker.js',
   });
@@ -89,7 +90,7 @@ gulp.task('service-worker', ['build'], () => {
   // Once the bundled build stream is complete, create a service worker for the build
   polymer.addServiceWorker({
     project: project,
-    buildRoot: 'build/bundled',
+    buildRoot: buildPath + '/bundled',
     swConfig: swConfig,
     bundled: true,
   });
