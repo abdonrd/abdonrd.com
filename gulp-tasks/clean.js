@@ -6,6 +6,10 @@
 
 'use strict';
 
-// Load custom tasks from the `gulp-tasks` directory
-require('./gulp-tasks/lint.js');
-require('./gulp-tasks/polymer-build.js');
+const del = require('del');
+const gulp = require('gulp');
+
+// Clean build directory
+gulp.task('clean', () => {
+  return del('build');
+});

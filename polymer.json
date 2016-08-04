@@ -1,4 +1,11 @@
 {
   "entrypoint": "index.html",
-  "shell": "src/app-shell.html"
+  "shell": "src/app-shell.html",
+  "sourceGlobs": [
+    "app.yaml",
+    "bower.json",
+    "data/**/*",
+    "images/**/*",
+    "src/**/*"
+  ]
 }
