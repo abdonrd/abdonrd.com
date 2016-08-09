@@ -3,6 +3,7 @@
   "rules": {
     "brace-style": "error",
     "comma-spacing": ["error", {"before": false, "after": true}],
+    "indent": ["error", 2],
     "keyword-spacing": "error",
     "no-console": ["warn", {"allow": ["info"]}],
     "no-multi-spaces": "error",
@@ -17,9 +18,12 @@
   "plugins": [
     "html"
   ],
+  "settings": {
+    "html/indent": "+2",
+    "html/report-bad-indent": 2
+  },
   "globals": {
     "Polymer": false,
-    "module": false,
     "require": false
   }
 }

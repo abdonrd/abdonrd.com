@@ -1,7 +1,7 @@
 {
   "name": "abdonrd.com",
   "description": "My personal website",
-  "version": "0.9.3",
+  "version": "0.9.4",
   "author": "Abdón Rodríguez Davila <a@abdonrd.com> (https://abdonrd.com)",
   "homepage": "https://abdonrd.com",
   "license": "https://abdonrd.com/LICENSE.txt",
@@ -24,7 +24,6 @@
     "gulp-imagemin": "^3.0.0",
     "gulp-jsonmin": "^1.1.0",
     "merge-stream": "^1.0.0",
-    "plylog": "^0.4.0",
     "polymer-build": "^0.3.0"
   }
 }
