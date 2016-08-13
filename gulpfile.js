@@ -6,21 +6,25 @@
 
 'use strict';
 
-const del = require('del');
-const eslint = require('gulp-eslint');
+const path = require('path');
 const gulp = require('gulp');
 const gulpif = require('gulp-if');
-const imagemin = require('gulp-imagemin');
-const jsonmin = require('gulp-jsonmin');
-const mergeStream = require('merge-stream');
-const polymer = require('polymer-build');
 
-const polymerJSON = require('./polymer.json');
-const project = new polymer.PolymerProject(polymerJSON);
-const buildPath = 'build';
-
-gulp.task('lint', () => {
-  const filesToLint = [
+// Keep the global.config above any of the gulp-tasks that depend on it
+global.config = {
+  polymerJsonPath: path.join(process.cwd(), 'polymer.json'),
+  build: {
+    rootDirectory: 'build',
+    bundledDirectory: 'bundled',
+    unbundledDirectory: 'unbundled',
+    // Accepts either 'bundled', 'unbundled', or 'both'
+    bundleType: 'bundled'
+  },
+  serviceWorkerPath: 'service-worker.js',
+  swPrecacheConfig: {
+    navigateFallback: '/index.html'
+  },
+  filesToLint: [
     'scripts/**/*.js',
     '!scripts/google-analytics.js',
     'src/**/*.{js,html}',
@@ -28,73 +32,35 @@ gulp.task('lint', () => {
     'gulpfile.js',
     'index.html',
     'service-worker.js'
-  ];
+  ]
+};
 
-  return gulp.src(filesToLint)
-    .pipe(eslint())
-    .pipe(eslint.format())
-    .pipe(eslint.failAfterError());
-});
+const clean = require('./gulp-tasks/clean.js');
+const images = require('./gulp-tasks/images.js');
+const json = require('./gulp-tasks/json.js');
+const lint = require('./gulp-tasks/lint.js');
+const project = require('./gulp-tasks/project.js');
 
-gulp.task('clean', () => {
-  return del(buildPath);
-});
+function source() {
+  return project.splitSource()
+    .pipe(gulpif('**/*.{png,gif,jpg,svg}', images.minify()))
+    .pipe(gulpif('**/*.json', json.minify()))
+    .pipe(project.rejoin());
+}
 
-gulp.task('build', ['clean'], (cb) => {
-  // process source files in the project
-  const sources = project.sources()
-    .pipe(project.splitHtml())
-    // add compilers or optimizers here!
-    .pipe(gulpif('**/*.{png,gif,jpg,svg}', imagemin({
-      progressive: true,
-      interlaced: true
-    })))
-    .pipe(gulpif('**/*.json', jsonmin()))
-    .pipe(project.rejoinHtml());
+function dependencies() {
+  return project.splitDependencies()
+    .pipe(project.rejoin());
+}
 
-  // process dependencies
-  const dependencies = project.dependencies()
-    .pipe(project.splitHtml())
-    // add compilers or optimizers here!
-    .pipe(project.rejoinHtml());
+// Clean the build directory, split all source and dependency files into streams
+// and process them, and output bundled and/or unbundled versions of the project
+// with their own service workers
+gulp.task('build', gulp.series([
+  clean.build,
+  project.merge(source, dependencies),
+  project.serviceWorker
+]));
 
-  // merge the source and dependencies streams to we can analyze the project
-  const mergedFiles = mergeStream(sources, dependencies)
-    .pipe(project.analyzer);
-
-  // this fork will vulcanize the project
-  polymer.forkStream(mergedFiles)
-    .pipe(project.bundler)
-    // write to the bundled folder
-    .pipe(gulp.dest(buildPath + '/bundled'));
-
-  polymer.forkStream(mergedFiles)
-    // write to the unbundled folder
-    .pipe(gulp.dest(buildPath + '/unbundled'));
-
-  cb();
-});
-
-gulp.task('service-worker', ['build'], () => {
-  const swConfig = {
-    navigateFallback: '/index.html',
-  };
-
-  // Once the unbundled build stream is complete, create a service worker for the build
-  polymer.addServiceWorker({
-    project: project,
-    buildRoot: buildPath + '/unbundled',
-    swConfig: swConfig,
-    serviceWorkerPath: 'service-worker.js',
-  });
-
-  // Once the bundled build stream is complete, create a service worker for the build
-  polymer.addServiceWorker({
-    project: project,
-    buildRoot: buildPath + '/bundled',
-    swConfig: swConfig,
-    bundled: true,
-  });
-});
-
-gulp.task('polymer-build', ['service-worker']);
+// Lint JavaScript code
+gulp.task('lint', lint);

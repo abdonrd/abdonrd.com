@@ -1,7 +1,7 @@
 {
   "name": "abdonrd.com",
   "description": "My personal website",
-  "version": "0.9.4",
+  "version": "0.9.5",
   "author": "Abdón Rodríguez Davila <a@abdonrd.com> (https://abdonrd.com)",
   "homepage": "https://abdonrd.com",
   "license": "https://abdonrd.com/LICENSE.txt",
@@ -18,12 +18,12 @@
   "devDependencies": {
     "del": "^2.2.0",
     "eslint-plugin-html": "^1.5.0",
-    "gulp": "^3.9.0",
+    "gulp": "gulpjs/gulp#4.0",
     "gulp-eslint": "^3.0.0",
     "gulp-if": "^2.0.0",
     "gulp-imagemin": "^3.0.0",
     "gulp-jsonmin": "^1.1.0",
     "merge-stream": "^1.0.0",
-    "polymer-build": "^0.3.0"
+    "polymer-build": "^0.4.0"
   }
 }
