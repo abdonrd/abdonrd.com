@@ -2,14 +2,14 @@
   "entrypoint": "index.html",
   "shell": "src/app-shell.html",
   "sourceGlobs": [
-    "app.yaml",
-    "bower.json",
-    "LICENSE.txt",
-    "manifest.json",
     "data/**/*",
     "images/**/*",
     "scripts/**/*",
-    "src/**/*"
+    "src/**/*",
+    "app.yaml",
+    "bower.json",
+    "LICENSE.txt",
+    "manifest.json"
   ],
   "includeDependencies": [
     "bower_components/webcomponentsjs/webcomponents-lite.min.js"
