@@ -42,7 +42,7 @@ generated using fragment bundling, suitable for serving from non
 H2/push-compatible servers or to clients that do not support H2/Push.
 
 ```
-polymer build
+gulp build
 ```
 
 ### License
