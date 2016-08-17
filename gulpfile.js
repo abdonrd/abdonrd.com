@@ -22,7 +22,28 @@ global.config = {
   },
   serviceWorkerPath: 'service-worker.js',
   swPrecacheConfig: {
-    navigateFallback: '/index.html'
+    staticFileGlobs: [
+      '/bower_components/webcomponentsjs/webcomponents-lite.min.js',
+      '/data/**/*',
+      '/images/**/*',
+      '/scripts/**/*',
+      '/index.html',
+      '/manifest.json'
+    ],
+    navigateFallback: '/index.html',
+    navigateFallbackWhitelist: [/^(?!.*\.html$|\/data\/).*/],
+    runtimeCaching: [
+      {
+        urlPattern: /\/data\/.*json/,
+        handler: 'fastest',
+        options: {
+          cache: {
+            maxEntries: 10,
+            name: 'data-cache'
+          }
+        }
+      }
+    ]
   },
   filesToLint: [
     'scripts/**/*.js',
