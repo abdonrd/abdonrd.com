@@ -80,6 +80,17 @@
     ],
     "talks": [
       {
+        "name": "With Polymer, using the platform to build a better web",
+        "eventName": "GDG Summit Spain 2016",
+        "organization": "GDG Spain",
+        "date": "2016-07-29",
+        "location": {
+          "short": "Malaga",
+          "long": "Malaga, Andalusia, Spain"
+        },
+        "slides": "https://docs.google.com/presentation/d/1TaFp8adKWM1nmVGwcGAtDUwQAARwZ9iiquqvX3LWk1E/edit"
+      },
+      {
         "name": "What are the Progressive Web Apps?",
         "eventName": "#PWADevSummit Extended Vigo",
         "organization": "GDG Vigo",
