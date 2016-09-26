@@ -12,9 +12,6 @@
   "bugs": {
     "url": "https://github.com/abdonrd/abdonrd.com/issues"
   },
-  "scripts": {
-    "lint": "gulp lint"
-  },
   "devDependencies": {
     "del": "^2.2.0",
     "eslint-plugin-html": "^1.5.0",
@@ -25,5 +22,12 @@
     "gulp-jsonmin": "^1.1.0",
     "merge-stream": "^1.0.0",
     "polymer-build": "^0.4.0"
+  },
+  "scripts": {
+    "build": "gulp build",
+    "lint": "gulp lint"
+  },
+  "engines": {
+    "node": ">=4.0"
   }
 }
