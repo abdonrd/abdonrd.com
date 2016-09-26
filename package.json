@@ -1,7 +1,7 @@
 {
   "name": "abdonrd.com",
   "description": "My personal website",
-  "version": "0.9.6",
+  "version": "0.9.7",
   "author": "Abdón Rodríguez Davila <a@abdonrd.com> (https://abdonrd.com)",
   "homepage": "https://abdonrd.com",
   "license": "https://abdonrd.com/LICENSE.txt",
@@ -11,9 +11,6 @@
   },
   "bugs": {
     "url": "https://github.com/abdonrd/abdonrd.com/issues"
-  },
-  "scripts": {
-    "lint": "gulp lint"
   },
   "devDependencies": {
     "del": "^2.2.0",
@@ -25,5 +22,12 @@
     "gulp-jsonmin": "^1.1.0",
     "merge-stream": "^1.0.0",
     "polymer-build": "^0.4.0"
+  },
+  "scripts": {
+    "build": "gulp build",
+    "lint": "gulp lint"
+  },
+  "engines": {
+    "node": ">=4.0"
   }
 }

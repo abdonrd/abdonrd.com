@@ -9,32 +9,25 @@ cache:
 branches:
   except:
     - /^v\d/
-before_script:
-  - 'export DISPLAY=:99.0'
-  - sh -e /etc/init.d/xvfb start
-  - sleep 3
+install:
   - npm install -g bower
-  - npm install && bower install
-  - gulp lint
-before_deploy:
-  - openssl aes-256-cbc -K $encrypted_42359f73c124_key -iv $encrypted_42359f73c124_iv
-    -in service-account.json.enc -out service-account.json -d
-  - gulp build
-  - LAST_TAG=`git describe --abbrev=0` || LAST_TAG="develop"; echo $LAST_TAG
-  - DEPLOY_VERSION=${LAST_TAG//.}
+  - bower install
+before_script:
+  - npm run lint
+script:
+  - npm run build
 deploy:
-  - provider: gae
+  - provider: firebase
+    edge: true
     skip_cleanup: true
-    project: abdonrd-com
-    config: build/bundled/app.yaml
-    version: develop
-    no_promote: true
+    project: "${FIREBASE_PROJECT_DEVELOP}"
+    token: "${FIREBASE_TOKEN}"
     on:
       branch: develop
-  - provider: gae
+  - provider: firebase
+    edge: true
     skip_cleanup: true
-    project: abdonrd-com
-    config: build/bundled/app.yaml
-    version: $DEPLOY_VERSION
+    project: "${FIREBASE_PROJECT}"
+    token: "${FIREBASE_TOKEN}"
     on:
       branch: master
