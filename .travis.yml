@@ -9,17 +9,16 @@ cache:
 branches:
   except:
     - /^v\d/
-before_script:
-  - 'export DISPLAY=:99.0'
-  - sh -e /etc/init.d/xvfb start
-  - sleep 3
+install:
   - npm install -g bower
-  - npm install && bower install
-  - gulp lint
+  - bower install
+before_script:
+  - npm run lint
+script:
+  - npm run build
 before_deploy:
   - openssl aes-256-cbc -K $encrypted_42359f73c124_key -iv $encrypted_42359f73c124_iv
     -in service-account.json.enc -out service-account.json -d
-  - gulp build
   - LAST_TAG=`git describe --abbrev=0` || LAST_TAG="develop"; echo $LAST_TAG
   - DEPLOY_VERSION=${LAST_TAG//.}
 deploy:
