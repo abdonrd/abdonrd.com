@@ -1,6 +1,9 @@
 {
   "hosting": {
     "public": "build/bundled",
+    "ignore": [
+      "bower.json"
+    ],
     "rewrites": [
       {
         "source": "**/!{*.*}",
