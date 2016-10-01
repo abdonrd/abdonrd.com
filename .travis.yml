@@ -20,14 +20,14 @@ deploy:
   - provider: firebase
     edge: true
     skip_cleanup: true
-    project: "${FIREBASE_PROJECT_DEVELOP}"
+    project: abdonrd-develop
     token: "${FIREBASE_TOKEN}"
     on:
       branch: develop
   - provider: firebase
     edge: true
     skip_cleanup: true
-    project: "${FIREBASE_PROJECT}"
+    project: abdonrd
     token: "${FIREBASE_TOKEN}"
     on:
       branch: master
