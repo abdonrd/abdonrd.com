@@ -10,6 +10,7 @@ branches:
   except:
     - /^v\d/
 install:
+  - npm install
   - npm install -g bower
   - bower install
 before_script:
@@ -21,13 +22,13 @@ deploy:
     edge: true
     skip_cleanup: true
     project: abdonrd-develop
-    token: "${FIREBASE_TOKEN}"
+    token: $FIREBASE_TOKEN
     on:
       branch: develop
   - provider: firebase
     edge: true
     skip_cleanup: true
     project: abdonrd
-    token: "${FIREBASE_TOKEN}"
+    token: $FIREBASE_TOKEN
     on:
       branch: master
