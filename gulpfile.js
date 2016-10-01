@@ -43,14 +43,7 @@ global.config = {
         }
       }
     ]
-  },
-  filesToLint: [
-    'src/**/*.{js,html}',
-    'test/**/*.{js,html}',
-    'gulpfile.js',
-    'index.html',
-    'service-worker.js'
-  ]
+  }
 };
 
 const clean = require('./gulp-tasks/clean.js');
@@ -75,10 +68,17 @@ function dependencies() {
 // and process them, and output bundled and/or unbundled versions of the project
 // with their own service workers
 gulp.task('build', gulp.series([
-  clean.build,
+  clean([global.config.build.rootDirectory]),
   project.merge(source, dependencies),
   project.serviceWorker
 ]));
 
 // Lint JavaScript code
-gulp.task('lint', lint);
+gulp.task('lint', lint([
+  'gulp-tasks/**/*.js',
+  'src/**/*.{js,html}',
+  'test/**/*.{js,html}',
+  'gulpfile.js',
+  'index.html',
+  'service-worker.js'
+]));

@@ -9,11 +9,13 @@
 const gulp = require('gulp');
 const eslint = require('gulp-eslint');
 
-function lint() {
-  return gulp.src(global.config.filesToLint)
-    .pipe(eslint())
-    .pipe(eslint.format())
-    .pipe(eslint.failAfterError());
+function lint(filesToLint) {
+  return function lint() {
+    return gulp.src(filesToLint)
+      .pipe(eslint())
+      .pipe(eslint.format())
+      .pipe(eslint.failAfterError());
+  }
 }
 
 module.exports = lint;
