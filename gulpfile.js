@@ -26,7 +26,6 @@ global.config = {
       '/bower_components/webcomponentsjs/webcomponents-lite.min.js',
       '/data/**/*',
       '/images/**/*',
-      '/scripts/**/*',
       '/index.html',
       '/manifest.json'
     ],
@@ -46,8 +45,6 @@ global.config = {
     ]
   },
   filesToLint: [
-    'scripts/**/*.js',
-    '!scripts/google-analytics.js',
     'src/**/*.{js,html}',
     'test/**/*.{js,html}',
     'gulpfile.js',
