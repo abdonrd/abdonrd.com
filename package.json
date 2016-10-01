@@ -17,6 +17,7 @@
     "eslint-plugin-html": "^1.5.0",
     "gulp": "gulpjs/gulp#4.0",
     "gulp-eslint": "^3.0.0",
+    "gulp-htmlmin": "^3.0.0",
     "gulp-if": "^2.0.0",
     "gulp-imagemin": "^3.0.0",
     "gulp-jsonmin": "^1.1.0",
