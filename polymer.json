@@ -4,14 +4,11 @@
   "sourceGlobs": [
     "data/**/*",
     "images/**/*",
-    "scripts/**/*",
     "src/**/*",
-    "app.yaml",
-    "bower.json",
-    "LICENSE.txt",
-    "manifest.json"
+    "bower.json"
   ],
   "includeDependencies": [
-    "bower_components/webcomponentsjs/webcomponents-lite.min.js"
+    "bower_components/webcomponentsjs/webcomponents-lite.min.js",
+    "manifest.json"
   ]
 }
