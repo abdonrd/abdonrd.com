@@ -6,14 +6,10 @@
 
 'use strict';
 
-const imagemin = require('gulp-imagemin');
+const uglify = require('gulp-uglify');
 
-// Returns a WriteableStream to process images
 function minify() {
-  return imagemin({
-    progressive: true,
-    interlaced: true
-  });
+  return uglify();
 }
 
 module.exports = {

@@ -1,6 +1,5 @@
 {
   "name": "abdonrd.com",
-  "private": true,
   "dependencies": {
     "iron-ajax": "PolymerElements/iron-ajax#^1.1.0",
     "iron-collapse": "PolymerElements/iron-collapse#^1.0.0",
@@ -13,6 +12,7 @@
     "paper-card": "PolymerElements/paper-card#^1.1.0",
     "paper-icon-button": "PolymerElements/paper-icon-button#^1.0.0",
     "paper-styles": "PolymerElements/paper-styles#^1.1.0",
-    "polymer": "Polymer/polymer#^1.2.0"
-  }
+    "polymer": "Polymer/polymer#^1.6.0"
+  },
+  "private": true
 }

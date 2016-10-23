@@ -1,7 +1,7 @@
 /**
  * @license
  * Copyright (c) 2016 Abdón Rodríguez Davila (@abdonrd). All rights reserved.
- * This code may only be used under the MIT style license found at https://abdonrd.com/LICENSE.txt
+ * This code may only be used under the MIT style license found at https://abdonrd.github.io/LICENSE.txt
  */
 
 'use strict';
@@ -26,7 +26,6 @@ global.config = {
       '/bower_components/webcomponentsjs/webcomponents-lite.min.js',
       '/data/**/*',
       '/images/**/*',
-      '/scripts/**/*',
       '/index.html',
       '/manifest.json'
     ],
@@ -44,20 +43,13 @@ global.config = {
         }
       }
     ]
-  },
-  filesToLint: [
-    'scripts/**/*.js',
-    '!scripts/google-analytics.js',
-    'src/**/*.{js,html}',
-    'test/**/*.{js,html}',
-    'gulpfile.js',
-    'index.html',
-    'service-worker.js'
-  ]
+  }
 };
 
 const clean = require('./gulp-tasks/clean.js');
+const html = require('./gulp-tasks/html.js');
 const images = require('./gulp-tasks/images.js');
+const javascript = require('./gulp-tasks/javascript.js');
 const json = require('./gulp-tasks/json.js');
 const lint = require('./gulp-tasks/lint.js');
 const project = require('./gulp-tasks/project.js');
@@ -66,6 +58,8 @@ function source() {
   return project.splitSource()
     .pipe(gulpif('**/*.{png,gif,jpg,svg}', images.minify()))
     .pipe(gulpif('**/*.json', json.minify()))
+    .pipe(gulpif('**/*.js', javascript.minify()))
+    .pipe(gulpif('**/*.html', html.minify()))
     .pipe(project.rejoin());
 }
 
@@ -78,10 +72,17 @@ function dependencies() {
 // and process them, and output bundled and/or unbundled versions of the project
 // with their own service workers
 gulp.task('build', gulp.series([
-  clean.build,
+  clean([global.config.build.rootDirectory]),
   project.merge(source, dependencies),
   project.serviceWorker
 ]));
 
 // Lint JavaScript code
-gulp.task('lint', lint);
+gulp.task('lint', lint([
+  'gulp-tasks/**/*.js',
+  'src/**/*.{js,html}',
+  'test/**/*.{js,html}',
+  'gulpfile.js',
+  'index.html',
+  'service-worker.js'
+]));

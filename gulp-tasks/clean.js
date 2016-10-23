@@ -1,18 +1,18 @@
 /**
  * @license
  * Copyright (c) 2016 Abdón Rodríguez Davila (@abdonrd). All rights reserved.
- * This code may only be used under the MIT style license found at https://abdonrd.com/LICENSE.txt
+ * This code may only be used under the MIT style license found at https://abdonrd.github.io/LICENSE.txt
  */
 
 'use strict';
 
 const del = require('del');
 
-// Returns a Promise to delete the build directory
-function clean() {
-  return del(global.config.build.rootDirectory);
+// Returns a function that returns a Promise to delete directories
+function clean(directories) {
+  return function clean() {
+    return del(directories);
+  }
 }
 
-module.exports = {
-  build: clean
-};
+module.exports = clean;

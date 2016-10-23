@@ -1,26 +1,27 @@
-# [abdonrd.com](https://abdonrd.com) [![Build Status](https://travis-ci.org/abdonrd/abdonrd.com.svg?branch=master)](https://travis-ci.org/abdonrd/abdonrd.com)
+[![Build status][travis-image]][travis-url]
+
+# [abdonrd.com](https://abdonrd.com)
 
 My little personal website built with Polymer.
 
-Deployed in Google App Engine with Travis CI.
+Deployed in Firebase with Travis CI.
 
-### Setup
+## Prerequisites
 
-#### Prerequisites
-
-Install [polymer-cli](https://github.com/Polymer/polymer-cli):
+Install [Polymer CLI](https://github.com/Polymer/polymer-cli) using [npm](https://www.npmjs.com)
+(we assume you have pre-installed [node.js](https://nodejs.org)).
 
 ```
 npm install -g polymer-cli
 ```
 
-#### Install dependencies
+Install dependencies:
 
 ```
 npm install && bower install
 ```
 
-#### Start the development server
+## Start the development server
 
 This command serves the app at `http://localhost:8080` and provides basic URL
 routing for the app:
@@ -29,24 +30,35 @@ routing for the app:
 polymer serve
 ```
 
-#### Build
-
-This command performs HTML, CSS, and JS minification on the application
-dependencies, and generates a `service-worker.js` file with code to pre-cache
-the dependencies based on the entrypoint and fragments specified in
-`polymer.json`. The minified files are output to the `build/unbundled` folder,
-and are suitable for serving from a HTTP/2+Push compatible server.
-
-In addition the command also creates a fallback `build/bundled` folder,
-generated using fragment bundling, suitable for serving from non
-H2/push-compatible servers or to clients that do not support H2/Push.
+## Build
 
 ```
-gulp build
+npm run build
 ```
 
-### License
+This will create a `build/` folder with `bundled/` and `unbundled/` sub-folders
+containing a bundled (vulcanized) and unbundled builds, both run through HTML,
+CSS, and JS optimizers.
 
-Copyright (c) 2016 Abdón Rodríguez Davila (@abdonrd)
+The included `gulpfile.js` relies on [the `polymer-build` library](https://github.com/Polymer/polymer-build),
+the same library that powers Polymer CLI. Follow the comments in the
+`gulpfile.js` to add additional steps.
 
-This code may only be used under the MIT style license found at [LICENSE.txt](LICENSE.txt)
+You can serve the built versions by giving `polymer serve` a folder to serve
+from:
+
+```
+polymer serve build/bundled
+```
+
+## Run tests
+
+This command will run [Web Component Tester](https://github.com/Polymer/web-component-tester)
+against the browsers currently installed on your machine:
+
+```
+polymer test
+```
+
+[travis-image]: https://travis-ci.org/abdonrd/abdonrd.com.svg?branch=master
+[travis-url]: https://travis-ci.org/abdonrd/abdonrd.com

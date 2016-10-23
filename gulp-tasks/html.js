@@ -6,13 +6,11 @@
 
 'use strict';
 
-const imagemin = require('gulp-imagemin');
+const htmlmin = require('gulp-htmlmin');
 
-// Returns a WriteableStream to process images
 function minify() {
-  return imagemin({
-    progressive: true,
-    interlaced: true
+  return htmlmin({
+    collapseWhitespace: true
   });
 }
 
