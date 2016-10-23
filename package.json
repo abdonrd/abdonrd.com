@@ -1,10 +1,10 @@
 {
   "name": "abdonrd.com",
-  "description": "My personal website",
   "version": "0.9.8",
+  "description": "My personal website",
   "author": "Abdón Rodríguez Davila <a@abdonrd.com> (https://abdonrd.com)",
+  "license": "https://abdonrd.github.io/LICENSE.txt",
   "homepage": "https://abdonrd.com",
-  "license": "https://abdonrd.com/LICENSE.txt",
   "repository": {
     "type": "git",
     "url": "git://github.com/abdonrd/abdonrd.com.git"
@@ -31,5 +31,6 @@
   },
   "engines": {
     "node": ">=4.0"
-  }
+  },
+  "private": true
 }
