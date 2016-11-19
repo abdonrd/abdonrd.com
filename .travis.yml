@@ -30,7 +30,7 @@ deploy:
   - provider: firebase
     edge: true
     skip_cleanup: true
-    project: abdonrd
+    project: project-8848054472830093819
     token: $FIREBASE_TOKEN
     on:
       branch: master
