@@ -19,9 +19,18 @@ This code may only be used under the MIT style license found at https://abdonrd.
     </style>
 
     <iron-icon icon="ard-item-icons:today"></iron-icon>
-    <moment-element datetime="[[period.start]]" input-format="[[inputFormat]]" output-format="[[outputFormat]]"></moment-element>
+    <moment-element
+        datetime="[[period.start]]"
+        input-format="[[inputFormat]]"
+        output-format="[[outputFormat]]">
+    </moment-element>
     <span>-</span>
-    <moment-element hidden$="[[!period.finish]]" datetime="[[period.finish]]" input-format="[[inputFormat]]" output-format="[[outputFormat]]"></moment-element>
+    <moment-element
+        datetime="[[period.finish]]"
+        input-format="[[inputFormat]]"
+        output-format="[[outputFormat]]"
+        hidden$="[[!period.finish]]">
+    </moment-element>
     <span hidden$="[[!period.present]]">Present</span>
   </template>
 
