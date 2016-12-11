@@ -25,9 +25,9 @@
     "html/report-bad-indent": 2
   },
   "globals": {
-    "Polymer": false,
     "global": false,
     "module": false,
+    "Polymer": false,
     "process": false,
     "require": false
   }
