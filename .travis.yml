@@ -4,21 +4,21 @@ dist: trusty
 node_js:
   - '6'
 cache:
+  yarn: true
   directories:
     - node_modules
 branches:
   except:
     - /^v\d/
 install:
-  - npm install
-  - npm install -g bower
+  - yarn install
+  - yarn global add bower
   - bower install
-before_script:
-  - npm run lint
 script:
-  - npm test
+  - yarn run lint
+  # - yarn run test
 before_deploy:
-  - npm run build
+  - yarn run build
 deploy:
   - provider: firebase
     edge: true
