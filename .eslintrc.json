@@ -1,5 +1,5 @@
 {
-  "extends": "ibmresearch/ibm-application",
+  "extends": "ibmresearch/polymer-application",
   "globals": {
     "global": false
   }
