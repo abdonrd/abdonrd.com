@@ -50,7 +50,6 @@ const clean = require('./gulp-tasks/clean.js');
 const images = require('./gulp-tasks/images.js');
 const javascript = require('./gulp-tasks/javascript.js');
 const json = require('./gulp-tasks/json.js');
-const lint = require('./gulp-tasks/lint.js');
 const project = require('./gulp-tasks/project.js');
 
 function source() {
@@ -73,14 +72,4 @@ gulp.task('build', gulp.series([
   clean([global.config.build.rootDirectory]),
   project.merge(source, dependencies),
   project.serviceWorker
-]));
-
-// Lint JavaScript code
-gulp.task('lint', lint([
-  'gulp-tasks/**/*.js',
-  'src/**/*.{js,html}',
-  'test/**/*.{js,html}',
-  'gulpfile.js',
-  'index.html',
-  'service-worker.js'
 ]));
