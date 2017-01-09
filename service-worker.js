@@ -4,5 +4,6 @@
  * This code may only be used under the MIT style license found at https://abdonrd.github.io/LICENSE.txt
  */
 
-// eslint-disable-next-line no-console
-console.log('Service worker disabled for development, will be generated at build time.');
+/* eslint no-console: ["error", { allow: ["info"] }] */
+
+console.info('Service worker disabled for development, will be generated at build time.');
