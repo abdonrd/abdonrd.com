@@ -4,6 +4,6 @@
  * This code may only be used under the MIT style license found at https://abdonrd.github.io/LICENSE.txt
  */
 
-/* eslint no-console: ["error", { allow: ["info"] }] */
+/* eslint-disable no-console */
 
 console.info('Service worker disabled for development, will be generated at build time.');
