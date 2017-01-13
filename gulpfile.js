@@ -39,7 +39,7 @@ function build() {
     console.log(`Deleting ${buildDirectory} directory...`);
     del([buildDirectory])
       .then(() => {
-        // Okay, now lets get your source files
+        // Okay, now let's get your source files
         let sourcesStream = polymerProject.sources()
           .pipe(polymerProject.splitHtml())
           .pipe(gulpif(/\.js$/, uglify()))
@@ -51,7 +51,7 @@ function build() {
           .pipe(gulpif(/\.json$/, jsonmin()))
           .pipe(polymerProject.rejoinHtml());
 
-        // Okay, now lets do the same to your dependencies
+        // Okay, now let's do the same to your dependencies
         let dependenciesStream = polymerProject.dependencies()
           .pipe(polymerProject.splitHtml())
           // .pipe(gulpif(/\.js$/, uglify()))
@@ -59,7 +59,7 @@ function build() {
           // .pipe(gulpif(/\.html$/, htmlMinifier()))
           .pipe(polymerProject.rejoinHtml());
 
-        // Okay, now lets merge them into a single build stream
+        // Okay, now let's merge them into a single build stream
         let buildStream = mergeStream(sourcesStream, dependenciesStream)
           .once('data', () => {
             console.log('Analyzing build dependencies...');
