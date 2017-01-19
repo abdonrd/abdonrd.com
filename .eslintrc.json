@@ -1,6 +1,10 @@
 {
-  "extends": "ibmresearch/polymer-application",
+  "extends": "ibmresearch/html",
+  "env": {
+    "es6": true,
+    "node": true
+  },
   "globals": {
-    "global": false
+    "Polymer": false
   }
 }
