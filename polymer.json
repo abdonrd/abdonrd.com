@@ -5,10 +5,10 @@
     "data/**/*",
     "images/**/*",
     "src/**/*",
-    "bower.json"
+    "bower.json",
+    "manifest.json"
   ],
   "extraDependencies": [
-    "bower_components/webcomponentsjs/webcomponents-lite.min.js",
-    "manifest.json"
+    "bower_components/webcomponentsjs/webcomponents-lite.min.js"
   ]
 }
