@@ -73,7 +73,7 @@ function build() {
         // Okay, time to pipe to the build directory
         buildStream = buildStream.pipe(gulp.dest(buildDirectory));
 
-        // waitFor the buildStream to complete
+        // Wait for the buildStream to complete
         return waitFor(buildStream);
       })
       .then(() => {
