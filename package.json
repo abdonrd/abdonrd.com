@@ -3,6 +3,7 @@
   "version": "0.10.4",
   "description": "My personal website",
   "author": "Abdón Rodríguez Davila <a@abdonrd.com> (https://abdonrd.com)",
+  "homepage": "https://abdonrd.com",
   "license": "MIT",
   "repository": {
     "type": "git",
