@@ -11,8 +11,8 @@ This code may only be used under the MIT style license found at https://abdonrd.
   <template>
     <style>
       :host {
-        @apply(--layout-horizontal);
-        @apply(--layout-center);
+        @apply --layout-horizontal;
+        @apply --layout-center;
 
         position: relative;
 
@@ -25,6 +25,16 @@ This code may only be used under the MIT style license found at https://abdonrd.
         line-height: 24px;
 
         -webkit-font-smoothing: antialiased;
+      }
+
+      ::content a {
+        text-decoration: none;
+
+        color: inherit;
+
+        /* NOTE: Both values are needed, since some phones require the `transparent` value. */
+        -webkit-tap-highlight-color: rgba(0,0,0,0);
+        -webkit-tap-highlight-color: transparent;
       }
     </style>
 
