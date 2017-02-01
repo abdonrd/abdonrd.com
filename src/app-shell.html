@@ -40,8 +40,8 @@ This code may only be used under the MIT style license found at https://abdonrd.
       }
 
       :host {
-        @apply(--layout-block);
-        @apply(--layout-fullbleed);
+        @apply --layout-block;
+        @apply --layout-fullbleed;
       }
 
       .toolbar {
@@ -65,7 +65,7 @@ This code may only be used under the MIT style license found at https://abdonrd.
       }
 
       .information {
-        @apply(--layout-vertical);
+        @apply --layout-vertical;
 
         margin-bottom: calc(8px * 2);
       }
@@ -111,9 +111,9 @@ This code may only be used under the MIT style license found at https://abdonrd.
 
       @media all and (min-width: 648px) {
         .information {
-          @apply(--layout-horizontal);
-          @apply(--layout-wrap);
-          @apply(--layout-start);
+          @apply --layout-horizontal;
+          @apply --layout-wrap;
+          @apply --layout-start;
 
           width: calc(300px * 2 + 16px);
         }
