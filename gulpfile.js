@@ -21,6 +21,7 @@ const uglify = require('gulp-uglify');
 const swPrecacheConfig = require('./sw-precache-config.js');
 const polymerJson = require('./polymer.json');
 const polymerProject = new polymerBuild.PolymerProject(polymerJson);
+const sourcesHtmlSplitter = new polymerBuild.HtmlSplitter();
 const buildDirectory = 'build';
 
 /**
@@ -41,7 +42,7 @@ function build() {
       .then(() => {
         // Okay, now let's get your source files
         let sourcesStream = polymerProject.sources()
-          .pipe(polymerProject.splitHtml())
+          .pipe(sourcesHtmlSplitter.split())
           .pipe(gulpif(/\.js$/, uglify()))
           // .pipe(gulpif(/\.css$/, cssSlam()))
           .pipe(gulpif(/\.html$/, htmlmin({
@@ -49,15 +50,10 @@ function build() {
           })))
           .pipe(gulpif(/\.(png|gif|jpg|svg)$/, imagemin()))
           .pipe(gulpif(/\.json$/, jsonmin()))
-          .pipe(polymerProject.rejoinHtml());
+          .pipe(sourcesHtmlSplitter.rejoin());
 
         // Okay, now let's do the same to your dependencies
-        let dependenciesStream = polymerProject.dependencies()
-          .pipe(polymerProject.splitHtml())
-          // .pipe(gulpif(/\.js$/, uglify()))
-          // .pipe(gulpif(/\.css$/, cssSlam()))
-          // .pipe(gulpif(/\.html$/, htmlMinifier()))
-          .pipe(polymerProject.rejoinHtml());
+        let dependenciesStream = polymerProject.dependencies();
 
         // Okay, now let's merge them into a single build stream
         let buildStream = mergeStream(sourcesStream, dependenciesStream)

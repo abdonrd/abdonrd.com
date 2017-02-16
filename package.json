@@ -24,7 +24,7 @@
     "gulp-jsonmin": "^1.1.0",
     "gulp-uglify": "^2.0.0",
     "merge-stream": "^1.0.0",
-    "polymer-build": "^0.7.0"
+    "polymer-build": "^0.8.0"
   },
   "scripts": {
     "lint": "eslint . --ext js,html --ignore-path .gitignore",
