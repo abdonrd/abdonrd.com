@@ -1,309 +1,176 @@
 <!--
 @license
-Copyright (c) 2016 Abdón Rodríguez Davila (@abdonrd). All rights reserved.
+Copyright (c) 2017 Abdón Rodríguez Davila (@abdonrd). All rights reserved.
 This code may only be used under the MIT style license found at https://abdonrd.github.io/LICENSE.txt
 -->
 
-<link rel="import" href="../bower_components/polymer/polymer.html">
-<link rel="import" href="../bower_components/iron-ajax/iron-ajax.html">
-<link rel="import" href="../bower_components/iron-flex-layout/iron-flex-layout.html">
-<link rel="import" href="../bower_components/neon-animation/animations/cascaded-animation.html">
-<link rel="import" href="../bower_components/neon-animation/animations/fade-in-animation.html">
-<link rel="import" href="../bower_components/neon-animation/animations/transform-animation.html">
-<link rel="import" href="../bower_components/neon-animation/neon-animation-runner-behavior.html">
-<link rel="import" href="../bower_components/paper-card/paper-card.html">
+<link rel="import" href="../bower_components/polymer/polymer-element.html">
+<link rel="import" href="../bower_components/app-layout/app-drawer/app-drawer.html">
+<link rel="import" href="../bower_components/app-layout/app-drawer-layout/app-drawer-layout.html">
+<link rel="import" href="../bower_components/app-layout/app-header/app-header.html">
+<link rel="import" href="../bower_components/app-layout/app-header-layout/app-header-layout.html">
+<link rel="import" href="../bower_components/app-layout/app-scroll-effects/app-scroll-effects.html">
+<link rel="import" href="../bower_components/app-layout/app-toolbar/app-toolbar.html">
+<link rel="import" href="../bower_components/app-route/app-location.html">
+<link rel="import" href="../bower_components/app-route/app-route.html">
+<link rel="import" href="../bower_components/iron-pages/iron-pages.html">
+<link rel="import" href="../bower_components/iron-selector/iron-selector.html">
 <link rel="import" href="../bower_components/paper-icon-button/paper-icon-button.html">
 <link rel="import" href="app-icons.html">
-<link rel="import" href="ard-collapse-items/ard-collapse-items.html">
-<link rel="import" href="ard-item/ard-item.html">
-<link rel="import" href="ard-item/ard-item-body.html">
-<link rel="import" href="ard-item/ard-item-date.html">
-<link rel="import" href="ard-item/ard-item-location.html">
-<link rel="import" href="ard-item/ard-item-period.html">
-<link rel="import" href="ard-profile.html">
 
 <dom-module id="app-shell">
   <template>
     <style>
-      :root {
-        --primary-text-color: #212121;
-        --primary-background-color: #ffffff;
-        --secondary-text-color: #737373;
-        --disabled-text-color: #9b9b9b;
-        --divider-color: #dbdbdb;
-        --primary-color: #1abc9c;
-        --light-primary-color: #a1f2e2;
-        --dark-primary-color: #13866f;
-        --accent-color: #ffc107;
-        --light-accent-color: #fff0c4;
-        --dark-accent-color: #c99700;
-      }
-
       :host {
-        @apply --layout-block;
-        @apply --layout-fullbleed;
+        --app-primary-color: #4285f4;
+        --app-secondary-color: black;
+
+        display: block;
       }
 
-      .toolbar {
-        position: fixed;
-        top: 0;
-
-        width: 100%;
-        height: 168px;
-
-        background-color: var(--primary-color);
+      app-drawer-layout:not([narrow]) [drawer-toggle] {
+        display: none;
       }
 
-      ard-profile {
-        margin-top: 50px;
+      app-header {
+        color: #fff;
+        background-color: var(--app-primary-color);
       }
 
-      ard-profile,
-      .information {
-        margin-right: 8px;
-        margin-left: 8px;
+      app-header paper-icon-button {
+        --paper-icon-button-ink-color: white;
       }
 
-      .information {
-        @apply --layout-vertical;
-
-        margin-bottom: calc(8px * 2);
+      .drawer-list {
+        margin: 0 20px;
       }
 
-      .information,
-      .information paper-card:nth-child(n+2) {
-        margin-top: 8px;
-      }
-
-      .cascaded {
-        will-change: transform;
-      }
-
-      a {
+      .drawer-list a {
+        display: block;
+        padding: 0 16px;
         text-decoration: none;
-
-        color: inherit;
-
-        /* NOTE: Both values are needed, since some phones require the `transparent` value. */
-        -webkit-tap-highlight-color: rgba(0,0,0,0);
-        -webkit-tap-highlight-color: transparent;
+        color: var(--app-secondary-color);
+        line-height: 40px;
       }
 
-      @media all and (min-width: 416px) {
-        ard-profile,
-        .information {
-          margin-right: auto;
-          margin-left: auto;
-          width: 400px;
-        }
-      }
-
-      @media all and (min-width: 432px) {
-        .information {
-          margin-bottom: calc(16px * 2);
-        }
-
-        .information,
-        .information paper-card:nth-child(n+2) {
-          margin-top: 16px;
-        }
-      }
-
-      @media all and (min-width: 648px) {
-        .information {
-          @apply --layout-horizontal;
-          @apply --layout-wrap;
-          @apply --layout-start;
-
-          width: calc(300px * 2 + 16px);
-        }
-
-        .information paper-card {
-          width: 300px;
-        }
-
-        .information paper-card:nth-child(n+2) {
-          margin-top: 0;
-        }
-
-        .information paper-card:nth-child(n+3) {
-          margin-top: 16px;
-        }
-
-        .information paper-card:nth-child(even) {
-          margin-left: 16px;
-        }
-      }
-
-      @media all and (min-width: 696px) {
-        .information {
-          margin-top: 32px;
-          margin-bottom: calc(32px * 2);
-          width: calc(300px * 2 + 32px);
-        }
-
-        .information paper-card:nth-child(n+3) {
-          margin-top: 32px;
-        }
-
-        .information paper-card:nth-child(even) {
-          margin-left: 32px;
-        }
-      }
-
-      @media all and (min-width: 896px) {
-        .information {
-          width: calc(400px * 2 + 32px);
-        }
-
-        .information paper-card {
-          width: 400px;
-        }
+      .drawer-list a.iron-selected {
+        color: black;
+        font-weight: bold;
       }
     </style>
 
-    <iron-ajax url="../data/data.json" auto last-response="{{data}}"></iron-ajax>
+    <app-location route="{{_route}}"></app-location>
+    <app-route
+        route="{{_route}}"
+        pattern="/:pageId"
+        data="{{_routeData}}"
+        tail="{{_routeTail}}">
+    </app-route>
 
-    <div class="toolbar"></div>
+    <app-drawer-layout fullbleed>
+      <app-drawer id="drawer" slot="drawer">
+        <app-toolbar>Menu</app-toolbar>
+        <iron-selector
+            selected="[[_selectedPageId]]"
+            attr-for-selected="name"
+            class="drawer-list"
+            role="navigation">
+          <a name="home" href="/">Home</a>
+          <a name="jobs" href="/jobs">Jobs</a>
+          <a name="talks" href="/talks">Talks</a>
+        </iron-selector>
+      </app-drawer>
 
-    <ard-profile profile="[[data.profile]]" class="cascaded"></ard-profile>
+      <app-header-layout has-scrolling-region>
+        <app-header slot="header" condenses reveals effects="waterfall">
+          <app-toolbar>
+            <paper-icon-button icon="app-icons:menu" drawer-toggle></paper-icon-button>
+            <div main-title>My App</div>
+          </app-toolbar>
+        </app-header>
 
-    <div class="information">
-      <paper-card heading="Experience" class="cascaded">
-        <ard-collapse-items items="[[data.experience.jobs]]" limit="{{collapseLimit}}">
-          <template>
-            <ard-item>
-              <ard-item-body>
-                <div>[[item.title]]</div>
-                <div>[[item.company]]</div>
-                <div>
-                  <ard-item-period period="[[item.period]]"></ard-item-period>
-                  <span>|</span>
-                  <ard-item-location location="[[item.location]]"></ard-item-location>
-                </div>
-              </ard-item-body>
-            </ard-item>
-          </template>
-        </ard-collapse-items>
-      </paper-card>
-
-      <paper-card heading="Mentoring" class="cascaded">
-        <ard-collapse-items items="[[data.experience.mentoring]]" limit="{{collapseLimit}}">
-          <template>
-            <ard-item>
-              <ard-item-body>
-                <div>[[item.eventName]]</div>
-                <div>[[item.organization]]</div>
-                <div>
-                  <ard-item-date date="[[item.date]]"></ard-item-date>
-                  <span>|</span>
-                  <ard-item-location location="[[item.location]]"></ard-item-location>
-                </div>
-              </ard-item-body>
-            </ard-item>
-          </template>
-        </ard-collapse-items>
-      </paper-card>
-
-      <paper-card heading="Talks" class="cascaded">
-        <ard-collapse-items items="[[data.experience.talks]]" limit="{{collapseLimit}}">
-          <template>
-            <ard-item>
-              <ard-item-body>
-                <div>[[item.name]]</div>
-                <div>[[item.eventName]] by [[item.organization]]</div>
-                <div>
-                  <ard-item-date date="[[item.date]]"></ard-item-date>
-                  <span>|</span>
-                  <ard-item-location location="[[item.location]]"></ard-item-location>
-                </div>
-              </ard-item-body>
-              <a href$="[[item.slides]]" title$="'[[item.name]]' slides" hidden$="[[!item.slides]]" tabindex="-1" target="_blank">
-                <paper-icon-button icon="slideshow" alt="'[[item.name]]' slides"></paper-icon-button>
-              </a>
-            </ard-item>
-          </template>
-        </ard-collapse-items>
-      </paper-card>
-
-      <paper-card heading="Certifications" class="cascaded">
-        <ard-collapse-items items="[[data.education.certifications]]" limit="{{collapseLimit}}">
-          <template>
-            <ard-item>
-              <ard-item-body>
-                <div>[[item.name]]</div>
-                <div>[[item.authority]], License [[item.licenseNumber]]</div>
-                <div>
-                  <ard-item-period period="[[item.period]]"></ard-item-period>
-                </div>
-              </ard-item-body>
-              <a href$="[[item.url]]" title$="'[[item.name]]' item" hidden$="[[!item.url]]" tabindex="-1" target="_blank">
-                <paper-icon-button icon="description" alt="[[item.name]]' certification"></paper-icon-button>
-              </a>
-            </ard-item>
-          </template>
-        </ard-collapse-items>
-      </paper-card>
-
-      <paper-card heading="Education" class="cascaded">
-        <ard-collapse-items items="[[data.education.education]]" limit="{{collapseLimit}}">
-          <template>
-            <ard-item>
-              <ard-item-body>
-                <div>[[item.school]]</div>
-                <div>[[item.degree]]</div>
-                <div>
-                  <ard-item-period period="[[item.period]]" input-format="YYYY" output-format="YYYY"></ard-item-period>
-                </div>
-              </ard-item-body>
-            </ard-item>
-          </template>
-        </ard-collapse-items>
-      </paper-card>
-    </div>
+        <iron-pages
+            selected="[[_selectedPageId]]"
+            attr-for-selected="name"
+            fallback-selection="404"
+            role="main">
+          <page-home name="home"></page-home>
+          <page-jobs name="jobs"></page-jobs>
+          <page-talks name="talks"></page-talks>
+          <page-404 name="404"></page-404>
+        </iron-pages>
+      </app-header-layout>
+    </app-drawer-layout>
   </template>
 
   <script>
-    Polymer({
-      is: 'app-shell',
+    class MyApp extends Polymer.Element {
 
-      behaviors: [
-        Polymer.NeonAnimationRunnerBehavior
-      ],
-
-      properties: {
-        collapseLimit: {
-          type: Number,
-          value: 2
-        },
-
-        animationConfig: {
-          value: function() {
-            return [{
-              name: 'fade-in-animation',
-              node: this,
-              timing: {
-                delay: 400,
-                duration: 500
-              }
-            }, {
-              name: 'cascaded-animation',
-              animation: 'transform-animation',
-              transformFrom: 'translateY(100%)',
-              transformTo: 'none',
-              timing: {
-                delay: 300
-              }
-            }];
-          }
-        }
-      },
-
-      attached: function() {
-        var nodes = Polymer.dom(this.root).querySelectorAll('.cascaded');
-        this.animationConfig[1].nodes = Array.prototype.slice.call(nodes);
-        this.playAnimation();
+      static get is() {
+        return 'app-shell';
       }
-    });
+
+      static get properties() {
+        return {
+          defaultSelectedPageId: {
+            type: String,
+            value: 'home'
+          },
+
+          _selectedPageId: {
+            type: String,
+            observer: '_selectedPageIdChanged'
+          },
+
+          _pagesPaths: {
+            type: Object,
+            value: function() {
+              return {
+                404: 'pages/page-404.html',
+                home: 'pages/page-home.html',
+                jobs: 'pages/page-jobs.html',
+                talks: 'pages/page-talks.html'
+              };
+            }
+          }
+        };
+      }
+
+      static get observers() {
+        return [
+          '_routePageIdChanged(_routeData.pageId)'
+        ];
+      }
+
+      _routePageIdChanged(pageId) {
+        // Polymer 2.0 will call with `undefined` on initialization.
+        // Ignore until we are properly called with a string.
+        if (pageId === undefined) {
+          return;
+        }
+
+        this._selectedPageId = pageId || this.defaultSelectedPageId;
+
+        // Close a non-persistent drawer when the page & route are changed.
+        if (!this.$.drawer.persistent) {
+          this.$.drawer.close();
+        }
+      }
+
+      _selectedPageIdChanged(_selectedPageId) {
+        if (this._pageIdNotAvaliable(_selectedPageId)) {
+          _selectedPageId = '404';
+        }
+
+        var resolvedPageUrl = this.resolveUrl(this._pagesPaths[_selectedPageId]);
+        Polymer.importHref(resolvedPageUrl, null, null, true);
+      }
+
+      _pageIdNotAvaliable(pageId) {
+        return !(pageId in this._pagesPaths);
+      }
+    }
+
+    window.customElements.define(MyApp.is, MyApp);
   </script>
 </dom-module>

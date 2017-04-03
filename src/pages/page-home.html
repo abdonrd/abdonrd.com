@@ -1,0 +1,30 @@
+<!--
+@license
+Copyright (c) 2017 Abdón Rodríguez Davila (@abdonrd). All rights reserved.
+This code may only be used under the MIT style license found at https://abdonrd.github.io/LICENSE.txt
+-->
+
+<link rel="import" href="../../bower_components/polymer/polymer-element.html">
+<link rel="import" href="../app-styles.html">
+
+<dom-module id="page-home">
+  <template>
+    <style include="app-styles">
+      :host {
+        display: block;
+      }
+    </style>
+
+    Home
+  </template>
+
+  <script>
+    class PageHome extends Polymer.Element {
+      static get is() {
+        return 'page-home';
+      }
+    }
+
+    window.customElements.define(PageHome.is, PageHome);
+  </script>
+</dom-module>

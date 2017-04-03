@@ -1,0 +1,30 @@
+<!--
+@license
+Copyright (c) 2017 Abdón Rodríguez Davila (@abdonrd). All rights reserved.
+This code may only be used under the MIT style license found at https://abdonrd.github.io/LICENSE.txt
+-->
+
+<link rel="import" href="../../bower_components/polymer/polymer-element.html">
+<link rel="import" href="../app-styles.html">
+
+<dom-module id="page-404">
+  <template>
+    <style include="app-styles">
+      :host {
+        display: block;
+      }
+    </style>
+
+    Oops you hit a 404. <a href="/">Head back to home.</a>
+  </template>
+
+  <script>
+    class Page404 extends Polymer.Element {
+      static get is() {
+        return 'page-404';
+      }
+    }
+
+    window.customElements.define(Page404.is, Page404);
+  </script>
+</dom-module>

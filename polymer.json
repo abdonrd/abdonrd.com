@@ -1,14 +1,30 @@
 {
   "entrypoint": "index.html",
   "shell": "src/app-shell.html",
+  "fragments": [
+    "src/pages/page-404.html",
+    "src/pages/page-home.html",
+    "src/pages/page-jobs.html",
+    "src/pages/page-talks.html"
+  ],
   "sources": [
-    "data/**/*",
-    "images/**/*",
     "src/**/*",
-    "bower.json",
-    "manifest.json"
+    "images/**/*",
+    "bower.json"
   ],
   "extraDependencies": [
-    "bower_components/webcomponentsjs/webcomponents-lite.min.js"
-  ]
+    "manifest.json",
+    "bower_components/webcomponentsjs/*.js"
+  ],
+  "lint": {
+    "rules": ["polymer-2"]
+  },
+  "builds": [{
+    "addServiceWorker": true,
+    "swPrecacheConfig": "sw-precache-config.js",
+    "bundle": true,
+    "js": {"minify": true},
+    "css": {"minify": true},
+    "html": {"minify": true}
+  }]
 }
