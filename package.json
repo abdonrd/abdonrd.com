@@ -1,6 +1,6 @@
 {
   "name": "abdonrd.com",
-  "version": "0.10.6",
+  "version": "0.10.7",
   "description": "My personal website",
   "author": "Abdón Rodríguez Davila <a@abdonrd.com> (https://abdonrd.com)",
   "homepage": "https://abdonrd.com",
@@ -24,7 +24,7 @@
     "gulp-jsonmin": "^1.1.0",
     "gulp-uglify": "^2.0.0",
     "merge-stream": "^1.0.0",
-    "polymer-build": "^0.7.0"
+    "polymer-build": "^0.9.0"
   },
   "scripts": {
     "lint": "eslint . --ext js,html --ignore-path .gitignore",
