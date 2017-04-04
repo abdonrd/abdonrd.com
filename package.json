@@ -5,10 +5,7 @@
   "author": "Abdón Rodríguez Davila <a@abdonrd.com> (https://abdonrd.com)",
   "homepage": "https://abdonrd.com",
   "license": "MIT",
-  "repository": {
-    "type": "git",
-    "url": "git://github.com/abdonrd/abdonrd.com.git"
-  },
+  "repository": "abdonrd/abdonrd.com",
   "bugs": {
     "url": "https://github.com/abdonrd/abdonrd.com/issues"
   },
