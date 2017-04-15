@@ -10,8 +10,8 @@
     "url": "https://github.com/abdonrd/abdonrd.com/issues"
   },
   "devDependencies": {
-    "eslint": "^3.14.0",
-    "eslint-config-ibmresearch": "^0.5.0",
+    "eslint": "^3.19.0",
+    "eslint-config-ibmresearch": "IBMResearch/eslint-config-ibmresearch",
     "eslint-plugin-html": "^2.0.0"
   },
   "scripts": {
