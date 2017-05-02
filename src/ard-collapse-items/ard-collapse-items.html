@@ -53,6 +53,7 @@ This code may only be used under the MIT style license found at https://abdonrd.
       ],
 
       _renderItems: function(startValue, finishValue, element) {
+        // eslint-disable-next-line id-length, no-plusplus
         for (var i = startValue; i < finishValue; i++) {
           var instance = this.stamp({
             item: this.items[i]
@@ -79,8 +80,11 @@ This code may only be used under the MIT style license found at https://abdonrd.
 
       _toggleMore: function(event) {
         var iconButton = Polymer.dom(event).localTarget;
-        iconButton.icon = this.$.moreItems.opened ? 'ard-collapse-items-icons:expand-more'
-                                                  : 'ard-collapse-items-icons:expand-less';
+        if (this.$.moreItems.opened) {
+          iconButton.icon = 'ard-collapse-items-icons:expand-more';
+        } else {
+          iconButton.icon = 'ard-collapse-items-icons:expand-less';
+        }
         this.$.moreItems.toggle();
       }
     });
