@@ -67,7 +67,8 @@ This code may only be used under the MIT style license found at https://abdonrd.
         lazyRegister: true
       };
 
-      // Load webcomponentsjs polyfill if browser does not support native Web Components
+      // Load the webcomponentsjs polyfill if browser does not support native
+      // Web Components
       (function() {
         'use strict';
 
@@ -76,11 +77,12 @@ This code may only be used under the MIT style license found at https://abdonrd.
           // can use the same code path for native and polyfill'd imports.
           if (!window.HTMLImports) {
             document.dispatchEvent(
-              new CustomEvent('WebComponentsReady', {bubbles: true})
+              new CustomEvent('WebComponentsReady', { bubbles: true })
             );
           }
         };
 
+        // eslint-disable-next-line no-extra-parens
         var webComponentsSupported = (
           'registerElement' in document
           && 'import' in document.createElement('link')
