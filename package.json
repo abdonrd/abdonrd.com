@@ -15,7 +15,11 @@
     "eslint-plugin-html": "^2.0.0"
   },
   "scripts": {
-    "lint": "eslint . --ext js,html --ignore-path .gitignore"
+    "lint": "eslint . --ext js,html --ignore-path .gitignore",
+    "test": "polymer test",
+    "test:integration": "yarn run build",
+    "build": "polymer build",
+    "build:production": "NODE_ENV=production yarn run build"
   },
   "engines": {
     "node": ">=6.0"
