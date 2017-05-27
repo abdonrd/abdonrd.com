@@ -1,6 +1,6 @@
 {
   "hosting": {
-    "public": "build",
+    "public": "build/es5-bundled",
     "ignore": [
       "bower.json"
     ],
