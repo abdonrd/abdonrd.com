@@ -1,12 +1,6 @@
 {
   "entrypoint": "index.html",
   "shell": "src/app-shell.html",
-  "fragments": [
-    "src/pages/page-404.html",
-    "src/pages/page-home.html",
-    "src/pages/page-jobs.html",
-    "src/pages/page-talks.html"
-  ],
   "sources": [
     "src/**/*",
     "images/**/*",

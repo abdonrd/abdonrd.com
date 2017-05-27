@@ -15,10 +15,16 @@ This code may only be used under the MIT style license found at https://abdonrd.
 <link rel="import" href="../bower_components/app-route/app-route.html">
 <link rel="import" href="../bower_components/iron-pages/iron-pages.html">
 <link rel="import" href="../bower_components/iron-selector/iron-selector.html">
+<link rel="import" href="../bower_components/lazy-imports/lazy-imports-mixin.html">
 <link rel="import" href="../bower_components/paper-icon-button/paper-icon-button.html">
 <link rel="import" href="app-icons.html">
 
 <dom-module id="app-shell">
+  <link rel="lazy-import" group="home" href="pages/page-home.html">
+  <link rel="lazy-import" group="jobs" href="pages/page-jobs.html">
+  <link rel="lazy-import" group="notFound" href="pages/page-not-found.html">
+  <link rel="lazy-import" group="talks" href="pages/page-talks.html">
+
   <template>
     <style>
       :host {
@@ -92,20 +98,23 @@ This code may only be used under the MIT style license found at https://abdonrd.
         <iron-pages
             selected="[[_selectedPageId]]"
             attr-for-selected="name"
-            fallback-selection="404"
+            fallback-selection="notFound"
             role="main">
           <page-home name="home"></page-home>
           <page-jobs name="jobs"></page-jobs>
           <page-talks name="talks"></page-talks>
-          <page-404 name="404"></page-404>
+          <page-not-found name="notFound"></page-not-found>
         </iron-pages>
       </app-header-layout>
     </app-drawer-layout>
   </template>
 
   <script>
-    class AppShell extends Polymer.Element {
-
+    /**
+     * @extends Polymer.Element
+     * @appliesMixin Polymer.LazyImportsMixin
+     */
+    class AppShell extends Polymer.LazyImportsMixin(Polymer.Element) {
       static get is() {
         return 'app-shell';
       }
@@ -130,15 +139,10 @@ This code may only be used under the MIT style license found at https://abdonrd.
             observer: '_selectedPageIdChanged'
           },
 
-          _pagesPaths: {
+          _pagesAvaliables: {
             type: Object,
             value: function() {
-              return {
-                404: 'pages/page-404.html',
-                home: 'pages/page-home.html',
-                jobs: 'pages/page-jobs.html',
-                talks: 'pages/page-talks.html'
-              };
+              return ['home', 'jobs', 'notFound', 'talks'];
             }
           }
         };
@@ -167,15 +171,14 @@ This code may only be used under the MIT style license found at https://abdonrd.
 
       _selectedPageIdChanged(_selectedPageId) {
         if (this._pageIdNotAvaliable(_selectedPageId)) {
-          _selectedPageId = '404';
+          _selectedPageId = 'notFound';
         }
 
-        var resolvedPageUrl = this.resolveUrl(this._pagesPaths[_selectedPageId]);
-        Polymer.importHref(resolvedPageUrl, null, null, true);
+        this.importLazyGroup(_selectedPageId);
       }
 
       _pageIdNotAvaliable(pageId) {
-        return !(pageId in this._pagesPaths);
+        return this._pagesAvaliables.indexOf(pageId) === -1;
       }
     }
 
