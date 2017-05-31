@@ -139,13 +139,6 @@ This code may only be used under the MIT style license found at https://abdonrd.
           _selectedPageId: {
             type: String,
             observer: '_selectedPageIdChanged'
-          },
-
-          _pagesAvaliables: {
-            type: Object,
-            value: function() {
-              return ['home', 'jobs', 'notFound', 'talks'];
-            }
           }
         };
       }
@@ -172,15 +165,12 @@ This code may only be used under the MIT style license found at https://abdonrd.
       }
 
       _selectedPageIdChanged(_selectedPageId) {
-        if (this._pageIdNotAvaliable(_selectedPageId)) {
-          _selectedPageId = 'notFound';
-        }
-
-        this.importLazyGroup(_selectedPageId);
-      }
-
-      _pageIdNotAvaliable(pageId) {
-        return this._pagesAvaliables.indexOf(pageId) === -1;
+        // Load page import on demand. If fails, show the not found page.
+        this.importLazyGroup(_selectedPageId).then((results) => {
+          if (results.failed.length > 0 || results.loaded.length < 1) {
+            this._selectedPageId = 'notFound';
+          }
+        });
       }
     }
 
