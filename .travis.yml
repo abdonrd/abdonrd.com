@@ -20,8 +20,9 @@ install:
   - yarn global add bower
   - yarn install
   - bower install
-script:
+before_script:
   - yarn run lint
+script:
   - xvfb-run yarn run test
   - xvfb-run yarn run test:integration
 before_deploy:
