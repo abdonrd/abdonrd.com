@@ -20,7 +20,7 @@
   },
   "scripts": {
     "lint:eslint": "eslint . --ext js,html --ignore-path .gitignore",
-    "lint:stylelint": "stylelint '**/*.{css,html}'",
+    "lint:stylelint": "stylelint '**/*.{css,html}' --ignore-path .gitignore",
     "lint": "npm run lint:eslint && npm run lint:stylelint",
     "test": "polymer test",
     "test:integration": "yarn run build",
