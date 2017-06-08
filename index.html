@@ -13,6 +13,16 @@ This code may only be used under the MIT style license found at https://abdonrd.
     <title>Abdón Rodríguez Davila</title>
     <meta name="description" content="Galician. Technology enthusiast. Frontend Developer at IBM Research. Google Developer Expert on Web Technologies.">
 
+    <!--
+      The `<base>` tag below is present to support two advanced deployment options:
+      1) Differential serving. 2) Serving from a non-root path.
+
+      Instead of manually editing the `<base>` tag yourself, you should generally either:
+      a) Add a `basePath` property to the build configuration in your `polymer.json`.
+      b) Use the `--base-path` command-line option for `polymer build`.
+
+      Note: If you intend to serve from a non-root path, see [polymer-root-path] below.
+    -->
     <base href="/">
 
     <link rel="icon" href="images/favicon.ico">
@@ -60,8 +70,21 @@ This code may only be used under the MIT style license found at https://abdonrd.
     <meta itemprop="description" content="Galician. Technology enthusiast. Frontend Developer at IBM Research. Google Developer Expert on Web Technologies.">
     <meta itemprop="image" content="https://abdonrd.com/images/open-graph/abdon-rodriguez-davila.jpg">
 
-    <!-- Load and register pre-caching Service Worker -->
     <script>
+      /**
+       * [polymer-root-path]
+       *
+       * By default, we set `Polymer.rootPath` to the server root path (`/`).
+       * Leave this line unchanged if you intend to serve your app from the root
+       * path (e.g., with URLs like `my.domain/`, `my.domain/view1`, etc).
+       *
+       * If you intend to serve your app from a non-root path (e.g., with URLs
+       * like `my.domain/my-app/` and `my.domain/my-app/view1`), edit this line
+       * to indicate the path from which you'll be serving (e.g. `/my-app/`).
+       */
+      window.Polymer = { rootPath: '/' };
+
+      // Load and register pre-caching Service Worker
       if ('serviceWorker' in navigator) {
         window.addEventListener('load', function() {
           navigator.serviceWorker.register('service-worker.js', {

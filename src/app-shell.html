@@ -65,10 +65,10 @@ This code may only be used under the MIT style license found at https://abdonrd.
       }
     </style>
 
-    <app-location route="{{_route}}"></app-location>
+    <app-location route="{{_route}}" url-space-regex="^[[rootPath]]"></app-location>
     <app-route
         route="{{_route}}"
-        pattern="/:pageId"
+        pattern="[[rootPath]]:pageId"
         data="{{_routeData}}"
         tail="{{_routeTail}}">
     </app-route>
