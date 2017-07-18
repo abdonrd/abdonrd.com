@@ -2,13 +2,14 @@
   "entrypoint": "index.html",
   "shell": "src/app-shell.html",
   "sources": [
-    "src/**/*",
+    "data/**/*",
     "images/**/*",
+    "src/**/*",
     "bower.json"
   ],
   "extraDependencies": [
-    "manifest.json",
-    "bower_components/webcomponentsjs/*.js"
+    "bower_components/webcomponentsjs/*.js",
+    "manifest.json"
   ],
   "lint": {
     "rules": ["polymer-2"]
