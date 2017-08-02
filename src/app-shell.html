@@ -156,12 +156,6 @@ This code may only be used under the MIT style license found at https://abdonrd.
       }
 
       _routePageIdChanged(pageId) {
-        // Polymer 2.0 will call with `undefined` on initialization.
-        // Ignore until we are properly called with a string.
-        if (pageId === undefined) {
-          return;
-        }
-
         this._selectedPageId = pageId || this.defaultSelectedPageId;
 
         // Close a non-persistent drawer when the page & route are changed.
