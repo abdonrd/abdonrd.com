@@ -83,15 +83,6 @@ This code may only be used under the MIT style license found at https://abdonrd.
        * to indicate the path from which you'll be serving (e.g. `/my-app/`).
        */
       window.Polymer = { rootPath: '/' };
-
-      // Load and register pre-caching Service Worker
-      if ('serviceWorker' in navigator) {
-        window.addEventListener('load', function() {
-          navigator.serviceWorker.register('service-worker.js', {
-            scope: Polymer.rootPath
-          });
-        });
-      }
     </script>
 
     <!-- Load your application shell -->

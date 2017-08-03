@@ -5,6 +5,7 @@ This code may only be used under the MIT style license found at https://abdonrd.
 -->
 
 <link rel="import" href="../bower_components/polymer/polymer-element.html">
+<link rel="import" href="../bower_components/polymer/lib/mixins/gesture-event-listeners.html">
 <link rel="import" href="../bower_components/app-layout/app-drawer/app-drawer.html">
 <link rel="import" href="../bower_components/app-layout/app-drawer-layout/app-drawer-layout.html">
 <link rel="import" href="../bower_components/app-layout/app-header/app-header.html">
@@ -24,6 +25,9 @@ This code may only be used under the MIT style license found at https://abdonrd.
   <link rel="lazy-import" group="jobs" href="pages/page-jobs.html">
   <link rel="lazy-import" group="notFound" href="pages/page-not-found.html">
   <link rel="lazy-import" group="talks" href="pages/page-talks.html">
+
+  <link rel="lazy-import" group="lazyResources" href="../bower_components/paper-button/paper-button.html">
+  <link rel="lazy-import" group="lazyResources" href="../bower_components/paper-toast/paper-toast.html">
 
   <template>
     <style>
@@ -67,6 +71,27 @@ This code may only be used under the MIT style license found at https://abdonrd.
         color: #000000;
 
         font-weight: bold;
+      }
+
+      .toast-website-updated {
+        display: -ms-flexbox;
+        display: -webkit-flex;
+        display: flex;
+        -ms-flex-direction: row;
+        -webkit-flex-direction: row;
+        flex-direction: row;
+        -ms-flex-pack: justify;
+        -webkit-justify-content: space-between;
+        justify-content: space-between;
+        -ms-flex-align: center;
+        -webkit-align-items: center;
+        align-items: center;
+
+        padding: 6px 24px;
+      }
+
+      .toast-website-updated paper-button {
+        color: var(--app-primary-color);
       }
     </style>
 
@@ -112,6 +137,18 @@ This code may only be used under the MIT style license found at https://abdonrd.
         </iron-pages>
       </app-header-layout>
     </app-drawer-layout>
+
+    <paper-toast
+        id="toastWebsiteOffline"
+        text="The website is cached for offline use!">
+    </paper-toast>
+    <paper-toast
+        id="toastWebsiteUpdated"
+        class="toast-website-updated"
+        duration="0"
+        text="New version available!">
+       <paper-button on-click="_reloadWebsite">Update</paper-button>
+    </paper-toast>
   </template>
 
   <script>
@@ -119,7 +156,9 @@ This code may only be used under the MIT style license found at https://abdonrd.
      * @extends Polymer.Element
      * @appliesMixin Polymer.LazyImportsMixin
      */
-    class AppShell extends Polymer.LazyImportsMixin(Polymer.Element) {
+    class AppShell extends Polymer.LazyImportsMixin(
+      Polymer.GestureEventListeners(Polymer.Element)
+    ) {
       static get is() {
         return 'app-shell';
       }
@@ -169,8 +208,65 @@ This code may only be used under the MIT style license found at https://abdonrd.
         this.importLazyGroup(_selectedPageId).then((results) => {
           if (results.failed.length > 0 || results.loaded.length < 1) {
             this._selectedPageId = 'notFound';
+          } else {
+            this._ensureLazyLoaded();
           }
         });
+      }
+
+      _ensureLazyLoaded() {
+        // Load lazy resources after render and set `_loadComplete` when done.
+        if (!this._loadComplete) {
+          Polymer.RenderStatus.afterNextRender(this, () => {
+            this.importLazyGroup('lazyResources').then((results) => {
+              if (results.loaded.length >= 1) {
+                this._loadComplete = true;
+                this._registerServiceWorker();
+              }
+            });
+          });
+        }
+      }
+
+      _registerServiceWorker() {
+        if (!('serviceWorker' in navigator)) {
+          return;
+        }
+
+        navigator.serviceWorker.register('service-worker.js', {
+          scope: Polymer.rootPath
+        }).then(registration => {
+          registration.onupdatefound = () => {
+            const installingWorker = registration.installing;
+
+            installingWorker.onstatechange = () => {
+              switch (installingWorker.state) {
+                case 'installed':
+                  if (!navigator.serviceWorker.controller) {
+                    this.$.toastWebsiteOffline.open();
+                  } else {
+                    navigator.serviceWorker.controller.onstatechange = event => {
+                      if (event.target.state === 'redundant') {
+                        this.$.toastWebsiteUpdated.open();
+                      }
+                    };
+                  }
+                  break;
+                case 'redundant':
+                  throw Error('The installing Service Worker became redundant.');
+                default:
+                  break;
+              }
+            };
+          };
+        }).catch(function(error) {
+          // eslint-disable-next-line no-console
+          console.error('Service Worker registration failed:', error);
+        });
+      }
+
+      _reloadWebsite() {
+        window.location.reload();
       }
     }
 
