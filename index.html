@@ -70,24 +70,6 @@ This code may only be used under the MIT style license found at https://abdonrd.
     <meta itemprop="description" content="Galician. Technology enthusiast. Frontend Developer at IBM Research. Google Developer Expert on Web Technologies.">
     <meta itemprop="image" content="https://abdonrd.com/images/open-graph/abdon-rodriguez-davila.jpg">
 
-    <script>
-      /**
-       * [polymer-root-path]
-       *
-       * By default, we set `Polymer.rootPath` to the server root path (`/`).
-       * Leave this line unchanged if you intend to serve your app from the root
-       * path (e.g., with URLs like `my.domain/`, `my.domain/view1`, etc).
-       *
-       * If you intend to serve your app from a non-root path (e.g., with URLs
-       * like `my.domain/my-app/` and `my.domain/my-app/view1`), edit this line
-       * to indicate the path from which you'll be serving (e.g. `/my-app/`).
-       */
-      window.Polymer = { rootPath: '/' };
-    </script>
-
-    <!-- Load your application shell -->
-    <link rel="import" href="src/app-shell.html">
-
     <!-- Add any global styles for body, document, etc. -->
     <style>
       body {
@@ -108,5 +90,23 @@ This code may only be used under the MIT style license found at https://abdonrd.
 
     <!-- Load webcomponents-loader.js to check and load any polyfills your browser needs -->
     <script src="bower_components/webcomponentsjs/webcomponents-loader.js"></script>
+
+    <script>
+      /**
+       * [polymer-root-path]
+       *
+       * By default, we set `Polymer.rootPath` to the server root path (`/`).
+       * Leave this line unchanged if you intend to serve your app from the root
+       * path (e.g., with URLs like `my.domain/`, `my.domain/view1`, etc).
+       *
+       * If you intend to serve your app from a non-root path (e.g., with URLs
+       * like `my.domain/my-app/` and `my.domain/my-app/view1`), edit this line
+       * to indicate the path from which you'll be serving (e.g. `/my-app/`).
+       */
+      window.Polymer = { rootPath: '/' };
+    </script>
+
+    <!-- Load your application shell -->
+    <link rel="import" href="src/app-shell.html">
   </body>
 </html>
