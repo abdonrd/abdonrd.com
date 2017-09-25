@@ -4,8 +4,7 @@
   "sources": [
     "data/**/*",
     "images/**/*",
-    "src/**/*",
-    "bower.json"
+    "src/**/*"
   ],
   "extraDependencies": [
     "bower_components/webcomponentsjs/*.js",
