@@ -24,7 +24,6 @@ install:
 before_script:
   - yarn run lint
 script:
-  - xvfb-run yarn run test
   - xvfb-run yarn run test:integration
 before_deploy:
   - if [ $TRAVIS_BRANCH = "develop" ]; then
