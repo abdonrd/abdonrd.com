@@ -26,6 +26,13 @@ This code may only be used under the MIT style license found at https://abdonrd.
       static get is() {
         return 'page-not-found';
       }
+
+      static get properties() {
+        return {
+          // TODO: Delete this when fixing https://github.com/Polymer/polymer-linter/issues/71
+          rootPath: String
+        };
+      }
     }
 
     customElements.define(PageNotFound.is, PageNotFound);
