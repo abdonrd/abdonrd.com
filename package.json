@@ -23,8 +23,7 @@
     "lint:stylelint": "stylelint '**/*.{css,html}' --ignore-path .gitignore",
     "lint": "yarn run lint:eslint && yarn run lint:stylelint",
     "test:integration": "yarn run build",
-    "build": "polymer build",
-    "build:production": "NODE_ENV=production yarn run build"
+    "build": "polymer build"
   },
   "engines": {
     "node": ">=6.0"
