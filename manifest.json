@@ -2,21 +2,20 @@
   "name": "Abdón Rodríguez Davila",
   "short_name": "Abdón",
   "description": "Galician. Technology enthusiast. Frontend Developer at IBM Research. Google Developer Expert on Web Technologies.",
-  "start_url": "./?utm_source=web_app_manifest",
-  "scope": "./",
-  "display": "standalone",
-  "theme_color": "#13866f",
-  "background_color": "#13866f",
   "icons": [
     {
-      "src": "./images/manifest/icon-192x192.png",
+      "src": "images/manifest/icon-192x192.png",
       "sizes": "192x192",
       "type": "image/png"
     },
     {
-      "src": "./images/manifest/icon-512x512.png",
+      "src": "images/manifest/icon-512x512.png",
       "sizes": "512x512",
       "type": "image/png"
     }
-  ]
+  ],
+  "start_url": "/?utm_source=web_app_manifest",
+  "display": "standalone",
+  "theme_color": "#13866f",
+  "background_color": "#13866f"
 }
