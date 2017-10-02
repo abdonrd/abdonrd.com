@@ -188,6 +188,14 @@ This code may only be used under the MIT style license found at https://abdonrd.
         ];
       }
 
+      ready() {
+        super.ready();
+
+        // Custom Elements polyfill safe way to indicate an element has been
+        // upgraded.
+        this.removeAttribute('unresolved');
+      }
+
       _routePageIdChanged(pageId) {
         this._selectedPageId = pageId || this.defaultSelectedPageId;
 
