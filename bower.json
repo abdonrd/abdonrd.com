@@ -5,7 +5,6 @@
     "iron-flex-layout": "PolymerElements/iron-flex-layout#^2.0.0",
     "iron-iconset-svg": "PolymerElements/iron-iconset-svg#^2.0.0",
     "iron-pages": "PolymerElements/iron-pages#^2.0.0",
-    "iron-selector": "PolymerElements/iron-selector#^2.0.0",
     "lazy-imports": "Polymer/lazy-imports#^2.0.0",
     "paper-button": "PolymerElements/paper-button#^2.0.0",
     "paper-toast": "PolymerElements/paper-toast#^2.0.0",

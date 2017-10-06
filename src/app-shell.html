@@ -8,7 +8,6 @@ This code may only be used under the MIT style license found at https://abdonrd.
 <link rel="import" href="../bower_components/app-route/app-location.html">
 <link rel="import" href="../bower_components/app-route/app-route.html">
 <link rel="import" href="../bower_components/iron-pages/iron-pages.html">
-<link rel="import" href="../bower_components/iron-selector/iron-selector.html">
 <link rel="import" href="app-icons.html">
 
 <dom-module id="app-shell">
@@ -43,14 +42,9 @@ This code may only be used under the MIT style license found at https://abdonrd.
     </app-route>
 
     <main>
-      <iron-selector
-          selected="[[_selectedPageId]]"
-          attr-for-selected="name"
-          role="navigation">
-        <a name="home" href="[[rootPath]]">Home</a>
-        <a name="jobs" href="[[rootPath]]jobs">Jobs</a>
-        <a name="talks" href="[[rootPath]]talks">Talks</a>
-      </iron-selector>
+      <a name="home" href="[[rootPath]]">Home</a>
+      <a name="jobs" href="[[rootPath]]jobs">Jobs</a>
+      <a name="talks" href="[[rootPath]]talks">Talks</a>
 
       <iron-pages
           selected="[[_selectedPageId]]"
