@@ -9,18 +9,9 @@ This code may only be used under the MIT style license found at https://abdonrd.
 <link rel="import" href="../bower_components/app-route/app-route.html">
 <link rel="import" href="../bower_components/iron-pages/iron-pages.html">
 <link rel="import" href="../bower_components/iron-selector/iron-selector.html">
-<link rel="import" href="../bower_components/lazy-imports/lazy-imports-mixin.html">
 <link rel="import" href="app-icons.html">
 
 <dom-module id="app-shell">
-  <link rel="lazy-import" group="home" href="pages/page-home.html">
-  <link rel="lazy-import" group="jobs" href="pages/page-jobs.html">
-  <link rel="lazy-import" group="notFound" href="pages/page-not-found.html">
-  <link rel="lazy-import" group="talks" href="pages/page-talks.html">
-
-  <link rel="lazy-import" group="lazyResources" href="../bower_components/paper-button/paper-button.html">
-  <link rel="lazy-import" group="lazyResources" href="../bower_components/paper-toast/paper-toast.html">
-
   <template>
     <style>
       :host {
@@ -89,9 +80,8 @@ This code may only be used under the MIT style license found at https://abdonrd.
   <script>
     /**
      * @extends Polymer.Element
-     * @appliesMixin Polymer.LazyImportsMixin
      */
-    class AppShell extends Polymer.LazyImportsMixin(Polymer.Element) {
+    class AppShell extends Polymer.Element {
       static get is() {
         return 'app-shell';
       }
@@ -115,6 +105,18 @@ This code may only be used under the MIT style license found at https://abdonrd.
 
           _routeTail: {
             type: Object
+          },
+
+          _pagesPaths: {
+            type: Object,
+            value: () => {
+              return {
+                home: 'pages/page-home.html',
+                jobs: 'pages/page-jobs.html',
+                notFound: 'pages/page-not-found.html',
+                talks: 'pages/page-talks.html'
+              };
+            }
           },
 
           _selectedPageId: {
@@ -144,24 +146,28 @@ This code may only be used under the MIT style license found at https://abdonrd.
 
       _selectedPageIdChanged(_selectedPageId) {
         // Load page import on demand. If fails, show the not found page.
-        this.importLazyGroup(_selectedPageId).then((results) => {
-          if (results.failed.length > 0 || results.loaded.length < 1) {
-            this._selectedPageId = 'notFound';
-          } else {
-            this._ensureLazyLoaded();
-          }
-        });
+        if (_selectedPageId in this._pagesPaths) {
+          this._importPage(_selectedPageId);
+        } else {
+          this._importPage('notFound');
+        }
+      }
+
+      _importPage(pageId) {
+        const pagePath = this._pagesPaths[pageId];
+
+        Polymer.importHref(this.resolveUrl(pagePath), () => {
+          this._ensureLazyLoaded();
+        }, null, true);
       }
 
       _ensureLazyLoaded() {
         // Load lazy resources after render and set `_loadComplete` when done.
         if (!this._loadComplete) {
           Polymer.RenderStatus.afterNextRender(this, () => {
-            this.importLazyGroup('lazyResources').then((results) => {
-              if (results.loaded.length >= 1) {
-                this._loadComplete = true;
-                this._registerServiceWorker();
-              }
+            Polymer.importHref(this.resolveUrl('lazy-resources.html'), () => {
+              this._registerServiceWorker();
+              this._loadComplete = true;
             });
           });
         }
