@@ -73,15 +73,62 @@ This code may only be used under the MIT style license found at https://abdonrd.
     <!-- Add any global styles for body, document, etc. -->
     <style>
       body {
-        min-height: 100vh;
         margin: 0;
         background-color: #eeeeee;
-        font-family: "Roboto", "Noto", sans-serif;
-        line-height: 1.5;
       }
 
       /* Styling for render while resources are loading */
       app-shell[unresolved] {
+        display: flex;
+        flex-direction: column;
+      }
+
+      app-shell[unresolved] header {
+        min-height: 100vh;
+        background-color: #1abc9c;
+        color: #ffffff;
+        font-family: monospace;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+      }
+
+      app-shell[unresolved] header img {
+        width: 256px;
+        height: 256px;
+        border-radius: 50%;
+        background-color: #314cc0;
+      }
+
+      app-shell[unresolved] header h1 {
+        margin: 32px 16px;
+        font-size: 1.9em;
+        text-align: center;
+      }
+
+      app-shell[unresolved] header h2 {
+        margin: 0 16px;
+        font-size: 1.2em;
+        font-weight: normal;
+        text-align: center;
+        max-width: 400px;
+      }
+
+      @media (min-width: 768px) {
+        app-shell[unresolved] {
+          height: 100vh;
+          flex-direction: row;
+        }
+
+        app-shell[unresolved] header {
+          flex: 1;
+        }
+
+        app-shell[unresolved] main {
+          flex: 1;
+          overflow-x: scroll;
+        }
       }
     </style>
   </head>
@@ -89,6 +136,14 @@ This code may only be used under the MIT style license found at https://abdonrd.
     <noscript>Please enable JavaScript to view this website.</noscript>
 
     <app-shell unresolved>
+      <header>
+        <img src="images/avatar.jpg" alt="Profile picture of Abdón">
+        <h1>Abdón Rodríguez Davila</h1>
+        <h2>Galician. Technology enthusiast. Frontend Developer at IBM Research. Google Developer Expert on Web Technologies</h2>
+      </header>
+
+      <main>
+      </main>
     </app-shell>
 
     <!-- Load webcomponents-loader.js to check and load any polyfills your browser needs -->
