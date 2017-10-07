@@ -94,7 +94,7 @@ This code may only be used under the MIT style license found at https://abdonrd.
         justify-content: center;
       }
 
-      app-shell[unresolved] header img {
+      app-shell[unresolved] header .image-placeholder {
         width: 256px;
         height: 256px;
         border-radius: 50%;
@@ -137,10 +137,12 @@ This code may only be used under the MIT style license found at https://abdonrd.
 
     <app-shell unresolved>
       <header>
-        <img src="images/avatar.jpg" alt="Profile picture of Abdón">
+        <div class="image-placeholder"></div>
         <h1>Abdón Rodríguez Davila</h1>
         <h2>Galician. Technology enthusiast. Frontend Developer at IBM Research. Google Developer Expert on Web Technologies</h2>
       </header>
+
+      <main></main>
     </app-shell>
 
     <!-- Load webcomponents-loader.js to check and load any polyfills your browser needs -->

@@ -15,9 +15,66 @@ This code may only be used under the MIT style license found at https://abdonrd.
     <style>
       :host {
         --app-primary-color: #1abc9c;
-        --app-secondary-color: #000000;
 
         display: block;
+      }
+
+      .container {
+        display: flex;
+        flex-direction: column;
+      }
+
+      header {
+        min-height: 100vh;
+        background-color: #1abc9c;
+        color: #ffffff;
+        font-family: monospace;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+      }
+
+      header img {
+        width: 256px;
+        height: 256px;
+        border-radius: 50%;
+        background-color: #314cc0;
+      }
+
+      header h1 {
+        margin: 32px 16px;
+        font-size: 1.9em;
+        text-align: center;
+      }
+
+      header h2 {
+        margin: 0 16px;
+        font-size: 1.2em;
+        font-weight: normal;
+        text-align: center;
+        max-width: 400px;
+      }
+
+      @media (min-width: 768px) {
+        .container {
+          height: 100vh;
+          flex-direction: row;
+        }
+
+        header {
+          flex: 1;
+        }
+
+        main {
+          flex: 1;
+          overflow-x: scroll;
+        }
+      }
+
+      /* Hide the toast while the element has not been imported */
+      paper-toast {
+        position: fixed;
       }
 
       .toast-website-updated {
@@ -41,22 +98,30 @@ This code may only be used under the MIT style license found at https://abdonrd.
         tail="{{_routeTail}}">
     </app-route>
 
-    <main>
-      <a name="home" href="[[rootPath]]">Home</a>
-      <a name="jobs" href="[[rootPath]]jobs">Jobs</a>
-      <a name="talks" href="[[rootPath]]talks">Talks</a>
+    <div class="container">
+      <header>
+        <img src="images/avatar.jpg" alt="Profile picture of Abdón">
+        <h1>Abdón Rodríguez Davila</h1>
+        <h2>Galician. Technology enthusiast. Frontend Developer at IBM Research. Google Developer Expert on Web Technologies</h2>
+      </header>
 
-      <iron-pages
-          selected="[[_selectedPageId]]"
-          attr-for-selected="name"
-          fallback-selection="notFound"
-          role="main">
-        <page-home name="home"></page-home>
-        <page-jobs name="jobs"></page-jobs>
-        <page-talks name="talks"></page-talks>
-        <page-not-found name="notFound"></page-not-found>
-      </iron-pages>
-    </main>
+      <main>
+        <a name="home" href="[[rootPath]]">Home</a>
+        <a name="jobs" href="[[rootPath]]jobs">Jobs</a>
+        <a name="talks" href="[[rootPath]]talks">Talks</a>
+
+        <iron-pages
+            selected="[[_selectedPageId]]"
+            attr-for-selected="name"
+            fallback-selection="notFound"
+            role="main">
+          <page-home name="home"></page-home>
+          <page-jobs name="jobs"></page-jobs>
+          <page-talks name="talks"></page-talks>
+          <page-not-found name="notFound"></page-not-found>
+        </iron-pages>
+      </main>
+    </div>
 
     <paper-toast
         id="toastWebsiteOffline"
@@ -89,9 +154,6 @@ This code may only be used under the MIT style license found at https://abdonrd.
             type: String,
             value: 'home'
           },
-
-          // TODO: Delete this when fixing https://github.com/Polymer/polymer-linter/issues/71
-          rootPath: String,
 
           _routeData: {
             type: Object
