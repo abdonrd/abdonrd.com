@@ -16,17 +16,14 @@ This code may only be used under the MIT style license found at https://abdonrd.
       :host {
         --app-primary-color: #1abc9c;
 
-        display: block;
-      }
-
-      .container {
+        height: 100%;
         display: flex;
         flex-direction: column;
       }
 
       header {
-        min-height: 100vh;
-        background-color: #1abc9c;
+        min-height: 100%;
+        background-color: var(--app-primary-color);
         color: #ffffff;
         font-family: monospace;
         display: flex;
@@ -57,8 +54,7 @@ This code may only be used under the MIT style license found at https://abdonrd.
       }
 
       @media (min-width: 768px) {
-        .container {
-          height: 100vh;
+        :host {
           flex-direction: row;
         }
 
@@ -98,30 +94,28 @@ This code may only be used under the MIT style license found at https://abdonrd.
         tail="{{_routeTail}}">
     </app-route>
 
-    <div class="container">
-      <header>
-        <img src="images/avatar.jpg" alt="Profile picture of Abdón">
-        <h1>Abdón Rodríguez Davila</h1>
-        <h2>Galician. Technology enthusiast. Frontend Developer at IBM Research. Google Developer Expert on Web Technologies</h2>
-      </header>
+    <header>
+      <img src="images/avatar.jpg" alt="Profile picture of Abdón">
+      <h1>Abdón Rodríguez Davila</h1>
+      <h2>Galician. Technology enthusiast. Frontend Developer at IBM Research. Google Developer Expert on Web Technologies</h2>
+    </header>
 
-      <main>
-        <a name="home" href="[[rootPath]]">Home</a>
-        <a name="jobs" href="[[rootPath]]jobs">Jobs</a>
-        <a name="talks" href="[[rootPath]]talks">Talks</a>
+    <main>
+      <a name="home" href="[[rootPath]]">Home</a>
+      <a name="jobs" href="[[rootPath]]jobs">Jobs</a>
+      <a name="talks" href="[[rootPath]]talks">Talks</a>
 
-        <iron-pages
-            selected="[[_selectedPageId]]"
-            attr-for-selected="name"
-            fallback-selection="notFound"
-            role="main">
-          <page-home name="home"></page-home>
-          <page-jobs name="jobs"></page-jobs>
-          <page-talks name="talks"></page-talks>
-          <page-not-found name="notFound"></page-not-found>
-        </iron-pages>
-      </main>
-    </div>
+      <iron-pages
+          selected="[[_selectedPageId]]"
+          attr-for-selected="name"
+          fallback-selection="notFound"
+          role="main">
+        <page-home name="home"></page-home>
+        <page-jobs name="jobs"></page-jobs>
+        <page-talks name="talks"></page-talks>
+        <page-not-found name="notFound"></page-not-found>
+      </iron-pages>
+    </main>
 
     <paper-toast
         id="toastWebsiteOffline"

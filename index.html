@@ -72,6 +72,11 @@ This code may only be used under the MIT style license found at https://abdonrd.
 
     <!-- Add any global styles for body, document, etc. -->
     <style>
+      html,
+      body {
+        height: 100%;
+      }
+
       body {
         margin: 0;
         background-color: #eeeeee;
@@ -79,12 +84,13 @@ This code may only be used under the MIT style license found at https://abdonrd.
 
       /* Styling for render while resources are loading */
       app-shell[unresolved] {
+        height: 100%;
         display: flex;
         flex-direction: column;
       }
 
       app-shell[unresolved] header {
-        min-height: 100vh;
+        min-height: 100%;
         background-color: #1abc9c;
         color: #ffffff;
         font-family: monospace;
@@ -117,7 +123,6 @@ This code may only be used under the MIT style license found at https://abdonrd.
 
       @media (min-width: 768px) {
         app-shell[unresolved] {
-          height: 100vh;
           flex-direction: row;
         }
 
