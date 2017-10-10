@@ -5,6 +5,8 @@ This code may only be used under the MIT style license found at https://abdonrd.
 -->
 
 <link rel="import" href="../../bower_components/polymer/polymer-element.html">
+<link rel="import" href="../../bower_components/polymer/lib/elements/dom-repeat.html">
+<link rel="import" href="../elements/job-item.html">
 <link rel="import" href="../app-styles.html">
 
 <dom-module id="page-jobs">
@@ -13,9 +15,29 @@ This code may only be used under the MIT style license found at https://abdonrd.
       :host {
         display: block;
       }
+
+      ul {
+        padding: 0;
+        margin: 0;
+        list-style-type: none;
+      }
+
+      li {
+        padding: 16px 0;
+      }
     </style>
 
-    Jobs
+    <h1>Jobs</h1>
+
+    <ul>
+      <dom-repeat items="[[jobs]]" as="job">
+        <template>
+          <li>
+            <job-item job="[[job]]"></job-item>
+          </li>
+        </template>
+      </dom-repeat>
+    </ul>
   </template>
 
   <script>
@@ -25,6 +47,14 @@ This code may only be used under the MIT style license found at https://abdonrd.
     class PageJobs extends Polymer.Element {
       static get is() {
         return 'page-jobs';
+      }
+
+      static get properties() {
+        return {
+          jobs: {
+            type: Array
+          }
+        };
       }
     }
 
