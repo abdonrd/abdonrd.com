@@ -25,6 +25,16 @@ before_script:
 script:
   - echo "The test task is disabled."
   # - xvfb-run yarn run test
+after_success:
+  - if [ "$TRAVIS_PULL_REQUEST" == "false" ]; then
+      echo "Lighthouse CI only runs on Pull Requests.";
+      exit;
+    fi
+  - yarn global add firebase-tools
+  - yarn add https://github.com/ebidel/lighthouse-ci
+  - yarn run build
+  - firebase deploy --token $FIREBASE_TOKEN --project abdonrd-develop
+  - node node_modules/lighthouse-ci/runlighthouse.js https://abdonrd-develop.firebaseapp.com
 before_deploy:
   - yarn run build
 deploy:
