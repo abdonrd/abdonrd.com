@@ -1,6 +1,5 @@
 {
   "extends": "stylelint-config-ibmresearch",
-  "processors": ["stylelint-processor-html"],
   "rules": {
     "no-empty-source": null
   }
