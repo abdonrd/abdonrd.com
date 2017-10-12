@@ -1,36 +1,52 @@
 language: node_js
-sudo: required
 dist: trusty
+sudo: required
+addons:
+  firefox: "latest"
+  apt:
+    sources:
+      - google-chrome
+    packages:
+      - google-chrome-stable
 node_js:
-  - '6'
+  - "6"
 cache:
   yarn: true
-  directories:
-    - node_modules
 branches:
   except:
     - /^v\d/
 install:
-  - yarn install
+  - yarn global add polymer-cli
   - yarn global add bower
+  - yarn install
   - bower install
-script:
+before_script:
   - yarn run lint
-  # - yarn run test
+script:
+  - echo "The test task is disabled."
+  # - xvfb-run yarn run test
+after_success:
+  - if [ "${TRAVIS_EVENT_TYPE}" != "pull_request" ]; then
+      echo "Lighthouse only runs on pull_request events. Event was $TRAVIS_EVENT_TYPE.";
+      exit;
+    fi
+  - yarn global add firebase-tools
+  - yarn add https://github.com/ebidel/lighthouse-ci
+  - yarn run build
+  - firebase deploy --token "${FIREBASE_TOKEN}" --project abdonrd-develop
+  - node node_modules/lighthouse-ci/runlighthouse.js https://abdonrd-develop.firebaseapp.com
 before_deploy:
   - yarn run build
 deploy:
   - provider: firebase
-    edge: true
+    token: $FIREBASE_TOKEN
     skip_cleanup: true
     project: abdonrd-develop
-    token: $FIREBASE_TOKEN
     on:
       branch: develop
   - provider: firebase
-    edge: true
+    token: $FIREBASE_TOKEN
     skip_cleanup: true
     project: project-8848054472830093819
-    token: $FIREBASE_TOKEN
     on:
       branch: master
