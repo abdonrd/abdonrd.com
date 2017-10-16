@@ -5,17 +5,35 @@ This code may only be used under the MIT style license found at https://abdonrd.
 -->
 
 <link rel="import" href="../../bower_components/polymer/polymer-element.html">
+<link rel="import" href="../../bower_components/polymer/lib/elements/dom-repeat.html">
+<link rel="import" href="../elements/talk-item.html">
 <link rel="import" href="../app-styles.html">
 
 <dom-module id="page-talks">
   <template>
-    <style include="app-styles">
-      :host {
-        display: block;
+    <style include="page-styles">
+      ul {
+        padding: 0;
+        margin: 0;
+        list-style-type: none;
+      }
+
+      li + li {
+        margin-top: 1.2em;
       }
     </style>
 
-    Talks
+    <h1>Talks ([[talks.length]])</h1>
+
+    <ul>
+      <dom-repeat items="[[talks]]" as="talk">
+        <template>
+          <li>
+            <talk-item talk="[[talk]]"></talk-item>
+          </li>
+        </template>
+      </dom-repeat>
+    </ul>
   </template>
 
   <script>
@@ -25,6 +43,14 @@ This code may only be used under the MIT style license found at https://abdonrd.
     class PageTalks extends Polymer.Element {
       static get is() {
         return 'page-talks';
+      }
+
+      static get properties() {
+        return {
+          talks: {
+            type: Array
+          }
+        };
       }
     }
 

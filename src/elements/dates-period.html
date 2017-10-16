@@ -5,8 +5,7 @@ This code may only be used under the MIT style license found at https://abdonrd.
 -->
 
 <link rel="import" href="../../bower_components/polymer/polymer-element.html">
-
-<script src="../../bower_components/date-fns/dist/date_fns.min.js"></script>
+<link rel="import" href="../elements/date-fns-import.html">
 
 <dom-module id="dates-period">
   <template>
@@ -39,7 +38,7 @@ This code may only be used under the MIT style license found at https://abdonrd.
       }
 
       _formatDate(date) {
-        return dateFns.format(new Date(date), 'MMMM YYYY');
+        return dateFns.format(new Date(date), 'MMM YYYY');
       }
 
       _formatPeriod(period) {

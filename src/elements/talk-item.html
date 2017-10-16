@@ -6,10 +6,10 @@ This code may only be used under the MIT style license found at https://abdonrd.
 
 <link rel="import" href="../../bower_components/polymer/polymer-element.html">
 <link rel="import" href="../../bower_components/iron-icon/iron-icon.html">
-<link rel="import" href="../elements/dates-period.html">
+<link rel="import" href="../elements/date-fns-import.html">
 <link rel="import" href="../app-icons.html">
 
-<dom-module id="job-item">
+<dom-module id="talk-item">
   <template>
     <style>
       :host {
@@ -17,22 +17,22 @@ This code may only be used under the MIT style license found at https://abdonrd.
         line-height: 1.4em;
       }
 
-      .title {
+      .name {
         font-weight: bold;
         font-size: 1.1em;
       }
 
-      .company {
+      .event-name-and-organization {
         font-style: italic;
       }
 
-      .period-and-location {
+      .date-and-location {
         display: flex;
         flex-flow: row wrap;
         align-items: center;
       }
 
-      .period,
+      .date,
       .location {
         display: flex;
         flex-direction: row;
@@ -40,7 +40,7 @@ This code may only be used under the MIT style license found at https://abdonrd.
         color: #444444;
       }
 
-      .period {
+      .date {
         margin-right: 1.2em;
       }
 
@@ -50,43 +50,49 @@ This code may only be used under the MIT style license found at https://abdonrd.
         margin-right: 0.1em;
       }
 
-      .period iron-icon {
+      .date iron-icon {
         margin-right: 0.3em;
       }
     </style>
 
-    <div class="title">[[job.title]]</div>
-    <div class="company">[[job.company]]</div>
-    <div class="period-and-location">
-      <div class="period">
+    <div class="name">[[talk.name]]</div>
+    <div class="event-name-and-organization">[[talk.eventName]] by [[talk.organization]]</div>
+    <div class="date-and-location">
+      <div class="date">
         <iron-icon icon="app-icons:today"></iron-icon>
-        <dates-period period="[[job.period]]"></dates-period>
+        <span>[[_formatDate(talk.date)]]</span>
       </div>
       <div class="location">
         <iron-icon icon="app-icons:location-on"></iron-icon>
-        <span title="[[job.location.long]]">[[job.location.short]]</span>
+        <span title="[[talk.location.long]]">[[talk.location.short]]</span>
       </div>
     </div>
   </template>
 
   <script>
+    /* global dateFns:false */
+
     /**
      * @extends Polymer.Element
      */
-    class JobItem extends Polymer.Element {
+    class TalkItem extends Polymer.Element {
       static get is() {
-        return 'job-item';
+        return 'talk-item';
       }
 
       static get properties() {
         return {
-          job: {
+          talk: {
             type: Object
           }
         };
       }
+
+      _formatDate(date) {
+        return dateFns.format(new Date(date), 'MMM DD, YYYY');
+      }
     }
 
-    customElements.define(JobItem.is, JobItem);
+    customElements.define(TalkItem.is, TalkItem);
   </script>
 </dom-module>

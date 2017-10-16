@@ -11,19 +11,15 @@ This code may only be used under the MIT style license found at https://abdonrd.
 
 <dom-module id="page-jobs">
   <template>
-    <style include="app-styles">
-      :host {
-        display: block;
-      }
-
+    <style include="page-styles">
       ul {
         padding: 0;
         margin: 0;
         list-style-type: none;
       }
 
-      li {
-        padding: 16px 0;
+      li + li {
+        margin-top: 1.2em;
       }
     </style>
 
