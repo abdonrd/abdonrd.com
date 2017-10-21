@@ -1,0 +1,80 @@
+<!--
+@license
+Copyright (c) 2017 Abdón Rodríguez Davila (@abdonrd). All rights reserved.
+This code may only be used under the MIT style license found at https://abdonrd.github.io/LICENSE.txt
+-->
+
+<link rel="import" href="../../bower_components/polymer/polymer-element.html">
+<link rel="import" href="../../bower_components/iron-icon/iron-icon.html">
+<link rel="import" href="../app-icons.html">
+
+<dom-module id="social-networks">
+  <template>
+    <style>
+      :host {
+        display: block;
+      }
+
+      ul {
+        list-style: none;
+        padding: 0;
+        margin: 32px 0 0;
+        display: flex;
+        flex-direction: row;
+      }
+
+      ul li + li {
+        margin-left: 16px;
+      }
+
+      ul li a {
+        color: inherit;
+      }
+
+      ul li a iron-icon {
+        width: 28px;
+        height: 28px;
+      }
+    </style>
+
+    <ul>
+      <li>
+        <a
+            href="https://twitter.com/abdonrd"
+            title="Twitter profile"
+            target="_blank">
+          <iron-icon icon="app-icons:twitter"></iron-icon>
+        </a>
+      </li>
+      <li>
+        <a
+            href="https://github.com/abdonrd"
+            title="GitHub profile"
+            target="_blank">
+          <iron-icon icon="app-icons:github"></iron-icon>
+        </a>
+      </li>
+      <li>
+        <a
+            href="https://www.linkedin.com/in/abdonrd"
+            title="LinkedIn profile"
+            target="_blank">
+          <iron-icon icon="app-icons:linkedin"></iron-icon>
+        </a>
+      </li>
+    </ul>
+  </template>
+
+  <script>
+    /**
+     * @extends Polymer.Element
+     */
+    class SocialNetworks extends Polymer.Element {
+      static get is() {
+        return 'social-networks';
+      }
+    }
+
+    customElements.define(SocialNetworks.is, SocialNetworks);
+  </script>
+</dom-module>
