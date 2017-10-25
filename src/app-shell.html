@@ -133,6 +133,8 @@ This code may only be used under the MIT style license found at https://abdonrd.
   </template>
 
   <script>
+    // Gesture events like tap and track generated from touch will not be
+    // preventable, allowing for better scrolling performance.
     Polymer.setPassiveTouchGestures(true);
 
     /**
