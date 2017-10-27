@@ -71,6 +71,8 @@ This code may only be used under the MIT style license found at https://abdonrd.
         }
 
         main {
+          display: flex;
+          flex-direction: column;
           flex: 1;
           overflow-x: scroll;
         }
@@ -110,9 +112,11 @@ This code may only be used under the MIT style license found at https://abdonrd.
     </header>
 
     <main>
-      <a name="home" href="[[rootPath]]">Home</a>
-      <a name="jobs" href="[[rootPath]]jobs">Jobs</a>
-      <a name="talks" href="[[rootPath]]talks">Talks</a>
+      <div class="menu">
+        <a name="home" href="[[rootPath]]">Home</a>
+        <a name="jobs" href="[[rootPath]]jobs">Jobs</a>
+        <a name="talks" href="[[rootPath]]talks">Talks</a>
+      </div>
 
       <iron-pages
           selected="[[_selectedPageId]]"
