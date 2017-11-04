@@ -16,7 +16,6 @@ branches:
   except:
     - /^v\d/
 install:
-  - yarn global add polymer-cli
   - yarn global add bower
   - yarn install
   - bower install
