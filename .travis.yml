@@ -21,9 +21,7 @@ install:
   - bower install
 before_script:
   - yarn run lint:eslint
-  # Don't run stylelint until this issue is fixed
-  # https://github.com/stylelint/stylelint/issues/2592
-  # - yarn run lint:stylelint
+  - yarn run lint:stylelint
 script:
   - xvfb-run yarn run test:integration
 after_success:

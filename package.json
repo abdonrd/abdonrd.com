@@ -14,12 +14,12 @@
     "eslint-config-ibmresearch": "^0.8.0",
     "eslint-plugin-html": "^3.2.0",
     "polymer-cli": "^1.5.0",
-    "stylelint": "^8.3.0",
-    "stylelint-config-ibmresearch": "IBMResearch/stylelint-config-ibmresearch#master"
+    "stylelint": "^8.4.0",
+    "stylelint-config-ibmresearch": "^0.3.0"
   },
   "scripts": {
     "lint:eslint": "eslint . --ext js,html --ignore-path .gitignore",
-    "lint:stylelint": "stylelint **/*.{css,html} --ignore-path .gitignore",
+    "lint:stylelint": "stylelint '**/*.{css,html}' --ignore-path .gitignore",
     "lint": "yarn run lint:eslint && yarn run lint:stylelint",
     "test:integration": "yarn run build",
     "build": "polymer build"
