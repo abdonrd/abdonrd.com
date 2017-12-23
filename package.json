@@ -18,10 +18,12 @@
     "stylelint-config-ibmresearch": "^0.3.0"
   },
   "scripts": {
+    "serve": "polymer serve",
     "lint:eslint": "eslint . --ext js,html --ignore-path .gitignore",
     "lint:stylelint": "stylelint '**/*.{css,html}' --ignore-path .gitignore",
     "lint": "yarn run lint:eslint && yarn run lint:stylelint",
     "test:integration": "yarn run build",
+    "test": "yarn run test:integration",
     "build": "polymer build"
   },
   "engines": {
