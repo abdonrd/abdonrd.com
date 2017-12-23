@@ -9,7 +9,9 @@
 module.exports = {
   staticFileGlobs: [
     'bower_components/webcomponentsjs/webcomponents-loader.js',
-    'images/**/*',
+    'images/*',
+    'images/manifest/*',
+    'images/open-graph/*',
     'manifest.json'
   ],
   runtimeCaching: [
