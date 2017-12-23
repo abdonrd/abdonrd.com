@@ -111,5 +111,14 @@ the root directory of this source tree.
     <link rel="import" href="src/app-shell.html">
 
     <noscript>Please enable JavaScript to view this website.</noscript>
+
+    <!-- Cancel the add to homescreen prompt -->
+    <script>
+      window.addEventListener('beforeinstallprompt', function(event) {
+        event.preventDefault();
+
+        return false;
+      });
+    </script>
   </body>
 </html>
