@@ -82,7 +82,7 @@ the root directory of this source tree.
         }
       }
 
-      .toast-website-updated.paper-toast-open {
+      paper-toast {
         display: flex;
         flex-direction: row;
         justify-content: space-between;
@@ -90,13 +90,8 @@ the root directory of this source tree.
         padding: 6px 24px;
       }
 
-      .toast-website-updated paper-button {
+      paper-toast paper-button {
         color: var(--app-primary-color);
-      }
-
-      /* Hide the toast button while the element has not been imported */
-      .toast-website-updated:not(.paper-toast-open) paper-button {
-        display: none;
       }
     </style>
 
@@ -133,18 +128,6 @@ the root directory of this source tree.
         <page-not-found name="notFound"></page-not-found>
       </iron-pages>
     </main>
-
-    <paper-toast
-        id="toastWebsiteOffline"
-        text="The website is cached for offline use!">
-    </paper-toast>
-    <paper-toast
-        id="toastWebsiteUpdated"
-        class="toast-website-updated"
-        duration="0"
-        text="New version available!">
-       <paper-button on-click="_reloadWebsite">Update</paper-button>
-    </paper-toast>
   </template>
 
   <script>
@@ -234,7 +217,10 @@ the root directory of this source tree.
         if (!this._loadComplete) {
           Polymer.RenderStatus.afterNextRender(this, () => {
             Polymer.importHref(this.resolveUrl('lazy-resources.html'), () => {
-              this._registerServiceWorker();
+              if ('serviceWorker' in navigator) {
+                this._registerServiceWorker();
+              }
+
               this._loadComplete = true;
             });
           });
@@ -242,10 +228,6 @@ the root directory of this source tree.
       }
 
       _registerServiceWorker() {
-        if (!('serviceWorker' in navigator)) {
-          return;
-        }
-
         navigator.serviceWorker.register('service-worker.js', {
           scope: Polymer.rootPath
         }).then(registration => {
@@ -256,11 +238,11 @@ the root directory of this source tree.
               switch (installingWorker.state) {
                 case 'installed':
                   if (!navigator.serviceWorker.controller) {
-                    this.$.toastWebsiteOffline.open();
+                    this.showToastOffline();
                   } else {
                     navigator.serviceWorker.controller.onstatechange = event => {
                       if (event.target.state === 'redundant') {
-                        this.$.toastWebsiteUpdated.open();
+                        this.showToastUpdated();
                       }
                     };
                   }
@@ -278,8 +260,32 @@ the root directory of this source tree.
         });
       }
 
-      _reloadWebsite() {
-        window.location.reload();
+      showToastOffline() {
+        const toastOffline = document.createElement('paper-toast');
+        toastOffline.text = 'The website is cached for offline use!';
+
+        this.shadowRoot.appendChild(toastOffline);
+
+        toastOffline.open();
+      }
+
+      showToastUpdated() {
+        const toastUpdated = document.createElement('paper-toast');
+        toastUpdated.setProperties({
+          duration: 0,
+          text: 'New version available!'
+        });
+
+        const toastButtonUpdated = document.createElement('paper-button');
+        toastButtonUpdated.innerHTML = 'Update';
+        toastButtonUpdated.addEventListener('click', () => {
+          window.location.reload();
+        });
+
+        toastUpdated.appendChild(toastButtonUpdated);
+        this.shadowRoot.appendChild(toastUpdated);
+
+        toastUpdated.open();
       }
     }
 
