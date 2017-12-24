@@ -10,7 +10,6 @@ the root directory of this source tree.
 <link rel="import" href="../bower_components/polymer/polymer-element.html">
 <link rel="import" href="../bower_components/polymer/lib/utils/render-status.html">
 <link rel="import" href="../bower_components/app-route/app-location.html">
-<link rel="import" href="../bower_components/app-route/app-route.html">
 <link rel="import" href="../bower_components/iron-pages/iron-pages.html">
 <link rel="import" href="elements/social-networks.html">
 
@@ -96,12 +95,6 @@ the root directory of this source tree.
     </style>
 
     <app-location route="{{_route}}" url-space-regex="^[[rootPath]]"></app-location>
-    <app-route
-        route="{{_route}}"
-        pattern="[[rootPath]]:pageId"
-        data="{{_routeData}}"
-        tail="{{_routeTail}}">
-    </app-route>
 
     <header>
       <img src="images/avatar.jpg" alt="Profile picture of Abdón">
@@ -142,19 +135,7 @@ the root directory of this source tree.
 
       static get properties() {
         return {
-          /**
-           * The default selected page id.
-           */
-          defaultSelectedPageId: {
-            type: String,
-            value: 'home'
-          },
-
-          _routeData: {
-            type: Object
-          },
-
-          _routeTail: {
+          _route: {
             type: Object
           },
 
@@ -171,15 +152,14 @@ the root directory of this source tree.
           },
 
           _selectedPageId: {
-            type: String,
-            observer: '_selectedPageIdChanged'
+            type: String
           }
         };
       }
 
       static get observers() {
         return [
-          '_routePageIdChanged(_routeData.pageId)'
+          '_routeChanged(_route)'
         ];
       }
 
@@ -191,21 +171,34 @@ the root directory of this source tree.
         this.removeAttribute('unresolved');
       }
 
-      _routePageIdChanged(pageId) {
-        this._selectedPageId = pageId || this.defaultSelectedPageId;
-      }
+      _routeChanged(_route) {
+        const pathParts = _route.path.slice(1).split('/');
 
-      _selectedPageIdChanged(_selectedPageId) {
-        // Load page import on demand. If fails, show the not found page.
-        if (_selectedPageId in this._pagesPaths) {
-          this._importPage(_selectedPageId);
+        // Allow only one level path with optional trailing slash.
+        if (pathParts.length === 1 || (pathParts.length === 2 && pathParts[1] === '')) {
+          const pageId = pathParts[0];
+
+          switch (pageId) {
+            case '':
+              this._selectPage('home');
+              break;
+
+            default:
+              this._selectPage(pageId);
+              break;
+          }
         } else {
-          this._importPage('notFound');
+          this._selectPage('notFound');
         }
       }
 
+      _selectPage(pageId) {
+        this._importPage(pageId);
+        this._selectedPageId = pageId;
+      }
+
       _importPage(pageId) {
-        const pagePath = this._pagesPaths[pageId];
+        const pagePath = this._pagesPaths[pageId] || this._pagesPaths['notFound'];
 
         Polymer.importHref(this.resolveUrl(pagePath), () => {
           this._ensureLazyLoaded();
