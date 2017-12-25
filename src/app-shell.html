@@ -10,8 +10,9 @@ the root directory of this source tree.
 <link rel="import" href="../bower_components/polymer/polymer-element.html">
 <link rel="import" href="../bower_components/polymer/lib/utils/render-status.html">
 <link rel="import" href="../bower_components/app-route/app-location.html">
+<link rel="import" href="../bower_components/iron-icon/iron-icon.html">
 <link rel="import" href="../bower_components/iron-pages/iron-pages.html">
-<link rel="import" href="elements/social-networks.html">
+<link rel="import" href="app-icons.html">
 
 <dom-module id="app-shell">
   <template>
@@ -25,7 +26,6 @@ the root directory of this source tree.
       }
 
       header {
-        min-height: 100%;
         background-color: var(--app-primary-color);
         color: #ffffff;
         font-family: monospace;
@@ -33,52 +33,66 @@ the root directory of this source tree.
         flex-direction: column;
         align-items: center;
         justify-content: center;
+        min-height: 100%;
+        padding: 1em;
+        box-sizing: border-box;
       }
 
-      header img {
-        width: 256px;
-        height: 256px;
+      header .profile-picture {
+        width: 144px;
+        height: 144px;
         border-radius: 50%;
         background-color: #314cc0;
         text-align: center;
       }
 
-      header h1 {
-        margin: 32px 16px;
-        font-size: 1.9em;
+      h1,
+      h2,
+      h3 {
         text-align: center;
       }
 
-      header h2 {
-        margin: 0 16px;
-        font-size: 1.2em;
+      h2,
+      h3 {
         font-weight: normal;
-        text-align: center;
+      }
+
+      h1 {
+        margin: 1.29556em 0;
+        font-size: 1.9em;
+      }
+
+      h2 {
+        margin: 0 0 2.0513em;
+        font-size: 1.2em;
         max-width: 400px;
       }
 
-      header social-networks {
-        --social-networks-icon-size: 28px;
-
-        height: 28px;
-        margin-top: 32px;
+      h3 {
+        margin: 0.5128em 0 0;
+        font-size: 1.2em;
       }
 
-      @media (min-width: 768px) {
-        :host {
-          flex-direction: row;
-        }
+      .social-networks {
+        list-style: none;
+        padding: 0;
+        margin: 0;
+        display: flex;
+        flex-direction: row;
+        height: 28px;
+      }
 
-        header {
-          flex: 1;
-        }
+      .social-networks li + li {
+        margin-left: 1em;
+      }
 
-        main {
-          display: flex;
-          flex-direction: column;
-          flex: 1;
-          overflow-x: scroll;
-        }
+      .social-networks li a {
+        color: inherit;
+      }
+
+      .social-networks li a iron-icon {
+        width: 28px;
+        height: 28px;
       }
 
       paper-toast {
@@ -92,15 +106,76 @@ the root directory of this source tree.
       paper-toast paper-button {
         color: var(--app-primary-color);
       }
+
+      @media (min-width: 425px) {
+        header .profile-picture {
+          width: 200px;
+          height: 200px;
+        }
+      }
+
+      @media (min-width: 768px) {
+        :host {
+          flex-direction: row;
+        }
+
+        header,
+        main {
+          flex: 1 1 50%;
+        }
+
+        header .profile-picture {
+          width: 256px;
+          height: 256px;
+        }
+
+        main {
+          display: flex;
+          flex-direction: column;
+          overflow-x: scroll;
+        }
+      }
     </style>
 
     <app-location route="{{_route}}" url-space-regex="^[[rootPath]]"></app-location>
 
     <header>
-      <img src="images/avatar.jpg" alt="Profile picture of Abdón">
+      <img src="images/avatar.jpg" alt="Profile picture of Abdón" class="profile-picture">
+
       <h1>Abdón Rodríguez Davila</h1>
+
       <h2>Galician. Technology enthusiast. Frontend Developer at IBM Research. Google Developer Expert on Web Technologies</h2>
-      <social-networks></social-networks>
+
+      <ul class="social-networks">
+        <li>
+          <a
+              href="https://twitter.com/abdonrd"
+              title="Twitter profile"
+              target="_blank"
+              rel="noopener">
+            <iron-icon icon="app-icons:twitter"></iron-icon>
+          </a>
+        </li>
+        <li>
+          <a
+              href="https://github.com/abdonrd"
+              title="GitHub profile"
+              target="_blank"
+              rel="noopener">
+            <iron-icon icon="app-icons:github"></iron-icon>
+          </a>
+        </li>
+        <li>
+          <a
+              href="https://www.linkedin.com/in/abdonrd"
+              title="LinkedIn profile"
+              target="_blank"
+              rel="noopener">
+            <iron-icon icon="app-icons:linkedin"></iron-icon>
+          </a>
+        </li>
+      </ul>
+      <h3>@abdonrd</h3>
     </header>
 
     <main>
