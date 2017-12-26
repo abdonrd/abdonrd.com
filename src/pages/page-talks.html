@@ -26,13 +26,23 @@ the root directory of this source tree.
       }
     </style>
 
-    <h1>Talks ([[talks.length]])</h1>
+    <h1>Talks</h1>
 
     <ul>
-      <dom-repeat items="[[talks]]" as="talk">
+      <dom-repeat items="[[_talksGroupedByYears]]" as="talksGroupedByYear">
         <template>
           <li>
-            <talk-item talk="[[talk]]"></talk-item>
+            <h2>[[talksGroupedByYear.year]]</h2>
+
+            <ul>
+              <dom-repeat items="[[talksGroupedByYear.talks]]" as="talk">
+                <template>
+                  <li>
+                    <talk-item talk="[[talk]]"></talk-item>
+                  </li>
+                </template>
+              </dom-repeat>
+            </ul>
           </li>
         </template>
       </dom-repeat>
@@ -48,9 +58,32 @@ the root directory of this source tree.
       static get properties() {
         return {
           talks: {
-            type: Array
+            type: Array,
+            observer: '_talksChanged'
           }
         };
+      }
+
+      _talksChanged(talks) {
+        this._talksGroupedByYears = this._groupTalksByYears(talks);
+      }
+
+      _groupTalksByYears(talks) {
+        const talksGroupedByYears = talks.reduce((groups, talk) => {
+          var year = talk['date'].split('-')[0];
+
+          groups[year] = groups[year] || [];
+          groups[year].push(talk);
+
+          return groups;
+        }, {});
+
+        const years = Object.keys(talksGroupedByYears).reverse();
+
+        return years.map((key) => ({
+          year: key,
+          talks: talksGroupedByYears[key]
+        }));
       }
     }
 
