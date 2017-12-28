@@ -181,7 +181,6 @@ the root directory of this source tree.
     <main>
       <div class="menu">
         <a name="home" href="[[rootPath]]">Home</a>
-        <a name="jobs" href="[[rootPath]]jobs">Jobs</a>
         <a name="talks" href="[[rootPath]]talks">Talks</a>
       </div>
 
@@ -191,7 +190,6 @@ the root directory of this source tree.
           fallback-selection="notFound"
           role="main">
         <page-home name="home"></page-home>
-        <page-jobs name="jobs"></page-jobs>
         <page-talks name="talks"></page-talks>
         <page-not-found name="notFound"></page-not-found>
       </iron-pages>
@@ -219,7 +217,6 @@ the root directory of this source tree.
             value: () => {
               return {
                 home: 'pages/page-home.html',
-                jobs: 'pages/page-jobs.html',
                 notFound: 'pages/page-not-found.html',
                 talks: 'pages/page-talks.html'
               };

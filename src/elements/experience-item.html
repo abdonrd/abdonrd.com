@@ -12,7 +12,7 @@ the root directory of this source tree.
 <link rel="import" href="../elements/dates-period.html">
 <link rel="import" href="../app-icons.html">
 
-<dom-module id="job-item">
+<dom-module id="experience-item">
   <template>
     <style>
       :host {
@@ -58,35 +58,35 @@ the root directory of this source tree.
       }
     </style>
 
-    <div class="title">[[job.title]]</div>
-    <div class="company">[[job.company]]</div>
+    <div class="title">[[experience.title]]</div>
+    <div class="company">[[experience.company]]</div>
     <div class="period-and-location">
       <div class="period">
         <iron-icon icon="app-icons:today"></iron-icon>
-        <dates-period period="[[job.period]]"></dates-period>
+        <dates-period period="[[experience.period]]"></dates-period>
       </div>
       <div class="location">
         <iron-icon icon="app-icons:location-on"></iron-icon>
-        <span title="[[job.location.long]]">[[job.location.short]]</span>
+        <span title="[[experience.location.long]]">[[experience.location.short]]</span>
       </div>
     </div>
   </template>
 
   <script>
-    class JobItem extends Polymer.Element {
+    class ExperienceItem extends Polymer.Element {
       static get is() {
-        return 'job-item';
+        return 'experience-item';
       }
 
       static get properties() {
         return {
-          job: {
+          experience: {
             type: Object
           }
         };
       }
     }
 
-    customElements.define(JobItem.is, JobItem);
+    customElements.define(ExperienceItem.is, ExperienceItem);
   </script>
 </dom-module>

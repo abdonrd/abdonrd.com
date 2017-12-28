@@ -4,7 +4,6 @@
   "fragments": [
     "src/lazy-resources.html",
     "src/pages/page-home.html",
-    "src/pages/page-jobs.html",
     "src/pages/page-not-found.html",
     "src/pages/page-talks.html"
   ],

@@ -8,20 +8,51 @@ the root directory of this source tree.
 -->
 
 <link rel="import" href="../../bower_components/polymer/polymer-element.html">
+<link rel="import" href="../../bower_components/polymer/lib/elements/dom-repeat.html">
+<link rel="import" href="../elements/experience-item.html">
 <link rel="import" href="../app-styles.html">
 
 <dom-module id="page-home">
   <template>
     <style include="page-styles">
+      ul {
+        padding: 0;
+        margin: 0;
+        list-style-type: none;
+      }
+
+      li + li {
+        margin-top: 1.5em;
+      }
     </style>
 
     <h1>Home</h1>
+
+    <h2>Experience</h2>
+
+    <ul>
+      <dom-repeat items="[[experiences]]" as="experience">
+        <template>
+          <li>
+            <experience-item experience="[[experience]]"></experience-item>
+          </li>
+        </template>
+      </dom-repeat>
+    </ul>
   </template>
 
   <script>
     class PageHome extends Polymer.Element {
       static get is() {
         return 'page-home';
+      }
+
+      static get properties() {
+        return {
+          experiences: {
+            type: Array
+          }
+        };
       }
     }
 
