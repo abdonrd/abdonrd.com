@@ -28,7 +28,10 @@
     "test:integration": "yarn run build",
     "test": "yarn run test:integration",
     "build": "polymer build",
-    "build:production": "node productionify.js && yarn run build && git reset --hard"
+    "build:production": "node productionify.js && yarn run build && git reset --hard",
+    "build:prpl-server-copy-files": "cp prpl-server/app.yaml prpl-server/package.json prpl-server/yarn.lock build/",
+    "build:prpl-server": "yarn run build && yarn run build:prpl-server-copy-files",
+    "build:prpl-server:production": "yarn run build:production && yarn run build:prpl-server-copy-files"
   },
   "engines": {
     "node": ">=6.0"

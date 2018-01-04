@@ -1,0 +1,11 @@
+{
+  "dependencies": {
+    "prpl-server": "^1.0.0"
+  },
+  "scripts": {
+    "start": "prpl-server --host 0.0.0.0 --https-redirect --bot-proxy https://render-tron.appspot.com/render"
+  },
+  "engines": {
+    "node": ">=6.0.0"
+  }
+}

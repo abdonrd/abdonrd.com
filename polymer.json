@@ -19,9 +19,16 @@
   "lint": {
     "rules": ["polymer-2"]
   },
+  "autoBasePath": true,
   "builds": [
     {
       "preset": "es5-bundled"
+    },
+    {
+      "preset": "es6-bundled"
+    },
+    {
+      "preset": "es6-unbundled"
     }
   ]
 }
