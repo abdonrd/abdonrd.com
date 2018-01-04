@@ -22,8 +22,7 @@
   },
   "builds": [
     {
-      "preset": "es5-bundled",
-      "addPushManifest": false
+      "preset": "es5-bundled"
     }
   ]
 }
