@@ -30,8 +30,10 @@
     "build": "polymer build",
     "build:production": "node productionify.js && yarn run build && git reset --hard",
     "build:prpl-server-copy-files": "cp prpl-server/app.yaml prpl-server/package.json prpl-server/yarn.lock build/",
-    "build:prpl-server": "yarn run build && yarn run build:prpl-server-copy-files",
-    "build:prpl-server:production": "yarn run build:production && yarn run build:prpl-server-copy-files"
+    "build:prpl-server-dedup-assets": "node prpl-server/dedup_assets.js",
+    "build:prpl-server-add-entrypoint-push": "node prpl-server/add_entrypoint_push.js",
+    "build:prpl-server": "yarn run build && yarn run build:prpl-server-copy-files && yarn run build:prpl-server-dedup-assets && yarn run build:prpl-server-add-entrypoint-push",
+    "build:prpl-server:production": "yarn run build:production && yarn run build:prpl-server-copy-files && yarn run build:prpl-server-dedup-assets && yarn run build:prpl-server-add-entrypoint-push"
   },
   "engines": {
     "node": ">=6.0"
