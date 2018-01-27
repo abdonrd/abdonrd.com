@@ -114,7 +114,7 @@ the root directory of this source tree.
 
     <!-- Cancel the add to homescreen prompt -->
     <script>
-      window.addEventListener('beforeinstallprompt', function(event) {
+      window.addEventListener('beforeinstallprompt', event => {
         event.preventDefault();
 
         return false;
