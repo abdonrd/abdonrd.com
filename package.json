@@ -10,9 +10,9 @@
     "url": "https://github.com/abdonrd/abdonrd.com/issues"
   },
   "devDependencies": {
-    "eslint": "^4.5.0",
-    "eslint-config-ibmresearch": "^0.8.0",
-    "eslint-plugin-html": "^3.2.0",
+    "eslint": "^4.11.0",
+    "eslint-config-ibmresearch": "^0.9.0",
+    "eslint-plugin-html": "^4.0.0",
     "polymer-cli": "^1.5.0",
     "stylelint": "^8.4.0",
     "stylelint-config-ibmresearch": "^0.3.0"
