@@ -10,57 +10,32 @@ the root directory of this source tree.
 <link rel="import" href="../../bower_components/polymer/polymer-element.html">
 <link rel="import" href="../../bower_components/iron-icon/iron-icon.html">
 <link rel="import" href="../elements/date-fns-import.html">
+<link rel="import" href="../elements/item-styles.html">
 <link rel="import" href="../app-icons.html">
 
 <dom-module id="talk-item">
   <template>
-    <style>
-      :host {
-        display: block;
-        line-height: 1.4em;
+    <style include="item-styles">
+      [hidden] {
+        display: none !important;
       }
 
-      .name {
-        font-weight: bold;
-        font-size: 1.1em;
-      }
-
-      .event-name-and-organization {
-        font-style: italic;
-      }
-
-      .date-and-location {
-        display: flex;
-        flex-flow: row wrap;
-        align-items: center;
-      }
-
-      .date,
-      .location {
+      .third-line > * > a {
         display: flex;
         flex-direction: row;
         align-items: center;
-        color: #444444;
+        color: inherit;
+        text-decoration: none;
       }
 
-      .date {
-        margin-right: 1.2em;
-      }
-
-      iron-icon {
-        width: 1em;
-        height: 1em;
-        margin-right: 0.1em;
-      }
-
-      .date iron-icon {
-        margin-right: 0.3em;
+      .third-line > * > a:hover span {
+        text-decoration: underline;
       }
     </style>
 
-    <div class="name">[[talk.name]]</div>
-    <div class="event-name-and-organization">[[talk.eventName]] by [[talk.organization]]</div>
-    <div class="date-and-location">
+    <div class="first-line">[[talk.name]]</div>
+    <div class="second-line">[[talk.eventName]] by [[talk.organization]]</div>
+    <div class="third-line">
       <div class="date">
         <iron-icon icon="app-icons:today"></iron-icon>
         <span>[[_formatDate(talk.date)]]</span>
@@ -68,6 +43,26 @@ the root directory of this source tree.
       <div class="location">
         <iron-icon icon="app-icons:location-on"></iron-icon>
         <span title="[[talk.location.long]]">[[talk.location.short]]</span>
+      </div>
+      <div class="slides" hidden$="[[!talk.slidesUrl]]">
+        <a
+            href$="[[talk.slidesUrl]]"
+            title="Go to the slides"
+            target="_blank"
+            rel="noopener">
+          <iron-icon icon="app-icons:slideshow"></iron-icon>
+          <span>Slides</span>
+        </a>
+      </div>
+      <div class="video" hidden$="[[!talk.videoUrl]]">
+        <a
+            href$="[[talk.videoUrl]]"
+            title="Go to the video"
+            target="_blank"
+            rel="noopener">
+          <iron-icon icon="app-icons:videocam"></iron-icon>
+          <span>Video</span>
+        </a>
       </div>
     </div>
   </template>

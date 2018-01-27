@@ -1,0 +1,54 @@
+<!--
+@license
+
+Copyright (c) 2017-present, Abdón Rodríguez Davila (@abdonrd).
+
+This source code is licensed under the MIT license found in the LICENSE file in
+the root directory of this source tree.
+-->
+
+<link rel="import" href="../../bower_components/polymer/lib/elements/dom-module.html">
+
+<dom-module id="item-styles">
+  <template>
+    <style>
+      :host {
+        display: block;
+        line-height: 1.5em;
+      }
+
+      .first-line {
+        font-weight: bold;
+        font-size: 1.1em;
+      }
+
+      .second-line {
+        font-style: italic;
+      }
+
+      .third-line {
+        display: flex;
+        flex-direction: row;
+        flex-wrap: wrap;
+        align-items: center;
+      }
+
+      .third-line > * {
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        color: #444444;
+      }
+
+      .third-line > *:nth-child(n+2) {
+        margin-left: 1em;
+      }
+
+      iron-icon {
+        width: 1em;
+        height: 1em;
+        margin-right: 0.1em;
+      }
+    </style>
+  </template>
+</dom-module>
