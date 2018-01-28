@@ -1,0 +1,52 @@
+<!--
+@license
+
+Copyright (c) 2018-present, Abdón Rodríguez Davila (@abdonrd).
+
+This source code is licensed under the MIT license found in the LICENSE file in
+the root directory of this source tree.
+-->
+
+<link rel="import" href="../../bower_components/polymer/polymer-element.html">
+<link rel="import" href="../../bower_components/iron-icon/iron-icon.html">
+<link rel="import" href="../elements/dates-period.html">
+<link rel="import" href="../elements/item-styles.html">
+<link rel="import" href="../app-icons.html">
+
+<dom-module id="experience-item">
+  <template>
+    <style include="item-styles">
+    </style>
+
+    <div class="first-line">[[experience.title]]</div>
+    <div class="second-line">[[experience.company]]</div>
+    <div class="third-line">
+      <div class="period">
+        <iron-icon icon="app-icons:today"></iron-icon>
+        <dates-period period="[[experience.period]]"></dates-period>
+      </div>
+      <div class="location">
+        <iron-icon icon="app-icons:location-on"></iron-icon>
+        <span title="[[experience.eventLocationFull]]">[[experience.eventLocation]]</span>
+      </div>
+    </div>
+  </template>
+
+  <script>
+    class ExperienceItem extends Polymer.Element {
+      static get is() {
+        return 'experience-item';
+      }
+
+      static get properties() {
+        return {
+          experience: {
+            type: Object
+          }
+        };
+      }
+    }
+
+    customElements.define(ExperienceItem.is, ExperienceItem);
+  </script>
+</dom-module>

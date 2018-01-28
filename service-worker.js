@@ -1,7 +1,10 @@
 /**
  * @license
- * Copyright (c) 2016 Abdón Rodríguez Davila (@abdonrd). All rights reserved.
- * This code may only be used under the MIT style license found at https://abdonrd.github.io/LICENSE.txt
+ *
+ * Copyright (c) 2018-present, Abdón Rodríguez Davila (@abdonrd).
+ *
+ * This source code is licensed under the MIT license found in the LICENSE file
+ * in the root directory of this source tree.
  */
 
 /* eslint-disable no-console */

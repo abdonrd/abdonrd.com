@@ -1,0 +1,73 @@
+<!--
+@license
+
+Copyright (c) 2018-present, Abdón Rodríguez Davila (@abdonrd).
+
+This source code is licensed under the MIT license found in the LICENSE file in
+the root directory of this source tree.
+-->
+
+<link rel="import" href="../../bower_components/polymer/polymer-element.html">
+<link rel="import" href="../../bower_components/polymer/lib/elements/dom-repeat.html">
+<link rel="import" href="../elements/experience-item.html">
+<link rel="import" href="../app-styles.html">
+
+<dom-module id="page-home">
+  <template>
+    <style include="page-styles list-styles">
+    </style>
+
+    <div class="menu" style="margin-bottom: 1em;">
+      <a name="talks" href="[[rootPath]]talks">Talks</a>
+    </div>
+
+    <h2>Experience</h2>
+
+    <ul>
+      <dom-repeat items="[[experiences]]" as="experience">
+        <template>
+          <li class="li-item">
+            <experience-item experience="[[experience]]"></experience-item>
+          </li>
+        </template>
+      </dom-repeat>
+    </ul>
+  </template>
+
+  <script>
+    class PageHome extends Polymer.Element {
+      static get is() {
+        return 'page-home';
+      }
+
+      static get properties() {
+        return {
+          experiences: {
+            type: Array
+          }
+        };
+      }
+
+      ready() {
+        super.ready();
+
+        this._fetchExperiences();
+      }
+
+      _fetchExperiences() {
+        let request = new XMLHttpRequest();
+
+        request.open('GET', `${Polymer.AppConfig.apiUrl}/experiences.json`);
+        request.responseType = 'json';
+
+        request.onload = () => {
+          this.experiences = request.response;
+        };
+
+        request.send();
+      }
+    }
+
+    customElements.define(PageHome.is, PageHome);
+  </script>
+</dom-module>
