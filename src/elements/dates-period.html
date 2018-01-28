@@ -1,0 +1,54 @@
+<!--
+@license
+
+Copyright (c) 2018-present, Abdón Rodríguez Davila (@abdonrd).
+
+This source code is licensed under the MIT license found in the LICENSE file in
+the root directory of this source tree.
+-->
+
+<link rel="import" href="../../bower_components/polymer/polymer-element.html">
+<link rel="import" href="../elements/date-fns-import.html">
+
+<dom-module id="dates-period">
+  <template>
+    <style>
+      :host {
+        display: inline;
+      }
+    </style>
+
+    [[_formatPeriod(period)]]
+  </template>
+
+  <script>
+    /* global dateFns:false */
+
+    class DatesPeriod extends Polymer.Element {
+      static get is() {
+        return 'dates-period';
+      }
+
+      static get properties() {
+        return {
+          period: {
+            type: Object
+          }
+        };
+      }
+
+      _formatDate(date) {
+        return dateFns.format(new Date(date), 'MMM YYYY');
+      }
+
+      _formatPeriod(period) {
+        const start = this._formatDate(period.start);
+        const finish = period.finish ? this._formatDate(period.finish) : 'Present';
+
+        return `${start} - ${finish}`;
+      }
+    }
+
+    customElements.define(DatesPeriod.is, DatesPeriod);
+  </script>
+</dom-module>

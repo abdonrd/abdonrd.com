@@ -1,0 +1,93 @@
+<!--
+@license
+
+Copyright (c) 2018-present, Abdón Rodríguez Davila (@abdonrd).
+
+This source code is licensed under the MIT license found in the LICENSE file in
+the root directory of this source tree.
+-->
+
+<link rel="import" href="../../bower_components/polymer/polymer-element.html">
+<link rel="import" href="../../bower_components/iron-icon/iron-icon.html">
+<link rel="import" href="../elements/date-fns-import.html">
+<link rel="import" href="../elements/item-styles.html">
+<link rel="import" href="../app-icons.html">
+
+<dom-module id="talk-item">
+  <template>
+    <style include="item-styles">
+      [hidden] {
+        display: none !important;
+      }
+
+      .third-line > * > a {
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        color: inherit;
+        text-decoration: none;
+      }
+
+      .third-line > * > a:hover span {
+        text-decoration: underline;
+      }
+    </style>
+
+    <div class="first-line">[[talk.name]]</div>
+    <div class="second-line">[[talk.eventName]] by [[talk.eventOrganization]]</div>
+    <div class="third-line">
+      <div class="date">
+        <iron-icon icon="app-icons:today"></iron-icon>
+        <span>[[_formatDate(talk.date)]]</span>
+      </div>
+      <div class="location">
+        <iron-icon icon="app-icons:location-on"></iron-icon>
+        <span title="[[talk.eventLocationFull]]">[[talk.eventLocation]]</span>
+      </div>
+      <div class="slides" hidden$="[[!talk.slidesUrl]]">
+        <a
+            href$="[[talk.slidesUrl]]"
+            title="Go to the slides"
+            target="_blank"
+            rel="noopener">
+          <iron-icon icon="app-icons:slideshow"></iron-icon>
+          <span>Slides</span>
+        </a>
+      </div>
+      <div class="video" hidden$="[[!talk.videoUrl]]">
+        <a
+            href$="[[talk.videoUrl]]"
+            title="Go to the video"
+            target="_blank"
+            rel="noopener">
+          <iron-icon icon="app-icons:videocam"></iron-icon>
+          <span>Video</span>
+        </a>
+      </div>
+    </div>
+  </template>
+
+  <script>
+    /* global dateFns:false */
+
+    class TalkItem extends Polymer.Element {
+      static get is() {
+        return 'talk-item';
+      }
+
+      static get properties() {
+        return {
+          talk: {
+            type: Object
+          }
+        };
+      }
+
+      _formatDate(date) {
+        return dateFns.format(new Date(date), 'MMM DD, YYYY');
+      }
+    }
+
+    customElements.define(TalkItem.is, TalkItem);
+  </script>
+</dom-module>
