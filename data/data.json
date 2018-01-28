@@ -1,280 +1,198 @@
 {
-  "profile": {
-    "firstName": "Abdón",
-    "lastName": "Rodríguez Davila",
-    "nickname": "abdonrd",
-    "location": "Vigo, Galicia, Spain",
-    "summary": "Galician. Technology enthusiast. Frontend Developer at IBM Research. Google Developer Expert on Web Technologies.",
-    "linkedinProfile": "https://www.linkedin.com/in/abdonrd",
-    "twitterProfile": "https://twitter.com/abdonrd",
-    "googlePlusProfile": "https://plus.google.com/+AbdonRodriguezDavila",
-    "githubProfile": "https://github.com/abdonrd"
-  },
-  "experience": {
-    "jobs": [
-      {
-        "company": "IBM Research",
-        "title": "Frontend Developer",
-        "location": {
-          "short": "Vigo",
-          "long": "Vigo, Galicia, Spain"
-        },
-        "period": {
-          "start": "2016-07",
-          "finish": "",
-          "present": true
-        }
-      },
-      {
-        "company": "King of App",
-        "title": "Frontend Developer",
-        "location": {
-          "short": "Madrid",
-          "long": "Madrid, Madrid, Spain"
-        },
-        "period": {
-          "start": "2015-07",
-          "finish": "2016-06",
-          "present": false
-        }
-      },
-      {
-        "company": "ameiga",
-        "title": "Co-founder and CEO",
-        "location": {
-          "short": "Vigo & New York",
-          "long": "Vigo, Galicia, Spain and New York, New York, United States of America"
-        },
-        "period": {
-          "start": "2013-08",
-          "finish": "2015-03",
-          "present": false
-        }
-      },
-      {
-        "company": "Filterly",
-        "title": "Frontend Developer",
-        "location": {
-          "short": "Vigo & San Francisco",
-          "long": "Vigo, Galicia, Spain and San Francisco, California, United States of America"
-        },
-        "period": {
-          "start": "2014-02",
-          "finish": "2014-10",
-          "present": false
-        }
-      },
-      {
-        "company": "NovaCaixaGalicia fundation",
-        "title": "Software Developer Internship",
-        "location": {
-          "short": "Vigo",
-          "long": "Vigo, Galicia, Spain"
-        },
-        "period": {
-          "start": "2013-04",
-          "finish": "2013-06",
-          "present": false
-        }
+  "experiences": [
+    {
+      "company": "IBM Research",
+      "title": "Frontend Developer",
+      "eventLocation": "Vigo & New York",
+      "eventLocationFull": "Vigo, Galicia, Spain and New York, New York, United States of America",
+      "period": {
+        "start": "2016-07",
+        "finish": ""
       }
-    ],
-    "talks": [
-      {
-        "name": "With Polymer, using the platform to build a better web",
-        "eventName": "GDG Summit Spain 2016",
-        "organization": "GDG Spain",
-        "date": "2016-07-29",
-        "location": {
-          "short": "Malaga",
-          "long": "Malaga, Andalusia, Spain"
-        },
-        "slides": "https://docs.google.com/presentation/d/1TaFp8adKWM1nmVGwcGAtDUwQAARwZ9iiquqvX3LWk1E/edit"
-      },
-      {
-        "name": "What are the Progressive Web Apps?",
-        "eventName": "#PWADevSummit Extended Vigo",
-        "organization": "GDG Vigo",
-        "date": "2016-07-29",
-        "location": {
-          "short": "Vigo",
-          "long": "Vigo, Galician, Spain"
-        },
-        "slides": "https://docs.google.com/presentation/d/1twJym51ZVMNgsUW0kdBTeGyttOR9VY85vAhqepSvXtI/edit"
-      },
-      {
-        "name": "With Polymer, using the platform to build a better web",
-        "eventName": "ExFest 2016",
-        "organization": "GDG Cáceres",
-        "date": "2016-06-04",
-        "location": {
-          "short": "Cáceres",
-          "long": "Cáceres, Extremadura, Spain"
-        },
-        "slides": "https://docs.google.com/presentation/d/1FbBCBun6cZYd207RcATJMDEeC5mlVbW4BeRLWNtzOuw/edit"
-      },
-      {
-        "name": "Polymer, present and future",
-        "eventName": "s|ngular talks",
-        "organization": "GDG Madrid & s|ngular",
-        "date": "2016-02-25",
-        "location": {
-          "short": "Madrid",
-          "long": "Madrid, Madrid, Spain"
-        },
-        "slides": "https://docs.google.com/presentation/d/112y4MDTHUmxBWVYmCOezqmcucOIG_XmmURDi203d7dA/edit"
-      },
-      {
-        "name": "Learn Web Components with Polymer",
-        "eventName": "Polymer Polytechnic Madrid",
-        "organization": "GDG Madrid",
-        "date": "2016-01-16",
-        "location": {
-          "short": "Madrid",
-          "long": "Madrid, Madrid, Spain"
-        },
-        "slides": "https://docs.google.com/presentation/d/1YY38_dcsx2RMP4J66gB5-tSoLy476QOJLkIWAYLSEzs/edit"
-      },
-      {
-        "name": "Web Components and Polymer",
-        "eventName": "xSpain 2015",
-        "organization": "xSpain",
-        "date": "2015-09-11",
-        "location": {
-          "short": "Madrid",
-          "long": "Madrid, Madrid, Spain"
-        },
-        "slides": "https://docs.google.com/presentation/d/1JhDz7r5bI-y1Tp2D9szAmqu2-0kWeQJZisyZBDe5WU8/edit"
-      },
-      {
-        "name": "Web Components and Polymer",
-        "eventName": "Google Developer Café",
-        "organization": "GDG Coimbra",
-        "date": "2015-05-14",
-        "location": {
-          "short": "Coimbra",
-          "long": "Coimbra, Portugal"
-        },
-        "slides": ""
-      },
-      {
-        "name": "Google Cloud Platform with App Engine",
-        "eventName": "VI RITSI Congress",
-        "organization": "RITSI",
-        "date": "2015-03-20",
-        "location": {
-          "short": "Cádiz",
-          "long": "Cádiz, Andalusia, Spain"
-        },
-        "slides": "https://docs.google.com/presentation/d/1NwHNESUrxKYG89xMSp_tbJcOe8dkM9h1bT-b_tkJAic/edit"
-      },
-      {
-        "name": "Google Cloud Platform with App Engine",
-        "eventName": "Tecnotardes EPCC Google Edition",
-        "organization": "GDG Cáceres",
-        "date": "2015-03-12",
-        "location": {
-          "short": "Cáceres",
-          "long": "Cáceres, Extremadura, Spain"
-        },
-        "slides": "https://docs.google.com/presentation/d/1xZCLV9rIQbN9y0nCnqxbOsBiY08r4cA_HR_inVUunJ0/edit"
+    },
+    {
+      "company": "King of App",
+      "title": "Frontend Developer",
+      "eventLocation": "Madrid",
+      "eventLocationFull": "Madrid, Madrid, Spain",
+      "period": {
+        "start": "2015-07",
+        "finish": "2016-06"
       }
-    ],
-    "mentoring": [
-      {
-        "eventName": "Google Developer Café",
-        "organization": "GDG Coimbra",
-        "date": "2015-05-14",
-        "location": {
-          "short": "Coimbra",
-          "long": "Coimbra, Portugal"
-        }
-      },
-      {
-        "eventName": "Google Developer Café",
-        "organization": "GDG Salamanca",
-        "date": "2015-03-13",
-        "location": {
-          "short": "Salamanca",
-          "long": "Salamanca, Castile and León, Spain"
-        }
-      },
-      {
-        "eventName": "Google Developer Café",
-        "organization": "GDG Cáceres",
-        "date": "2015-03-12",
-        "location": {
-          "short": "Cáceres",
-          "long": "Cáceres, Extremadura, Spain"
-        }
-      },
-      {
-        "eventName": "Google Developer Café",
-        "organization": "IE Business School",
-        "date": "2015-03-11",
-        "location": {
-          "short": "Madrid",
-          "long": "Madrid, Madrid, Spain"
-        }
+    },
+    {
+      "company": "ameiga",
+      "title": "Co-founder and CEO",
+      "eventLocation": "Vigo & New York",
+      "eventLocationFull": "Vigo, Galicia, Spain and New York, New York, United States of America",
+      "period": {
+        "start": "2013-08",
+        "finish": "2015-03"
       }
-    ],
-    "skills": []
-  },
-  "education": {
-    "education": [
-      {
-        "school": "Platzi",
-        "degree": "Courses",
-        "period": {
-          "start": "2013",
-          "finish": "",
-          "present": true
-        }
-      },
-      {
-        "school": "CPR Daniel Castelao",
-        "degree": "Senior technician in multiplatform application development",
-        "period": {
-          "start": "2011",
-          "finish": "2013",
-          "present": false
-        }
+    },
+    {
+      "company": "Filterly",
+      "title": "Frontend Developer",
+      "eventLocation": "Vigo & San Francisco",
+      "eventLocationFull": "Vigo, Galicia, Spain and San Francisco, California, United States of America",
+      "period": {
+        "start": "2014-02",
+        "finish": "2014-10"
       }
-    ],
-    "certifications": [
-      {
-        "name": "Google Fullstack Developer",
-        "authority": "Platzi",
-        "licenseNumber": "ee7c9a9f-c6b2-4fec-96e8-1027271787d7",
-        "url": "https://platzi.com/usuarios/abdonrd",
-        "period": {
-          "start": "2015-09",
-          "finish": "2016-09",
-          "expire": true
-        }
-      },
-      {
-        "name": "Frontend Professional",
-        "authority": "Platzi",
-        "licenseNumber": "4b2b8297-ca9b-42e5-8b01-496bac8d69db",
-        "url": "https://platzi.com/usuarios/abdonrd",
-        "period": {
-          "start": "2015-09",
-          "finish": "2016-09",
-          "expire": true
-        }
-      },
-      {
-        "name": "Backend Professional",
-        "authority": "Platzi",
-        "licenseNumber": "bcd78d64-4a55-4807-a6e1-89e68b638e5f",
-        "url": "https://platzi.com/usuarios/abdonrd",
-        "period": {
-          "start": "2015-09",
-          "finish": "2016-09",
-          "expire": true
-        }
+    },
+    {
+      "company": "NovaCaixaGalicia Fundation",
+      "title": "Software Developer Internship",
+      "eventLocation": "Vigo",
+      "eventLocationFull": "Vigo, Galicia, Spain",
+      "period": {
+        "start": "2013-04",
+        "finish": "2013-06"
       }
-    ],
-    "courses": []
-  }
+    }
+  ],
+  "talks": [
+    {
+      "name": "Desarrollo de aplicaciones móviles: native vs web",
+      "date": "2017-12-16",
+      "eventName": "GDG DevFest Galicia 2017",
+      "eventOrganization": "GDG Galicia",
+      "eventLocation": "Vigo",
+      "eventLocationFull": "Vigo, Galician, Spain",
+      "slidesUrl": "https://docs.google.com/presentation/d/1Eseyk2bJCVBY9JW4aCgrSCAZkL4B9RHGkSu-hmjWY6A/edit?usp=sharing",
+      "videoUrl": "https://www.youtube.com/watch?v=Jk9sF27cCQc&t=31m33s"
+    },
+    {
+      "name": "Polydex: Building a fast Progressive Web Application with Web Components",
+      "date": "2017-11-25",
+      "eventName": "Codemotion Madrid 2017",
+      "eventOrganization": "Codemotion",
+      "eventLocation": "Madrid",
+      "eventLocationFull": "Madrid, Madrid, Spain",
+      "slidesUrl": "https://docs.google.com/presentation/d/1msPOfbfPOIIr97yN8lHGNCSfzrBO8pqoQfM3jodCPEQ/edit?usp=sharing",
+      "videoUrl": "https://www.youtube.com/watch?v=qFNXNiMgMag"
+    },
+    {
+      "name": "Polymer, unlock the power of Web Components",
+      "date": "2017-08-18",
+      "eventName": "Churrascode 2017",
+      "eventOrganization": "GDG Vigo",
+      "eventLocation": "Vigo",
+      "eventLocationFull": "Vigo, Galician, Spain",
+      "slidesUrl": "https://docs.google.com/presentation/d/1bKQMzs_iu-b_mre2x7GWGEr5hmsUoMpZX3tasgPduP8/edit?usp=sharing"
+    },
+    {
+      "name": "Trabajando a remoto; de startups a gran empresa",
+      "date": "2017-02-21",
+      "eventName": "High School Developers Parade Vigo",
+      "eventOrganization": "GDG Vigo",
+      "eventLocation": "Vigo",
+      "eventLocationFull": "Vigo, Galician, Spain",
+      "slidesUrl": "https://docs.google.com/presentation/d/16mlUAqHBQVkjfqE624arLuNt8mWo02jAwzhIyC_iMHE/edit?usp=sharing",
+      "videoUrl": "https://www.youtube.com/watch?v=64hdWSZD-qU"
+    },
+    {
+      "name": "With Polymer, using the platform to build a better web",
+      "date": "2017-02-18",
+      "eventName": "Web Build Day",
+      "eventOrganization": "XantarDev",
+      "eventLocation": "Santiago de Compostela",
+      "eventLocationFull": "Santiago de Compostela, Galician, Spain",
+      "slidesUrl": "https://docs.google.com/presentation/d/11rYB7DB5NUzSJm5eUoQtBC7I9q_1hLyl5eV4AfleDf8/edit?usp=sharing"
+    },
+    {
+      "name": "Polymer CLI, building a template",
+      "date": "2016-10-22",
+      "eventName": "Polymer Day Madrid 2016",
+      "eventOrganization": "Polymer Day",
+      "eventLocation": "Madrid",
+      "eventLocationFull": "Madrid, Madrid, Spain",
+      "slidesUrl": "https://docs.google.com/presentation/d/156PuGDfhqBYFziijP7xACIuOiEingVyMhnZJv1Tpkv8/edit?usp=sharing",
+      "videoUrl": "https://www.youtube.com/watch?v=uROSogpYVCM"
+    },
+    {
+      "name": "With Polymer, using the platform to build a better web",
+      "date": "2016-09-23",
+      "eventName": "GDG Summit Spain 2016",
+      "eventOrganization": "GDG Spain",
+      "eventLocation": "Malaga",
+      "eventLocationFull": "Malaga, Andalusia, Spain",
+      "slidesUrl": "https://docs.google.com/presentation/d/1TaFp8adKWM1nmVGwcGAtDUwQAARwZ9iiquqvX3LWk1E/edit?usp=sharing",
+      "videoUrl": ""
+    },
+    {
+      "name": "What are the Progressive Web Apps?",
+      "date": "2016-07-29",
+      "eventName": "#PWADevSummit Extended Vigo",
+      "eventOrganization": "GDG Vigo",
+      "eventLocation": "Vigo",
+      "eventLocationFull": "Vigo, Galician, Spain",
+      "slidesUrl": "https://docs.google.com/presentation/d/1twJym51ZVMNgsUW0kdBTeGyttOR9VY85vAhqepSvXtI/edit?usp=sharing"
+    },
+    {
+      "name": "With Polymer, using the platform to build a better web",
+      "date": "2016-06-04",
+      "eventName": "ExFest 2016",
+      "eventOrganization": "GDG Cáceres",
+      "eventLocation": "Cáceres",
+      "eventLocationFull": "Cáceres, Extremadura, Spain",
+      "slidesUrl": "https://docs.google.com/presentation/d/1FbBCBun6cZYd207RcATJMDEeC5mlVbW4BeRLWNtzOuw/edit?usp=sharing",
+      "videoUrl": "https://www.youtube.com/watch?v=zd0z0l_AVrw"
+    },
+    {
+      "name": "Polymer, present and future",
+      "date": "2016-02-25",
+      "eventName": "s|ngular talks",
+      "eventOrganization": "GDG Madrid & s|ngular",
+      "eventLocation": "Madrid",
+      "eventLocationFull": "Madrid, Madrid, Spain",
+      "slidesUrl": "https://docs.google.com/presentation/d/112y4MDTHUmxBWVYmCOezqmcucOIG_XmmURDi203d7dA/edit?usp=sharing"
+    },
+    {
+      "name": "Learn Web Components with Polymer",
+      "date": "2016-01-16",
+      "eventName": "Polymer Polytechnic Madrid",
+      "eventOrganization": "GDG Madrid",
+      "eventLocation": "Madrid",
+      "eventLocationFull": "Madrid, Madrid, Spain",
+      "slidesUrl": "https://docs.google.com/presentation/d/1YY38_dcsx2RMP4J66gB5-tSoLy476QOJLkIWAYLSEzs/edit?usp=sharing",
+      "videoUrl": "https://www.youtube.com/watch?v=4zdJ2gD-GnI"
+    },
+    {
+      "name": "Web Components and Polymer",
+      "date": "2015-09-11",
+      "eventName": "xSpain 2015",
+      "eventOrganization": "xSpain",
+      "eventLocation": "Madrid",
+      "eventLocationFull": "Madrid, Madrid, Spain",
+      "slidesUrl": "https://docs.google.com/presentation/d/1JhDz7r5bI-y1Tp2D9szAmqu2-0kWeQJZisyZBDe5WU8/edit?usp=sharing"
+    },
+    {
+      "name": "Web Components and Polymer",
+      "date": "2015-05-14",
+      "eventName": "Google Developer Café",
+      "eventOrganization": "GDG Coimbra",
+      "eventLocation": "Coimbra",
+      "eventLocationFull": "Coimbra, Portugal",
+      "slidesUrl": "https://docs.google.com/presentation/d/1L2OgGGtluNbYGpDGzUXtFfPUuW7pBFSUMk0Dt1KZLuM/edit?usp=sharing"
+    },
+    {
+      "name": "Google Cloud Platform with App Engine",
+      "date": "2015-03-20",
+      "eventName": "VI RITSI Congress",
+      "eventOrganization": "RITSI",
+      "eventLocation": "Cádiz",
+      "eventLocationFull": "Cádiz, Andalusia, Spain",
+      "slidesUrl": "https://docs.google.com/presentation/d/1NwHNESUrxKYG89xMSp_tbJcOe8dkM9h1bT-b_tkJAic/edit?usp=sharing"
+    },
+    {
+      "name": "Google Cloud Platform with App Engine",
+      "date": "2015-03-12",
+      "eventName": "Tecnotardes EPCC Google Edition",
+      "eventOrganization": "GDG Cáceres",
+      "eventLocation": "Cáceres",
+      "eventLocationFull": "Cáceres, Extremadura, Spain",
+      "slidesUrl": "https://docs.google.com/presentation/d/1xZCLV9rIQbN9y0nCnqxbOsBiY08r4cA_HR_inVUunJ0/edit?usp=sharing"
+    }
+  ]
 }
