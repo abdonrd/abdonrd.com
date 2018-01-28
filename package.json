@@ -14,6 +14,7 @@
     "eslint-config-ibmresearch": "^0.9.0",
     "eslint-plugin-html": "^4.0.0",
     "polymer-cli": "^1.5.0",
+    "replace-in-file": "^3.1.0",
     "stylelint": "^8.4.0",
     "stylelint-config-ibmresearch": "^0.3.0"
   },
@@ -24,7 +25,8 @@
     "lint": "yarn run lint:eslint && yarn run lint:stylelint",
     "test:integration": "yarn run build",
     "test": "yarn run test:integration",
-    "build": "polymer build"
+    "build": "polymer build",
+    "build:production": "node productionify.js && yarn run build && git reset --hard"
   },
   "engines": {
     "node": ">=6.0"

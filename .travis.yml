@@ -37,7 +37,7 @@ jobs:
           branch: develop
 
     - stage: deploy to production
-      script: yarn run build
+      script: yarn run build:production
       deploy:
         provider: firebase
         token: $FIREBASE_TOKEN
