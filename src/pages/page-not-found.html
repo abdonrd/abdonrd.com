@@ -14,24 +14,40 @@ the root directory of this source tree.
   <template>
     <style include="app-styles">
       :host {
-        display: block;
+        display: flex;
+        flex-direction: column;
+        flex-grow: 1;
+        align-items: center;
+        justify-content: center;
+      }
+
+      h1 {
+        font-size: 1.6em;
+        margin: 0 0 1em;
+        font-weight: normal;
+      }
+
+      a {
+        color: inherit;
+        font-weight: bold;
+        text-decoration: none;
+        font-size: 1.2em;
+      }
+
+      a:hover {
+        text-decoration: underline;
       }
     </style>
 
-    Oops you hit a 404. <a href="[[rootPath]]">Head back to home.</a>
+    <h1>Sorry, that page doesn't exist!</h1>
+
+    <a href="[[rootPath]]">Return to the homepage</a>
   </template>
 
   <script>
     class PageNotFound extends Polymer.Element {
       static get is() {
         return 'page-not-found';
-      }
-
-      static get properties() {
-        return {
-          // TODO: Delete this when fixing https://github.com/Polymer/polymer-linter/issues/71
-          rootPath: String
-        };
       }
     }
 
