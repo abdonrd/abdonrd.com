@@ -47,6 +47,25 @@ the root directory of this source tree.
           }
         };
       }
+
+      ready() {
+        super.ready();
+
+        this._fetchExperiences();
+      }
+
+      _fetchExperiences() {
+        let request = new XMLHttpRequest();
+
+        request.open('GET', `${Polymer.AppConfig.apiUrl}/experiences.json`);
+        request.responseType = 'json';
+
+        request.onload = () => {
+          this.experiences = request.response;
+        };
+
+        request.send();
+      }
     }
 
     customElements.define(PageHome.is, PageHome);

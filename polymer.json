@@ -8,7 +8,6 @@
     "src/pages/page-talks.html"
   ],
   "sources": [
-    "data/**/*",
     "images/**/*",
     "src/**/*"
   ],

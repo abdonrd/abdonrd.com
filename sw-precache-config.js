@@ -28,7 +28,7 @@ module.exports = {
       }
     },
     {
-      urlPattern: /\/data\/.*json/,
+      urlPattern: /abdonrd-develop\.firebaseio\.com/,
       handler: 'fastest',
       options: {
         cache: {

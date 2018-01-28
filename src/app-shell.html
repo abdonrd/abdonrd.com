@@ -202,6 +202,11 @@ the root directory of this source tree.
      */
     Polymer.setPassiveTouchGestures(true);
 
+    // Global app config
+    Polymer.AppConfig = {
+      apiUrl: 'https://abdonrd-develop.firebaseio.com'
+    };
+
     class AppShell extends Polymer.Element {
       static get is() {
         return 'app-shell';
