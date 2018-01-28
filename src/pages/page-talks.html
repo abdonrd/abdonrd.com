@@ -14,34 +14,25 @@ the root directory of this source tree.
 
 <dom-module id="page-talks">
   <template>
-    <style include="page-styles">
-      ul {
-        padding: 0;
-        margin: 0;
-        list-style-type: none;
-      }
-
-      li + li {
-        margin-top: 1.5em;
-      }
+    <style include="page-styles list-styles">
     </style>
 
     <div class="menu" style="margin-bottom: 1em;">
       <a name="home" href="[[rootPath]]">Home</a>
     </div>
 
-    <h1>Talks</h1>
+    <h2>Talks</h2>
 
     <ul>
       <dom-repeat items="[[_talksGroupedByYears]]" as="talksGroupedByYear">
         <template>
-          <li>
-            <h2>[[talksGroupedByYear.year]]</h2>
+          <li class="li-group">
+            <h3>[[talksGroupedByYear.year]]</h3>
 
             <ul>
               <dom-repeat items="[[talksGroupedByYear.talks]]" as="talk">
                 <template>
-                  <li>
+                  <li class="li-item">
                     <talk-item talk="[[talk]]"></talk-item>
                   </li>
                 </template>

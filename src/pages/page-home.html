@@ -14,28 +14,19 @@ the root directory of this source tree.
 
 <dom-module id="page-home">
   <template>
-    <style include="page-styles">
-      ul {
-        padding: 0;
-        margin: 0;
-        list-style-type: none;
-      }
-
-      li + li {
-        margin-top: 1.5em;
-      }
+    <style include="page-styles list-styles">
     </style>
 
     <div class="menu" style="margin-bottom: 1em;">
       <a name="talks" href="[[rootPath]]talks">Talks</a>
     </div>
 
-    <h1>Experience</h1>
+    <h2>Experience</h2>
 
     <ul>
       <dom-repeat items="[[experiences]]" as="experience">
         <template>
-          <li>
+          <li class="li-item">
             <experience-item experience="[[experience]]"></experience-item>
           </li>
         </template>
