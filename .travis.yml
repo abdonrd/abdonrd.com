@@ -21,10 +21,9 @@ jobs:
     - stage: lighthouse test
       script:
         - yarn global add firebase-tools
-        - yarn add https://github.com/ebidel/lighthouse-ci
         - yarn run build
         - firebase deploy --token $FIREBASE_TOKEN --project abdonrd-develop
-        - node node_modules/lighthouse-ci/runlighthouse.js https://abdonrd-develop.firebaseapp.com
+        - yarn run lh https://abdonrd-develop.firebaseapp.com
 
     - stage: deploy to staging
       script: yarn run build
