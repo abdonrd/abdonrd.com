@@ -1,0 +1,56 @@
+<!--
+@license
+
+Copyright (c) 2018-present, Abdón Rodríguez Davila (@abdonrd).
+
+This source code is licensed under the MIT license found in the LICENSE file in
+the root directory of this source tree.
+-->
+
+<link rel="import" href="../../bower_components/polymer/polymer-element.html">
+<link rel="import" href="../app-styles.html">
+
+<dom-module id="page-not-found">
+  <template>
+    <style include="app-styles">
+      :host {
+        display: flex;
+        flex-direction: column;
+        flex-grow: 1;
+        align-items: center;
+        justify-content: center;
+      }
+
+      h1 {
+        font-size: 1.6em;
+        margin: 0 0 1em;
+        font-weight: normal;
+      }
+
+      a {
+        color: inherit;
+        font-weight: bold;
+        text-decoration: none;
+        font-size: 1.2em;
+      }
+
+      a:hover {
+        text-decoration: underline;
+      }
+    </style>
+
+    <h1>Sorry, that page doesn't exist!</h1>
+
+    <a href="[[rootPath]]">Return to the homepage</a>
+  </template>
+
+  <script>
+    class PageNotFound extends Polymer.Element {
+      static get is() {
+        return 'page-not-found';
+      }
+    }
+
+    customElements.define(PageNotFound.is, PageNotFound);
+  </script>
+</dom-module>

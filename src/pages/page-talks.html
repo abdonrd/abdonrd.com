@@ -1,0 +1,115 @@
+<!--
+@license
+
+Copyright (c) 2018-present, Abdón Rodríguez Davila (@abdonrd).
+
+This source code is licensed under the MIT license found in the LICENSE file in
+the root directory of this source tree.
+-->
+
+<link rel="import" href="../../bower_components/polymer/polymer-element.html">
+<link rel="import" href="../../bower_components/polymer/lib/elements/dom-repeat.html">
+<link rel="import" href="../elements/talk-item.html">
+<link rel="import" href="../app-styles.html">
+
+<dom-module id="page-talks">
+  <template>
+    <style include="page-styles list-styles">
+    </style>
+
+    <div class="menu" style="margin-bottom: 1em;">
+      <a name="home" href="[[rootPath]]">Home</a>
+    </div>
+
+    <h2>Talks</h2>
+
+    <ul>
+      <dom-repeat items="[[_talksGroupedByYears]]" as="talksGroupedByYear">
+        <template>
+          <li class="li-group">
+            <h3>[[talksGroupedByYear.year]]</h3>
+
+            <ul>
+              <dom-repeat items="[[talksGroupedByYear.talks]]" as="talk">
+                <template>
+                  <li class="li-item">
+                    <talk-item talk="[[talk]]"></talk-item>
+                  </li>
+                </template>
+              </dom-repeat>
+            </ul>
+          </li>
+        </template>
+      </dom-repeat>
+    </ul>
+  </template>
+
+  <script>
+    class PageTalks extends Polymer.Element {
+      static get is() {
+        return 'page-talks';
+      }
+
+      static get properties() {
+        return {
+          talks: {
+            type: Array,
+            observer: '_talksChanged'
+          },
+
+          _talksGroupedByYears: {
+            type: Array
+          }
+        };
+      }
+
+      ready() {
+        super.ready();
+
+        this._fetchTalks();
+      }
+
+      _fetchTalks() {
+        let request = new XMLHttpRequest();
+
+        request.open('GET', `${Polymer.AppConfig.apiUrl}/talks.json`);
+        request.responseType = 'json';
+
+        request.onload = () => {
+          // The `request.responseType = 'json'` is not supported by IE11
+          if (Array.isArray(request.response)) {
+            this.talks = request.response;
+          } else {
+            this.talks = JSON.parse(request.response);
+          }
+        };
+
+        request.send();
+      }
+
+      _talksChanged(talks) {
+        this._talksGroupedByYears = this._groupTalksByYears(talks);
+      }
+
+      _groupTalksByYears(talks) {
+        const talksGroupedByYears = talks.reduce((groups, talk) => {
+          var year = talk['date'].split('-')[0];
+
+          groups[year] = groups[year] || [];
+          groups[year].push(talk);
+
+          return groups;
+        }, {});
+
+        const years = Object.keys(talksGroupedByYears).reverse();
+
+        return years.map((key) => ({
+          year: key,
+          talks: talksGroupedByYears[key]
+        }));
+      }
+    }
+
+    customElements.define(PageTalks.is, PageTalks);
+  </script>
+</dom-module>

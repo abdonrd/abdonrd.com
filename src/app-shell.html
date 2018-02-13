@@ -1,309 +1,372 @@
 <!--
 @license
-Copyright (c) 2016 Abdón Rodríguez Davila (@abdonrd). All rights reserved.
-This code may only be used under the MIT style license found at https://abdonrd.github.io/LICENSE.txt
+
+Copyright (c) 2018-present, Abdón Rodríguez Davila (@abdonrd).
+
+This source code is licensed under the MIT license found in the LICENSE file in
+the root directory of this source tree.
 -->
 
-<link rel="import" href="../bower_components/polymer/polymer.html">
-<link rel="import" href="../bower_components/iron-ajax/iron-ajax.html">
-<link rel="import" href="../bower_components/iron-flex-layout/iron-flex-layout.html">
-<link rel="import" href="../bower_components/neon-animation/animations/cascaded-animation.html">
-<link rel="import" href="../bower_components/neon-animation/animations/fade-in-animation.html">
-<link rel="import" href="../bower_components/neon-animation/animations/transform-animation.html">
-<link rel="import" href="../bower_components/neon-animation/neon-animation-runner-behavior.html">
-<link rel="import" href="../bower_components/paper-card/paper-card.html">
-<link rel="import" href="../bower_components/paper-icon-button/paper-icon-button.html">
+<link rel="import" href="../bower_components/polymer/polymer-element.html">
+<link rel="import" href="../bower_components/polymer/lib/utils/render-status.html">
+<link rel="import" href="../bower_components/app-route/app-location.html">
+<link rel="import" href="../bower_components/iron-icon/iron-icon.html">
+<link rel="import" href="../bower_components/iron-pages/iron-pages.html">
 <link rel="import" href="app-icons.html">
-<link rel="import" href="ard-collapse-items/ard-collapse-items.html">
-<link rel="import" href="ard-item/ard-item.html">
-<link rel="import" href="ard-item/ard-item-body.html">
-<link rel="import" href="ard-item/ard-item-date.html">
-<link rel="import" href="ard-item/ard-item-location.html">
-<link rel="import" href="ard-item/ard-item-period.html">
-<link rel="import" href="ard-profile.html">
 
 <dom-module id="app-shell">
   <template>
     <style>
-      :root {
-        --primary-text-color: #212121;
-        --primary-background-color: #ffffff;
-        --secondary-text-color: #737373;
-        --disabled-text-color: #9b9b9b;
-        --divider-color: #dbdbdb;
-        --primary-color: #1abc9c;
-        --light-primary-color: #a1f2e2;
-        --dark-primary-color: #13866f;
-        --accent-color: #ffc107;
-        --light-accent-color: #fff0c4;
-        --dark-accent-color: #c99700;
-      }
-
       :host {
-        @apply --layout-block;
-        @apply --layout-fullbleed;
+        --app-primary-color: #1abc9c;
+
+        height: 100%;
+        display: flex;
+        flex-direction: column;
       }
 
-      .toolbar {
-        position: fixed;
-        top: 0;
-
-        width: 100%;
-        height: 168px;
-
-        background-color: var(--primary-color);
+      header {
+        background-color: var(--app-primary-color);
+        color: #ffffff;
+        font-family: monospace;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        min-height: 100%;
+        padding: 1.5em;
+        box-sizing: border-box;
       }
 
-      ard-profile {
-        margin-top: 50px;
+      header .profile-picture {
+        width: 144px;
+        height: 144px;
+        border-radius: 50%;
+        background-color: #314cc0;
+        text-align: center;
       }
 
-      ard-profile,
-      .information {
-        margin-right: 8px;
-        margin-left: 8px;
+      h1,
+      h2,
+      h3 {
+        text-align: center;
       }
 
-      .information {
-        @apply --layout-vertical;
-
-        margin-bottom: calc(8px * 2);
+      h2,
+      h3 {
+        font-weight: normal;
       }
 
-      .information,
-      .information paper-card:nth-child(n+2) {
-        margin-top: 8px;
+      h1 {
+        margin: 1.29556em 0;
+        font-size: 1.9em;
       }
 
-      .cascaded {
-        will-change: transform;
+      h2 {
+        margin: 0 0 2.0513em;
+        font-size: 1.2em;
+        line-height: 1.5em;
+        max-width: 400px;
       }
 
-      a {
-        text-decoration: none;
+      h3 {
+        margin: 0.5128em 0 0;
+        font-size: 1.2em;
+      }
 
+      .social-networks {
+        list-style: none;
+        padding: 0;
+        margin: 0;
+        display: flex;
+        flex-direction: row;
+        height: 28px;
+      }
+
+      .social-networks li + li {
+        margin-left: 1em;
+      }
+
+      .social-networks li a {
         color: inherit;
-
-        /* NOTE: Both values are needed, since some phones require the `transparent` value. */
-        -webkit-tap-highlight-color: rgba(0,0,0,0);
-        -webkit-tap-highlight-color: transparent;
       }
 
-      @media all and (min-width: 416px) {
-        ard-profile,
-        .information {
-          margin-right: auto;
-          margin-left: auto;
-          width: 400px;
-        }
+      .social-networks li a iron-icon {
+        width: 28px;
+        height: 28px;
       }
 
-      @media all and (min-width: 432px) {
-        .information {
-          margin-bottom: calc(16px * 2);
-        }
-
-        .information,
-        .information paper-card:nth-child(n+2) {
-          margin-top: 16px;
-        }
+      main {
+        /* Avoid big resize when change the page in mobile */
+        min-height: 75%;
       }
 
-      @media all and (min-width: 648px) {
-        .information {
-          @apply --layout-horizontal;
-          @apply --layout-wrap;
-          @apply --layout-start;
+      paper-toast {
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+        align-items: center;
+        padding: 6px 24px;
+      }
 
-          width: calc(300px * 2 + 16px);
-        }
+      paper-toast paper-button {
+        color: var(--app-primary-color);
+      }
 
-        .information paper-card {
-          width: 300px;
-        }
-
-        .information paper-card:nth-child(n+2) {
-          margin-top: 0;
-        }
-
-        .information paper-card:nth-child(n+3) {
-          margin-top: 16px;
-        }
-
-        .information paper-card:nth-child(even) {
-          margin-left: 16px;
+      @media (min-width: 425px) {
+        header .profile-picture {
+          width: 200px;
+          height: 200px;
         }
       }
 
-      @media all and (min-width: 696px) {
-        .information {
-          margin-top: 32px;
-          margin-bottom: calc(32px * 2);
-          width: calc(300px * 2 + 32px);
+      @media (min-width: 768px) {
+        :host {
+          flex-direction: row;
         }
 
-        .information paper-card:nth-child(n+3) {
-          margin-top: 32px;
+        header,
+        main {
+          display: flex;
+          flex-grow: 1;
+          flex-basis: 50%;
         }
 
-        .information paper-card:nth-child(even) {
-          margin-left: 32px;
-        }
-      }
-
-      @media all and (min-width: 896px) {
-        .information {
-          width: calc(400px * 2 + 32px);
+        header .profile-picture {
+          width: 256px;
+          height: 256px;
         }
 
-        .information paper-card {
-          width: 400px;
+        main > iron-pages {
+          display: flex;
+          flex-direction: column;
+          flex-grow: 1;
+          overflow-x: auto;
         }
       }
     </style>
 
-    <iron-ajax url="../data/data.json" auto last-response="{{data}}"></iron-ajax>
+    <app-location route="{{_route}}" url-space-regex="^[[rootPath]]"></app-location>
 
-    <div class="toolbar"></div>
+    <header>
+      <img src="images/avatar.jpg" alt="Profile picture of Abdón" class="profile-picture">
 
-    <ard-profile profile="[[data.profile]]" class="cascaded"></ard-profile>
+      <h1>Abdón Rodríguez Davila</h1>
 
-    <div class="information">
-      <paper-card heading="Experience" class="cascaded">
-        <ard-collapse-items items="[[data.experience.jobs]]" limit="{{collapseLimit}}">
-          <template>
-            <ard-item>
-              <ard-item-body>
-                <div>[[item.title]]</div>
-                <div>[[item.company]]</div>
-                <div>
-                  <ard-item-period period="[[item.period]]"></ard-item-period>
-                  <span>|</span>
-                  <ard-item-location location="[[item.location]]"></ard-item-location>
-                </div>
-              </ard-item-body>
-            </ard-item>
-          </template>
-        </ard-collapse-items>
-      </paper-card>
+      <h2>Galician. Technology enthusiast. Frontend Developer at IBM Research. Google Developer Expert on Web Technologies</h2>
 
-      <paper-card heading="Mentoring" class="cascaded">
-        <ard-collapse-items items="[[data.experience.mentoring]]" limit="{{collapseLimit}}">
-          <template>
-            <ard-item>
-              <ard-item-body>
-                <div>[[item.eventName]]</div>
-                <div>[[item.organization]]</div>
-                <div>
-                  <ard-item-date date="[[item.date]]"></ard-item-date>
-                  <span>|</span>
-                  <ard-item-location location="[[item.location]]"></ard-item-location>
-                </div>
-              </ard-item-body>
-            </ard-item>
-          </template>
-        </ard-collapse-items>
-      </paper-card>
+      <ul class="social-networks">
+        <li>
+          <a
+              href="https://twitter.com/abdonrd"
+              title="Twitter profile"
+              target="_blank"
+              rel="noopener">
+            <iron-icon icon="app-icons:twitter"></iron-icon>
+          </a>
+        </li>
+        <li>
+          <a
+              href="https://github.com/abdonrd"
+              title="GitHub profile"
+              target="_blank"
+              rel="noopener">
+            <iron-icon icon="app-icons:github"></iron-icon>
+          </a>
+        </li>
+        <li>
+          <a
+              href="https://www.linkedin.com/in/abdonrd"
+              title="LinkedIn profile"
+              target="_blank"
+              rel="noopener">
+            <iron-icon icon="app-icons:linkedin"></iron-icon>
+          </a>
+        </li>
+      </ul>
+      <h3>@abdonrd</h3>
+    </header>
 
-      <paper-card heading="Talks" class="cascaded">
-        <ard-collapse-items items="[[data.experience.talks]]" limit="{{collapseLimit}}">
-          <template>
-            <ard-item>
-              <ard-item-body>
-                <div>[[item.name]]</div>
-                <div>[[item.eventName]] by [[item.organization]]</div>
-                <div>
-                  <ard-item-date date="[[item.date]]"></ard-item-date>
-                  <span>|</span>
-                  <ard-item-location location="[[item.location]]"></ard-item-location>
-                </div>
-              </ard-item-body>
-              <a href$="[[item.slides]]" title$="'[[item.name]]' slides" hidden$="[[!item.slides]]" tabindex="-1" target="_blank">
-                <paper-icon-button icon="slideshow" alt="'[[item.name]]' slides"></paper-icon-button>
-              </a>
-            </ard-item>
-          </template>
-        </ard-collapse-items>
-      </paper-card>
-
-      <paper-card heading="Certifications" class="cascaded">
-        <ard-collapse-items items="[[data.education.certifications]]" limit="{{collapseLimit}}">
-          <template>
-            <ard-item>
-              <ard-item-body>
-                <div>[[item.name]]</div>
-                <div>[[item.authority]], License [[item.licenseNumber]]</div>
-                <div>
-                  <ard-item-period period="[[item.period]]"></ard-item-period>
-                </div>
-              </ard-item-body>
-              <a href$="[[item.url]]" title$="'[[item.name]]' item" hidden$="[[!item.url]]" tabindex="-1" target="_blank">
-                <paper-icon-button icon="description" alt="[[item.name]]' certification"></paper-icon-button>
-              </a>
-            </ard-item>
-          </template>
-        </ard-collapse-items>
-      </paper-card>
-
-      <paper-card heading="Education" class="cascaded">
-        <ard-collapse-items items="[[data.education.education]]" limit="{{collapseLimit}}">
-          <template>
-            <ard-item>
-              <ard-item-body>
-                <div>[[item.school]]</div>
-                <div>[[item.degree]]</div>
-                <div>
-                  <ard-item-period period="[[item.period]]" input-format="YYYY" output-format="YYYY"></ard-item-period>
-                </div>
-              </ard-item-body>
-            </ard-item>
-          </template>
-        </ard-collapse-items>
-      </paper-card>
-    </div>
+    <main>
+      <iron-pages
+          selected="[[_selectedPageId]]"
+          attr-for-selected="name"
+          fallback-selection="notFound"
+          role="main">
+        <page-home name="home"></page-home>
+        <page-talks name="talks"></page-talks>
+        <page-not-found name="notFound"></page-not-found>
+      </iron-pages>
+    </main>
   </template>
 
   <script>
-    Polymer({
-      is: 'app-shell',
+    /**
+     * Gesture events like tap and track generated from touch will not be
+     * preventable, allowing for better scrolling performance.
+     */
+    Polymer.setPassiveTouchGestures(true);
 
-      behaviors: [
-        Polymer.NeonAnimationRunnerBehavior
-      ],
+    // Global app config
+    Polymer.AppConfig = {
+      apiUrl: 'https://abdonrd-develop.firebaseio.com'
+    };
 
-      properties: {
-        collapseLimit: {
-          type: Number,
-          value: 2
-        },
-
-        animationConfig: {
-          value: function() {
-            return [{
-              name: 'fade-in-animation',
-              node: this,
-              timing: {
-                delay: 400,
-                duration: 500
-              }
-            }, {
-              name: 'cascaded-animation',
-              animation: 'transform-animation',
-              transformFrom: 'translateY(100%)',
-              transformTo: 'none',
-              timing: {
-                delay: 300
-              }
-            }];
-          }
-        }
-      },
-
-      attached: function() {
-        var nodes = Polymer.dom(this.root).querySelectorAll('.cascaded');
-        this.animationConfig[1].nodes = Array.prototype.slice.call(nodes);
-        this.playAnimation();
+    class AppShell extends Polymer.Element {
+      static get is() {
+        return 'app-shell';
       }
-    });
+
+      static get properties() {
+        return {
+          _route: {
+            type: Object
+          },
+
+          _pagesPaths: {
+            type: Object,
+            value: () => {
+              return {
+                home: 'pages/page-home.html',
+                notFound: 'pages/page-not-found.html',
+                talks: 'pages/page-talks.html'
+              };
+            }
+          },
+
+          _selectedPageId: {
+            type: String
+          }
+        };
+      }
+
+      static get observers() {
+        return [
+          '_routeChanged(_route)'
+        ];
+      }
+
+      ready() {
+        super.ready();
+
+        /**
+         * Custom Elements polyfill safe way to indicate an element has been
+         * upgraded.
+         */
+        this.removeAttribute('unresolved');
+      }
+
+      _routeChanged(_route) {
+        const pathParts = _route.path.slice(1).split('/');
+
+        // Allow only one level path with optional trailing slash.
+        if (pathParts.length === 1 || (pathParts.length === 2 && pathParts[1] === '')) {
+          const pageId = pathParts[0];
+
+          switch (pageId) {
+            case '':
+              this._selectPage('home');
+              break;
+
+            default:
+              this._selectPage(pageId);
+              break;
+          }
+        } else {
+          this._selectPage('notFound');
+        }
+      }
+
+      _selectPage(pageId) {
+        this._importPage(pageId);
+        this._selectedPageId = pageId;
+      }
+
+      _importPage(pageId) {
+        const pagePath = this._pagesPaths[pageId] || this._pagesPaths['notFound'];
+
+        Polymer.importHref(this.resolveUrl(pagePath), () => {
+          this._ensureLazyLoaded();
+        }, null, true);
+      }
+
+      _ensureLazyLoaded() {
+        // Load lazy resources after render and set `_loadComplete` when done.
+        if (!this._loadComplete) {
+          Polymer.RenderStatus.afterNextRender(this, () => {
+            Polymer.importHref(this.resolveUrl('lazy-resources.html'), () => {
+              if ('serviceWorker' in navigator) {
+                this._registerServiceWorker();
+              }
+
+              this._loadComplete = true;
+            });
+          });
+        }
+      }
+
+      _registerServiceWorker() {
+        navigator.serviceWorker.register('service-worker.js', {
+          scope: Polymer.rootPath
+        }).then(registration => {
+          registration.onupdatefound = () => {
+            const installingWorker = registration.installing;
+
+            installingWorker.onstatechange = () => {
+              switch (installingWorker.state) {
+                case 'installed':
+                  if (!navigator.serviceWorker.controller) {
+                    this.showToastOffline();
+                  } else {
+                    navigator.serviceWorker.controller.onstatechange = event => {
+                      if (event.target.state === 'redundant') {
+                        this.showToastUpdated();
+                      }
+                    };
+                  }
+                  break;
+                case 'redundant':
+                  throw Error('The installing Service Worker became redundant.');
+                default:
+                  break;
+              }
+            };
+          };
+        }).catch(error => {
+          // eslint-disable-next-line no-console
+          console.error('Service Worker registration failed:', error);
+        });
+      }
+
+      showToastOffline() {
+        const toastOffline = document.createElement('paper-toast');
+        toastOffline.text = 'The website is cached for offline use!';
+
+        this.shadowRoot.appendChild(toastOffline);
+
+        toastOffline.open();
+      }
+
+      showToastUpdated() {
+        const toastUpdated = document.createElement('paper-toast');
+        toastUpdated.setProperties({
+          duration: 0,
+          text: 'New version available!'
+        });
+
+        const toastButtonUpdated = document.createElement('paper-button');
+        toastButtonUpdated.innerHTML = 'Update';
+        toastButtonUpdated.addEventListener('click', () => {
+          window.location.reload();
+        });
+
+        toastUpdated.appendChild(toastButtonUpdated);
+        this.shadowRoot.appendChild(toastUpdated);
+
+        toastUpdated.open();
+      }
+    }
+
+    customElements.define(AppShell.is, AppShell);
   </script>
 </dom-module>

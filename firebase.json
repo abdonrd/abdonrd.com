@@ -1,13 +1,21 @@
 {
   "hosting": {
-    "public": "build",
-    "ignore": [
-      "bower.json"
-    ],
+    "public": "build/es5-bundled/",
     "rewrites": [
       {
-        "source": "**/!(*.js|*.html|*.css|*.json|*.svg|*.png|*.jpg|*.jpeg)",
+        "source": "**/!(*.*)",
         "destination": "/index.html"
+      }
+    ],
+    "headers": [
+      {
+        "source": "/service-worker.js",
+        "headers": [
+          {
+            "key": "Cache-Control",
+            "value": "no-cache"
+          }
+        ]
       }
     ]
   }
