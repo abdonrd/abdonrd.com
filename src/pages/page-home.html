@@ -61,7 +61,12 @@ the root directory of this source tree.
         request.responseType = 'json';
 
         request.onload = () => {
-          this.experiences = request.response;
+          // The `request.responseType = 'json'` is not supported by IE11
+          if (Array.isArray(request.response)) {
+            this.experiences = request.response;
+          } else {
+            this.experiences = JSON.parse(request.response);
+          }
         };
 
         request.send();
