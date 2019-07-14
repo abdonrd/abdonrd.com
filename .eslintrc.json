@@ -1,9 +1,17 @@
 {
-  "extends": "ibmresearch/html",
-  "parserOptions": {
-    "ecmaVersion": 6
+  "extends": "eslint:recommended",
+  "env": {
+    "browser": true,
+    "es6": true
   },
   "globals": {
     "Polymer": true
+  },
+  "plugins": [
+    "html"
+  ],
+  "settings": {
+    "html/indent": "+2",
+    "html/report-bad-indent": "error"
   }
 }

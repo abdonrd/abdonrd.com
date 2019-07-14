@@ -64,8 +64,7 @@ This command serves your app. Replace `build-folder-name` with the folder name o
 
 ## Run lint
 
-This command will run [ESLint](https://github.com/eslint/eslint) with the
-[IBM Research ESLint shareable config](https://github.com/IBMResearch/eslint-config-ibmresearch):
+This command will run [ESLint](https://github.com/eslint/eslint):
 
     yarn run lint
 
