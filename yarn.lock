@@ -6668,7 +6668,7 @@ polymer-bundler@^4.0.9:
     source-map "^0.5.6"
     vscode-uri "=1.0.6"
 
-polymer-cli@^1.6.0:
+polymer-cli@^1.9.0:
   version "1.9.11"
   resolved "https://registry.yarnpkg.com/polymer-cli/-/polymer-cli-1.9.11.tgz#0b5310732b787e07b811af96627ef0fd1263f5da"
   integrity sha512-tiURjHDCOUUtDVPuVYvrfFI9PXe4OOUmBbn6Sg5GJNQ2POtP7r7hv+I5yI8P9qsxmalHTa19chVtf5/t9IBXDg==
@@ -7360,7 +7360,7 @@ replace-ext@1.0.0, replace-ext@^1.0.0:
   resolved "https://registry.yarnpkg.com/replace-ext/-/replace-ext-1.0.0.tgz#de63128373fcbf7c3ccfa4de5a480c45a67958eb"
   integrity sha1-3mMSg3P8v3w8z6TeWkgMRaZ5WOs=
 
-replace-in-file@^3.1.0:
+replace-in-file@^3.4.0:
   version "3.4.4"
   resolved "https://registry.yarnpkg.com/replace-in-file/-/replace-in-file-3.4.4.tgz#2c2b95a493dc4f6161c2bcd29a661be16d03d323"
   integrity sha512-ehq0dFsxSpfPiPLBU5kli38Ud8bZL0CQKG8WQVbvhmyilXaMJ8y4LtDZs/K3MD8C0+rHbsfW8c9r2bUEy0B/6Q==
