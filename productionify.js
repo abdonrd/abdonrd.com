@@ -23,7 +23,8 @@ const options = {
 
 replace(options)
   .then(changes => {
-    console.log('Modified files:', changes.join(', '));
+    console.log('Modified files:');
+    console.log(changes);
   })
   .catch(error => {
     console.error('Error occurred:', error);
@@ -43,7 +44,8 @@ const options2 = {
 
 replace(options2)
   .then(changes => {
-    console.log('Modified files:', changes.join(', '));
+    console.log('Modified files:');
+    console.log(changes);
   })
   .catch(error => {
     console.error('Error occurred:', error);

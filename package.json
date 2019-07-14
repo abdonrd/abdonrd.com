@@ -15,7 +15,7 @@
     "eslint-plugin-html": "^6.0.0",
     "lighthouse-ci": "https://github.com/ebidel/lighthouse-ci",
     "polymer-cli": "^1.9.0",
-    "replace-in-file": "^3.4.0",
+    "replace-in-file": "^4.0.0",
     "stylelint": "^8.4.0",
     "stylelint-config-ibmresearch": "^0.3.0"
   },
