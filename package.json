@@ -13,7 +13,7 @@
     "bower": "^1.8.8",
     "eslint": "^6.0.0",
     "eslint-plugin-html": "^6.0.0",
-    "lighthouse-ci": "https://github.com/ebidel/lighthouse-ci",
+    "lighthousebot": "git+https://github.com/GoogleChromeLabs/lighthousebot.git",
     "polymer-cli": "^1.9.0",
     "replace-in-file": "^4.0.0",
     "stylelint": "^8.4.0",
@@ -21,7 +21,7 @@
   },
   "scripts": {
     "postinstall": "bower install",
-    "lh": "lighthouse-ci",
+    "lh": "lighthousebot",
     "start": "polymer serve",
     "lint:eslint": "eslint . --ext js,html --ignore-path .gitignore",
     "lint:stylelint": "stylelint '**/*.{css,html}' --ignore-path .gitignore",

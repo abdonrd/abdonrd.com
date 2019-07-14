@@ -5236,9 +5236,9 @@ levn@^0.3.0, levn@~0.3.0:
     prelude-ls "~1.1.2"
     type-check "~0.3.2"
 
-"lighthouse-ci@https://github.com/ebidel/lighthouse-ci":
+"lighthousebot@git+https://github.com/GoogleChromeLabs/lighthousebot.git":
   version "0.2.0"
-  resolved "https://github.com/ebidel/lighthouse-ci#350d70440116928c6dd25c4daa83ca3dcc1c3dfc"
+  resolved "git+https://github.com/GoogleChromeLabs/lighthousebot.git#350d70440116928c6dd25c4daa83ca3dcc1c3dfc"
   dependencies:
     minimist "^1.2.0"
     node-fetch "^2.2.0"
