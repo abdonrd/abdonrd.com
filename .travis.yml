@@ -7,9 +7,7 @@ branches:
     - /^v\d/
 
 install:
-  - yarn global add bower
   - yarn install
-  - bower install
 
 jobs:
   include:

@@ -6,14 +6,9 @@ My little personal website built with Polymer.
 
 ## Prerequisites
 
-First, install [Bower](https://bower.io) using [yarn](https://yarnpkg.com)
-(we assume you have pre-installed [node.js](https://nodejs.org)):
+First, install the dependencies:
 
-    yarn global add bower
-
-And install the dependencies:
-
-    yarn install && bower install
+    yarn install
 
 ## Start the development server
 
