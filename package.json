@@ -32,7 +32,7 @@
     "build:production": "node productionify.js && yarn run build && git reset --hard"
   },
   "engines": {
-    "node": ">=6.0"
+    "node": ">=10.0"
   },
   "private": true
 }
